@@ -1,0 +1,1169 @@
+[2023-11-16 14:18:43 -0600] [5202] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:18:43 -0600] [5202] [INFO] Listening at: http://10.0.0.90:9000 (5202)
+[2023-11-16 14:18:43 -0600] [5202] [INFO] Using worker: gthread
+[2023-11-16 14:18:43 -0600] [5205] [INFO] Booting worker with pid: 5205
+[2023-11-16 14:18:43 -0600] [5206] [INFO] Booting worker with pid: 5206
+[2023-11-16 14:18:43 -0600] [5207] [INFO] Booting worker with pid: 5207
+[2023-11-16 14:18:43 -0600] [5208] [INFO] Booting worker with pid: 5208
+[2023-11-16 14:18:43 -0600] [5209] [INFO] Booting worker with pid: 5209
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:18:45 -0600] [5202] [INFO] Handling signal: winch
+[2023-11-16 14:40:17 -0600] [5202] [INFO] Handling signal: int
+[2023-11-16 20:40:17 +0000] [5208] [INFO] Worker exiting (pid: 5208)
+[2023-11-16 20:40:17 +0000] [5205] [INFO] Worker exiting (pid: 5205)
+[2023-11-16 20:40:17 +0000] [5206] [INFO] Worker exiting (pid: 5206)
+[2023-11-16 20:40:17 +0000] [5207] [INFO] Worker exiting (pid: 5207)
+[2023-11-16 20:40:17 +0000] [5209] [INFO] Worker exiting (pid: 5209)
+[2023-11-16 14:40:20 -0600] [5202] [INFO] Shutting down: Master
+[2023-11-16 14:40:22 -0600] [5562] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:40:22 -0600] [5562] [INFO] Listening at: http://10.0.0.90:9000 (5562)
+[2023-11-16 14:40:22 -0600] [5562] [INFO] Using worker: gthread
+[2023-11-16 14:40:22 -0600] [5565] [INFO] Booting worker with pid: 5565
+[2023-11-16 14:40:22 -0600] [5566] [INFO] Booting worker with pid: 5566
+[2023-11-16 14:40:22 -0600] [5567] [INFO] Booting worker with pid: 5567
+[2023-11-16 14:40:22 -0600] [5568] [INFO] Booting worker with pid: 5568
+[2023-11-16 14:40:22 -0600] [5569] [INFO] Booting worker with pid: 5569
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:55 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:43:56 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:44:05 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:44:05 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:44:05 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:44:05 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:44:05 -0600] [5562] [INFO] Handling signal: winch
+[2023-11-16 14:45:48 -0600] [5562] [INFO] Handling signal: int
+[2023-11-16 20:45:48 +0000] [5566] [INFO] Worker exiting (pid: 5566)
+[2023-11-16 20:45:48 +0000] [5567] [INFO] Worker exiting (pid: 5567)
+[2023-11-16 20:45:48 +0000] [5569] [INFO] Worker exiting (pid: 5569)
+[2023-11-16 20:45:48 +0000] [5565] [INFO] Worker exiting (pid: 5565)
+[2023-11-16 20:45:48 +0000] [5568] [INFO] Worker exiting (pid: 5568)
+[2023-11-16 14:45:48 -0600] [5562] [INFO] Shutting down: Master
+[2023-11-16 14:46:04 -0600] [5611] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:46:04 -0600] [5611] [INFO] Listening at: http://10.0.0.90:9000 (5611)
+[2023-11-16 14:46:04 -0600] [5611] [INFO] Using worker: gthread
+[2023-11-16 14:46:04 -0600] [5614] [INFO] Booting worker with pid: 5614
+[2023-11-16 14:46:04 -0600] [5614] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:46:04 -0600] [5614] [INFO] Worker exiting (pid: 5614)
+[2023-11-16 14:46:04 -0600] [5611] [ERROR] Worker (pid:5614) exited with code 3
+[2023-11-16 14:46:04 -0600] [5611] [ERROR] Shutting down: Master
+[2023-11-16 14:46:04 -0600] [5611] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:47:50 -0600] [5622] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:47:50 -0600] [5622] [INFO] Listening at: http://10.0.0.90:9000 (5622)
+[2023-11-16 14:47:50 -0600] [5622] [INFO] Using worker: gthread
+[2023-11-16 14:47:50 -0600] [5625] [INFO] Booting worker with pid: 5625
+[2023-11-16 14:47:50 -0600] [5625] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:47:50 -0600] [5625] [INFO] Worker exiting (pid: 5625)
+[2023-11-16 14:47:50 -0600] [5622] [ERROR] Worker (pid:5625) exited with code 3
+[2023-11-16 14:47:50 -0600] [5622] [ERROR] Shutting down: Master
+[2023-11-16 14:47:50 -0600] [5622] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:49:49 -0600] [5634] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:49:49 -0600] [5634] [INFO] Listening at: http://10.0.0.90:9000 (5634)
+[2023-11-16 14:49:49 -0600] [5634] [INFO] Using worker: gthread
+[2023-11-16 14:49:49 -0600] [5637] [INFO] Booting worker with pid: 5637
+[2023-11-16 14:49:49 -0600] [5637] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:49:49 -0600] [5637] [INFO] Worker exiting (pid: 5637)
+[2023-11-16 14:49:49 -0600] [5634] [ERROR] Worker (pid:5637) exited with code 3
+[2023-11-16 14:49:49 -0600] [5634] [ERROR] Shutting down: Master
+[2023-11-16 14:49:49 -0600] [5634] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:52:25 -0600] [5640] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:52:25 -0600] [5640] [INFO] Listening at: http://10.0.0.90:9000 (5640)
+[2023-11-16 14:52:25 -0600] [5640] [INFO] Using worker: gthread
+[2023-11-16 14:52:25 -0600] [5643] [INFO] Booting worker with pid: 5643
+[2023-11-16 14:52:25 -0600] [5643] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:52:25 -0600] [5643] [INFO] Worker exiting (pid: 5643)
+[2023-11-16 14:52:25 -0600] [5640] [ERROR] Worker (pid:5643) exited with code 3
+[2023-11-16 14:52:25 -0600] [5640] [ERROR] Shutting down: Master
+[2023-11-16 14:52:25 -0600] [5640] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:52:43 -0600] [5644] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:52:43 -0600] [5644] [INFO] Listening at: http://10.0.0.90:9000 (5644)
+[2023-11-16 14:52:43 -0600] [5644] [INFO] Using worker: gthread
+[2023-11-16 14:52:43 -0600] [5647] [INFO] Booting worker with pid: 5647
+[2023-11-16 14:52:43 -0600] [5647] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:52:43 -0600] [5647] [INFO] Worker exiting (pid: 5647)
+[2023-11-16 14:52:43 -0600] [5644] [ERROR] Worker (pid:5647) exited with code 3
+[2023-11-16 14:52:43 -0600] [5644] [ERROR] Shutting down: Master
+[2023-11-16 14:52:43 -0600] [5644] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:54:42 -0600] [5664] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:54:42 -0600] [5664] [INFO] Listening at: http://10.0.0.90:9000 (5664)
+[2023-11-16 14:54:42 -0600] [5664] [INFO] Using worker: gthread
+[2023-11-16 14:54:42 -0600] [5667] [INFO] Booting worker with pid: 5667
+[2023-11-16 14:54:42 -0600] [5667] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:54:42 -0600] [5667] [INFO] Worker exiting (pid: 5667)
+[2023-11-16 14:54:42 -0600] [5664] [ERROR] Worker (pid:5667) exited with code 3
+[2023-11-16 14:54:42 -0600] [5664] [ERROR] Shutting down: Master
+[2023-11-16 14:54:42 -0600] [5664] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:55:03 -0600] [5670] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:55:03 -0600] [5670] [INFO] Listening at: http://10.0.0.90:9000 (5670)
+[2023-11-16 14:55:03 -0600] [5670] [INFO] Using worker: gthread
+[2023-11-16 14:55:03 -0600] [5673] [INFO] Booting worker with pid: 5673
+[2023-11-16 14:55:03 -0600] [5673] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:55:03 -0600] [5673] [INFO] Worker exiting (pid: 5673)
+[2023-11-16 14:55:03 -0600] [5670] [ERROR] Worker (pid:5673) exited with code 3
+[2023-11-16 14:55:03 -0600] [5670] [ERROR] Shutting down: Master
+[2023-11-16 14:55:03 -0600] [5670] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 14:56:10 -0600] [6011] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 14:56:10 -0600] [6011] [INFO] Listening at: http://10.0.0.90:9000 (6011)
+[2023-11-16 14:56:10 -0600] [6011] [INFO] Using worker: gthread
+[2023-11-16 14:56:10 -0600] [6014] [INFO] Booting worker with pid: 6014
+[2023-11-16 14:56:10 -0600] [6014] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-16 14:56:10 -0600] [6014] [INFO] Worker exiting (pid: 6014)
+[2023-11-16 14:56:10 -0600] [6011] [ERROR] Worker (pid:6014) exited with code 3
+[2023-11-16 14:56:10 -0600] [6011] [ERROR] Shutting down: Master
+[2023-11-16 14:56:10 -0600] [6011] [ERROR] Reason: Worker failed to boot.
+[2023-11-16 15:00:22 -0600] [6029] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 15:00:22 -0600] [6029] [INFO] Listening at: http://10.0.0.90:9000 (6029)
+[2023-11-16 15:00:22 -0600] [6029] [INFO] Using worker: gthread
+[2023-11-16 15:00:22 -0600] [6032] [INFO] Booting worker with pid: 6032
+[2023-11-16 15:00:23 -0600] [6033] [INFO] Booting worker with pid: 6033
+[2023-11-16 15:00:23 -0600] [6034] [INFO] Booting worker with pid: 6034
+[2023-11-16 15:00:23 -0600] [6035] [INFO] Booting worker with pid: 6035
+[2023-11-16 15:00:23 -0600] [6036] [INFO] Booting worker with pid: 6036
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:00:26 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:01:12 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:01:12 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:01:12 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:01:12 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:01:12 -0600] [6029] [INFO] Handling signal: winch
+[2023-11-16 15:03:38 -0600] [6029] [INFO] Handling signal: int
+[2023-11-16 21:03:38 +0000] [6032] [INFO] Worker exiting (pid: 6032)
+[2023-11-16 21:03:38 +0000] [6033] [INFO] Worker exiting (pid: 6033)
+[2023-11-16 21:03:38 +0000] [6034] [INFO] Worker exiting (pid: 6034)
+[2023-11-16 21:03:38 +0000] [6036] [INFO] Worker exiting (pid: 6036)
+[2023-11-16 21:03:38 +0000] [6035] [INFO] Worker exiting (pid: 6035)
+[2023-11-16 15:03:39 -0600] [6029] [INFO] Shutting down: Master
+[2023-11-16 15:31:23 -0600] [6152] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 15:31:23 -0600] [6152] [INFO] Listening at: http://10.0.0.90:9000 (6152)
+[2023-11-16 15:31:23 -0600] [6152] [INFO] Using worker: gthread
+[2023-11-16 15:31:23 -0600] [6155] [INFO] Booting worker with pid: 6155
+[2023-11-16 15:31:23 -0600] [6156] [INFO] Booting worker with pid: 6156
+[2023-11-16 15:31:23 -0600] [6157] [INFO] Booting worker with pid: 6157
+[2023-11-16 15:31:23 -0600] [6158] [INFO] Booting worker with pid: 6158
+[2023-11-16 15:31:23 -0600] [6159] [INFO] Booting worker with pid: 6159
+[2023-11-16 15:34:37 -0600] [6152] [INFO] Handling signal: winch
+[2023-11-16 15:34:37 -0600] [6152] [INFO] Handling signal: winch
+[2023-11-16 15:34:37 -0600] [6152] [INFO] Handling signal: winch
+[2023-11-16 15:36:07 -0600] [6152] [INFO] Handling signal: int
+[2023-11-16 21:36:07 +0000] [6159] [INFO] Worker exiting (pid: 6159)
+[2023-11-16 21:36:07 +0000] [6156] [INFO] Worker exiting (pid: 6156)
+[2023-11-16 21:36:07 +0000] [6155] [INFO] Worker exiting (pid: 6155)
+[2023-11-16 21:36:07 +0000] [6158] [INFO] Worker exiting (pid: 6158)
+[2023-11-16 21:36:07 +0000] [6157] [INFO] Worker exiting (pid: 6157)
+[2023-11-16 15:36:07 -0600] [6152] [INFO] Shutting down: Master
+[2023-11-16 15:37:41 -0600] [6200] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 15:37:41 -0600] [6200] [INFO] Listening at: http://10.0.0.90:9000 (6200)
+[2023-11-16 15:37:41 -0600] [6200] [INFO] Using worker: gthread
+[2023-11-16 15:37:41 -0600] [6203] [INFO] Booting worker with pid: 6203
+[2023-11-16 15:37:41 -0600] [6204] [INFO] Booting worker with pid: 6204
+[2023-11-16 15:37:41 -0600] [6205] [INFO] Booting worker with pid: 6205
+[2023-11-16 15:37:41 -0600] [6206] [INFO] Booting worker with pid: 6206
+[2023-11-16 15:37:41 -0600] [6207] [INFO] Booting worker with pid: 6207
+[2023-11-16 15:46:12 -0600] [6200] [INFO] Handling signal: winch
+[2023-11-16 15:46:12 -0600] [6200] [INFO] Handling signal: winch
+[2023-11-16 15:46:12 -0600] [6200] [INFO] Handling signal: winch
+[2023-11-16 15:46:13 -0600] [6200] [INFO] Handling signal: winch
+[2023-11-16 15:46:13 -0600] [6200] [INFO] Handling signal: winch
+[2023-11-16 15:47:39 -0600] [6200] [INFO] Handling signal: int
+[2023-11-16 21:47:39 +0000] [6207] [INFO] Worker exiting (pid: 6207)
+[2023-11-16 21:47:39 +0000] [6203] [INFO] Worker exiting (pid: 6203)
+[2023-11-16 21:47:39 +0000] [6204] [INFO] Worker exiting (pid: 6204)
+[2023-11-16 21:47:39 +0000] [6205] [INFO] Worker exiting (pid: 6205)
+[2023-11-16 21:47:39 +0000] [6206] [INFO] Worker exiting (pid: 6206)
+[2023-11-16 15:47:39 -0600] [6200] [INFO] Shutting down: Master
+[2023-11-16 15:47:44 -0600] [6248] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 15:47:44 -0600] [6248] [INFO] Listening at: http://10.0.0.90:9000 (6248)
+[2023-11-16 15:47:44 -0600] [6248] [INFO] Using worker: gthread
+[2023-11-16 15:47:44 -0600] [6251] [INFO] Booting worker with pid: 6251
+[2023-11-16 15:47:44 -0600] [6252] [INFO] Booting worker with pid: 6252
+[2023-11-16 15:47:44 -0600] [6253] [INFO] Booting worker with pid: 6253
+[2023-11-16 15:47:44 -0600] [6254] [INFO] Booting worker with pid: 6254
+[2023-11-16 15:47:44 -0600] [6255] [INFO] Booting worker with pid: 6255
+[2023-11-16 15:52:37 -0600] [6248] [INFO] Handling signal: int
+[2023-11-16 21:52:37 +0000] [6252] [INFO] Worker exiting (pid: 6252)
+[2023-11-16 21:52:37 +0000] [6253] [INFO] Worker exiting (pid: 6253)
+[2023-11-16 21:52:37 +0000] [6255] [INFO] Worker exiting (pid: 6255)
+[2023-11-16 21:52:37 +0000] [6251] [INFO] Worker exiting (pid: 6251)
+[2023-11-16 21:52:37 +0000] [6254] [INFO] Worker exiting (pid: 6254)
+[2023-11-16 15:52:37 -0600] [6248] [INFO] Shutting down: Master
+[2023-11-16 15:52:39 -0600] [6285] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 15:52:39 -0600] [6285] [INFO] Listening at: http://10.0.0.90:9000 (6285)
+[2023-11-16 15:52:39 -0600] [6285] [INFO] Using worker: gthread
+[2023-11-16 15:52:39 -0600] [6288] [INFO] Booting worker with pid: 6288
+[2023-11-16 15:52:39 -0600] [6289] [INFO] Booting worker with pid: 6289
+[2023-11-16 15:52:39 -0600] [6290] [INFO] Booting worker with pid: 6290
+[2023-11-16 15:52:39 -0600] [6291] [INFO] Booting worker with pid: 6291
+[2023-11-16 15:52:39 -0600] [6292] [INFO] Booting worker with pid: 6292
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:54:05 -0600] [6285] [INFO] Handling signal: winch
+[2023-11-16 15:55:17 -0600] [6285] [INFO] Handling signal: int
+[2023-11-16 21:55:17 +0000] [6290] [INFO] Worker exiting (pid: 6290)
+[2023-11-16 21:55:17 +0000] [6291] [INFO] Worker exiting (pid: 6291)
+[2023-11-16 21:55:17 +0000] [6288] [INFO] Worker exiting (pid: 6288)
+[2023-11-16 21:55:17 +0000] [6289] [INFO] Worker exiting (pid: 6289)
+[2023-11-16 21:55:17 +0000] [6292] [INFO] Worker exiting (pid: 6292)
+[2023-11-16 15:55:18 -0600] [6285] [INFO] Shutting down: Master
+[2023-11-16 16:03:45 -0600] [6360] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:05:36 -0600] [6378] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:05:53 -0600] [6387] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:09:43 -0600] [6409] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:10:53 -0600] [6420] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:11:53 -0600] [6430] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:12:43 -0600] [6439] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:12:54 -0600] [6445] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:13:00 -0600] [6448] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:13:44 -0600] [6457] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:13:51 -0600] [6461] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:15:13 -0600] [6470] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:16:09 -0600] [6482] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:17:46 -0600] [6497] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:18:14 -0600] [6509] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:21:18 -0600] [6532] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:21:18 -0600] [6532] [INFO] Listening at: http://10.0.0.90:9000 (6532)
+[2023-11-16 16:21:18 -0600] [6532] [INFO] Using worker: gthread
+[2023-11-16 16:21:18 -0600] [6535] [INFO] Booting worker with pid: 6535
+[2023-11-16 16:21:18 -0600] [6536] [INFO] Booting worker with pid: 6536
+[2023-11-16 16:21:19 -0600] [6537] [INFO] Booting worker with pid: 6537
+[2023-11-16 16:21:19 -0600] [6538] [INFO] Booting worker with pid: 6538
+[2023-11-16 16:21:19 -0600] [6539] [INFO] Booting worker with pid: 6539
+[2023-11-16 16:23:55 -0600] [6532] [INFO] Handling signal: int
+[2023-11-16 22:23:55 +0000] [6536] [INFO] Worker exiting (pid: 6536)
+[2023-11-16 22:23:55 +0000] [6535] [INFO] Worker exiting (pid: 6535)
+[2023-11-16 22:23:55 +0000] [6537] [INFO] Worker exiting (pid: 6537)
+[2023-11-16 22:23:55 +0000] [6539] [INFO] Worker exiting (pid: 6539)
+[2023-11-16 22:23:55 +0000] [6538] [INFO] Worker exiting (pid: 6538)
+[2023-11-16 16:23:55 -0600] [6532] [INFO] Shutting down: Master
+[2023-11-16 16:23:58 -0600] [6558] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:23:58 -0600] [6558] [INFO] Listening at: http://10.0.0.90:9000 (6558)
+[2023-11-16 16:23:58 -0600] [6558] [INFO] Using worker: gthread
+[2023-11-16 16:23:58 -0600] [6561] [INFO] Booting worker with pid: 6561
+[2023-11-16 16:23:58 -0600] [6562] [INFO] Booting worker with pid: 6562
+[2023-11-16 16:23:58 -0600] [6563] [INFO] Booting worker with pid: 6563
+[2023-11-16 16:23:58 -0600] [6564] [INFO] Booting worker with pid: 6564
+[2023-11-16 16:23:58 -0600] [6565] [INFO] Booting worker with pid: 6565
+[2023-11-16 16:35:36 -0600] [6558] [INFO] Handling signal: int
+[2023-11-16 22:35:37 +0000] [6564] [INFO] Worker exiting (pid: 6564)
+[2023-11-16 22:35:37 +0000] [6562] [INFO] Worker exiting (pid: 6562)
+[2023-11-16 22:35:37 +0000] [6561] [INFO] Worker exiting (pid: 6561)
+[2023-11-16 22:35:37 +0000] [6563] [INFO] Worker exiting (pid: 6563)
+[2023-11-16 22:35:37 +0000] [6565] [INFO] Worker exiting (pid: 6565)
+[2023-11-16 16:35:37 -0600] [6558] [INFO] Shutting down: Master
+[2023-11-16 16:35:38 -0600] [6623] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:35:38 -0600] [6623] [INFO] Listening at: http://10.0.0.90:9000 (6623)
+[2023-11-16 16:35:38 -0600] [6623] [INFO] Using worker: gthread
+[2023-11-16 16:35:38 -0600] [6626] [INFO] Booting worker with pid: 6626
+[2023-11-16 16:35:38 -0600] [6627] [INFO] Booting worker with pid: 6627
+[2023-11-16 16:35:39 -0600] [6628] [INFO] Booting worker with pid: 6628
+[2023-11-16 16:35:39 -0600] [6629] [INFO] Booting worker with pid: 6629
+[2023-11-16 16:40:38 -0600] [6623] [INFO] Handling signal: int
+[2023-11-16 22:40:38 +0000] [6626] [INFO] Worker exiting (pid: 6626)
+[2023-11-16 22:40:38 +0000] [6629] [INFO] Worker exiting (pid: 6629)
+[2023-11-16 22:40:38 +0000] [6627] [INFO] Worker exiting (pid: 6627)
+[2023-11-16 22:40:38 +0000] [6628] [INFO] Worker exiting (pid: 6628)
+[2023-11-16 16:40:41 -0600] [6623] [INFO] Shutting down: Master
+[2023-11-16 16:40:42 -0600] [6668] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:40:42 -0600] [6668] [INFO] Listening at: http://10.0.0.90:9000 (6668)
+[2023-11-16 16:40:42 -0600] [6668] [INFO] Using worker: gthread
+[2023-11-16 16:40:42 -0600] [6671] [INFO] Booting worker with pid: 6671
+[2023-11-16 16:40:42 -0600] [6672] [INFO] Booting worker with pid: 6672
+[2023-11-16 16:40:42 -0600] [6673] [INFO] Booting worker with pid: 6673
+[2023-11-16 16:40:42 -0600] [6674] [INFO] Booting worker with pid: 6674
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:42:26 -0600] [6668] [INFO] Handling signal: winch
+[2023-11-16 16:43:47 -0600] [6668] [INFO] Handling signal: int
+[2023-11-16 22:43:47 +0000] [6674] [INFO] Worker exiting (pid: 6674)
+[2023-11-16 22:43:47 +0000] [6673] [INFO] Worker exiting (pid: 6673)
+[2023-11-16 22:43:47 +0000] [6672] [INFO] Worker exiting (pid: 6672)
+[2023-11-16 22:43:47 +0000] [6671] [INFO] Worker exiting (pid: 6671)
+[2023-11-16 16:43:47 -0600] [6668] [INFO] Shutting down: Master
+[2023-11-16 16:44:05 -0600] [6714] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:44:05 -0600] [6714] [INFO] Listening at: http://10.0.0.90:9000 (6714)
+[2023-11-16 16:44:05 -0600] [6714] [INFO] Using worker: gthread
+[2023-11-16 16:44:05 -0600] [6717] [INFO] Booting worker with pid: 6717
+[2023-11-16 16:44:05 -0600] [6718] [INFO] Booting worker with pid: 6718
+[2023-11-16 16:44:05 -0600] [6717] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/educm/SINSCRIP/sinscrip/SINSCRIP/wsgi.py", line 15, in <module>
+    application = get_wsgi_application()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/__init__.py", line 19, in setup
+    configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 82, in __getattr__
+    self._setup(name)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 69, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 170, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/educm/SINSCRIP/sinscrip/SINSCRIP/settings.py", line 39, in <module>
+    SECURE_SSL_REDIRECT = T
+NameError: name 'T' is not defined
+[2023-11-16 16:44:05 -0600] [6717] [INFO] Worker exiting (pid: 6717)
+[2023-11-16 16:44:05 -0600] [6714] [ERROR] Worker (pid:6717) exited with code 3
+[2023-11-16 16:44:05 -0600] [6718] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/educm/SINSCRIP/sinscrip/SINSCRIP/wsgi.py", line 15, in <module>
+    application = get_wsgi_application()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/__init__.py", line 19, in setup
+    configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 82, in __getattr__
+    self._setup(name)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 69, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/django/conf/__init__.py", line 170, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/educm/SINSCRIP/sinscrip/SINSCRIP/settings.py", line 39, in <module>
+    SECURE_SSL_REDIRECT = T
+NameError: name 'T' is not defined
+[2023-11-16 16:44:05 -0600] [6718] [INFO] Worker exiting (pid: 6718)
+[2023-11-16 16:44:05 -0600] [6714] [ERROR] Worker (pid:6718) exited with code 3
+[2023-11-16 16:45:17 -0600] [6724] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:45:17 -0600] [6724] [INFO] Listening at: http://10.0.0.90:9000 (6724)
+[2023-11-16 16:45:17 -0600] [6724] [INFO] Using worker: gthread
+[2023-11-16 16:45:17 -0600] [6727] [INFO] Booting worker with pid: 6727
+[2023-11-16 16:45:18 -0600] [6728] [INFO] Booting worker with pid: 6728
+[2023-11-16 16:45:18 -0600] [6729] [INFO] Booting worker with pid: 6729
+[2023-11-16 16:45:18 -0600] [6730] [INFO] Booting worker with pid: 6730
+[2023-11-16 16:56:37 -0600] [6724] [INFO] Handling signal: int
+[2023-11-16 22:56:37 +0000] [6728] [INFO] Worker exiting (pid: 6728)
+[2023-11-16 22:56:37 +0000] [6729] [INFO] Worker exiting (pid: 6729)
+[2023-11-16 22:56:37 +0000] [6730] [INFO] Worker exiting (pid: 6730)
+[2023-11-16 22:56:37 +0000] [6727] [INFO] Worker exiting (pid: 6727)
+[2023-11-16 16:56:37 -0600] [6724] [INFO] Shutting down: Master
+[2023-11-16 16:56:41 -0600] [6784] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:56:41 -0600] [6784] [INFO] Listening at: http://10.0.0.90:9000 (6784)
+[2023-11-16 16:56:41 -0600] [6784] [INFO] Using worker: gthread
+[2023-11-16 16:56:41 -0600] [6787] [INFO] Booting worker with pid: 6787
+[2023-11-16 16:56:41 -0600] [6788] [INFO] Booting worker with pid: 6788
+[2023-11-16 16:56:41 -0600] [6789] [INFO] Booting worker with pid: 6789
+[2023-11-16 16:56:41 -0600] [6790] [INFO] Booting worker with pid: 6790
+[2023-11-16 16:57:41 -0600] [6784] [INFO] Handling signal: int
+[2023-11-16 22:57:41 +0000] [6789] [INFO] Worker exiting (pid: 6789)
+[2023-11-16 22:57:41 +0000] [6790] [INFO] Worker exiting (pid: 6790)
+[2023-11-16 22:57:41 +0000] [6787] [INFO] Worker exiting (pid: 6787)
+[2023-11-16 22:57:41 +0000] [6788] [INFO] Worker exiting (pid: 6788)
+[2023-11-16 16:57:43 -0600] [6784] [INFO] Shutting down: Master
+[2023-11-16 16:58:04 -0600] [6828] [INFO] Starting gunicorn 21.2.0
+[2023-11-16 16:58:04 -0600] [6828] [INFO] Listening at: http://10.0.0.90:9000 (6828)
+[2023-11-16 16:58:04 -0600] [6828] [INFO] Using worker: gthread
+[2023-11-16 16:58:04 -0600] [6831] [INFO] Booting worker with pid: 6831
+[2023-11-16 16:58:04 -0600] [6832] [INFO] Booting worker with pid: 6832
+[2023-11-16 16:58:04 -0600] [6833] [INFO] Booting worker with pid: 6833
+[2023-11-16 16:58:04 -0600] [6834] [INFO] Booting worker with pid: 6834
+[2023-11-16 17:01:07 -0600] [6828] [INFO] Handling signal: int
+[2023-11-16 23:01:07 +0000] [6832] [INFO] Worker exiting (pid: 6832)
+[2023-11-16 23:01:07 +0000] [6831] [INFO] Worker exiting (pid: 6831)
+[2023-11-16 23:01:07 +0000] [6834] [INFO] Worker exiting (pid: 6834)
+[2023-11-16 23:01:07 +0000] [6833] [INFO] Worker exiting (pid: 6833)
+[2023-11-16 17:01:07 -0600] [6828] [INFO] Shutting down: Master
+[2023-11-17 10:32:02 -0600] [7851] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 10:32:02 -0600] [7851] [INFO] Listening at: http://10.0.0.90:9000 (7851)
+[2023-11-17 10:32:02 -0600] [7851] [INFO] Using worker: gthread
+[2023-11-17 10:32:02 -0600] [7854] [INFO] Booting worker with pid: 7854
+[2023-11-17 10:32:02 -0600] [7855] [INFO] Booting worker with pid: 7855
+[2023-11-17 10:32:03 -0600] [7856] [INFO] Booting worker with pid: 7856
+[2023-11-17 10:32:03 -0600] [7857] [INFO] Booting worker with pid: 7857
+[2023-11-17 10:33:41 -0600] [7851] [INFO] Handling signal: int
+[2023-11-17 16:33:41 +0000] [7856] [INFO] Worker exiting (pid: 7856)
+[2023-11-17 16:33:41 +0000] [7857] [INFO] Worker exiting (pid: 7857)
+[2023-11-17 16:33:41 +0000] [7855] [INFO] Worker exiting (pid: 7855)
+[2023-11-17 16:33:41 +0000] [7854] [INFO] Worker exiting (pid: 7854)
+[2023-11-17 10:33:41 -0600] [7851] [INFO] Shutting down: Master
+[2023-11-17 11:21:06 -0600] [9859] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 11:21:06 -0600] [9859] [INFO] Listening at: http://10.0.0.90:9000 (9859)
+[2023-11-17 11:21:06 -0600] [9859] [INFO] Using worker: gthread
+[2023-11-17 11:21:06 -0600] [9862] [INFO] Booting worker with pid: 9862
+[2023-11-17 11:21:06 -0600] [9863] [INFO] Booting worker with pid: 9863
+[2023-11-17 11:21:06 -0600] [9864] [INFO] Booting worker with pid: 9864
+[2023-11-17 11:21:06 -0600] [9865] [INFO] Booting worker with pid: 9865
+[2023-11-17 11:49:34 -0600] [9859] [INFO] Handling signal: int
+[2023-11-17 17:49:34 +0000] [9862] [INFO] Worker exiting (pid: 9862)
+[2023-11-17 17:49:34 +0000] [9864] [INFO] Worker exiting (pid: 9864)
+[2023-11-17 17:49:34 +0000] [9865] [INFO] Worker exiting (pid: 9865)
+[2023-11-17 17:49:34 +0000] [9863] [INFO] Worker exiting (pid: 9863)
+[2023-11-17 11:49:34 -0600] [9859] [INFO] Shutting down: Master
+[2023-11-17 12:12:35 -0600] [10208] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:12:35 -0600] [10208] [INFO] Listening at: http://10.0.0.90:9000 (10208)
+[2023-11-17 12:12:35 -0600] [10208] [INFO] Using worker: gthread
+[2023-11-17 12:12:35 -0600] [10211] [INFO] Booting worker with pid: 10211
+[2023-11-17 12:12:35 -0600] [10212] [INFO] Booting worker with pid: 10212
+[2023-11-17 12:12:35 -0600] [10213] [INFO] Booting worker with pid: 10213
+[2023-11-17 12:12:35 -0600] [10214] [INFO] Booting worker with pid: 10214
+[2023-11-17 12:15:21 -0600] [10208] [INFO] Handling signal: int
+[2023-11-17 18:15:21 +0000] [10211] [INFO] Worker exiting (pid: 10211)
+[2023-11-17 18:15:21 +0000] [10213] [INFO] Worker exiting (pid: 10213)
+[2023-11-17 18:15:21 +0000] [10212] [INFO] Worker exiting (pid: 10212)
+[2023-11-17 18:15:21 +0000] [10214] [INFO] Worker exiting (pid: 10214)
+[2023-11-17 12:15:21 -0600] [10208] [INFO] Shutting down: Master
+[2023-11-17 12:26:50 -0600] [10315] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:26:50 -0600] [10315] [INFO] Listening at: http://10.0.0.90:9000 (10315)
+[2023-11-17 12:26:50 -0600] [10315] [INFO] Using worker: gthread
+[2023-11-17 12:26:50 -0600] [10318] [INFO] Booting worker with pid: 10318
+[2023-11-17 12:26:50 -0600] [10319] [INFO] Booting worker with pid: 10319
+[2023-11-17 12:26:50 -0600] [10320] [INFO] Booting worker with pid: 10320
+[2023-11-17 12:26:50 -0600] [10321] [INFO] Booting worker with pid: 10321
+[2023-11-17 12:27:03 -0600] [10315] [INFO] Handling signal: int
+[2023-11-17 18:27:03 +0000] [10321] [INFO] Worker exiting (pid: 10321)
+[2023-11-17 18:27:03 +0000] [10318] [INFO] Worker exiting (pid: 10318)
+[2023-11-17 18:27:03 +0000] [10319] [INFO] Worker exiting (pid: 10319)
+[2023-11-17 18:27:03 +0000] [10320] [INFO] Worker exiting (pid: 10320)
+[2023-11-17 12:27:26 -0600] [10315] [INFO] Shutting down: Master
+[2023-11-17 12:29:03 -0600] [10337] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:29:11 -0600] [10342] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:30:03 -0600] [10355] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:30:10 -0600] [10361] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:30:34 -0600] [10367] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:30:34 -0600] [10367] [INFO] Listening at: http://0.0.0.0:9000 (10367)
+[2023-11-17 12:30:34 -0600] [10367] [INFO] Using worker: gthread
+[2023-11-17 12:30:34 -0600] [10370] [INFO] Booting worker with pid: 10370
+[2023-11-17 12:30:34 -0600] [10371] [INFO] Booting worker with pid: 10371
+[2023-11-17 12:30:34 -0600] [10372] [INFO] Booting worker with pid: 10372
+[2023-11-17 12:30:34 -0600] [10373] [INFO] Booting worker with pid: 10373
+[2023-11-17 12:33:47 -0600] [10397] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:39:38 -0600] [10367] [INFO] Handling signal: term
+[2023-11-17 18:39:39 +0000] [10372] [INFO] Worker exiting (pid: 10372)
+[2023-11-17 18:39:39 +0000] [10373] [INFO] Worker exiting (pid: 10373)
+[2023-11-17 18:39:39 +0000] [10370] [INFO] Worker exiting (pid: 10370)
+[2023-11-17 18:39:39 +0000] [10371] [INFO] Worker exiting (pid: 10371)
+[2023-11-17 12:39:39 -0600] [10367] [INFO] Shutting down: Master
+[2023-11-17 12:56:47 -0600] [10833] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 12:56:47 -0600] [10833] [INFO] Listening at: http://10.0.0.90:9000 (10833)
+[2023-11-17 12:56:47 -0600] [10833] [INFO] Using worker: gthread
+[2023-11-17 12:56:47 -0600] [10836] [INFO] Booting worker with pid: 10836
+[2023-11-17 12:56:47 -0600] [10837] [INFO] Booting worker with pid: 10837
+[2023-11-17 12:56:47 -0600] [10838] [INFO] Booting worker with pid: 10838
+[2023-11-17 12:56:47 -0600] [10839] [INFO] Booting worker with pid: 10839
+[2023-11-17 12:57:48 -0600] [10849] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 13:04:17 -0600] [10833] [INFO] Handling signal: term
+[2023-11-17 19:04:17 +0000] [10836] [INFO] Worker exiting (pid: 10836)
+[2023-11-17 19:04:17 +0000] [10837] [INFO] Worker exiting (pid: 10837)
+[2023-11-17 19:04:41 +0000] [10839] [INFO] Worker exiting (pid: 10839)
+[2023-11-17 19:04:41 +0000] [10838] [INFO] Worker exiting (pid: 10838)
+[2023-11-17 13:04:41 -0600] [10833] [INFO] Shutting down: Master
+[2023-11-17 13:09:26 -0600] [10970] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 13:09:26 -0600] [10970] [INFO] Listening at: http://10.0.0.90:9000 (10970)
+[2023-11-17 13:09:26 -0600] [10970] [INFO] Using worker: gthread
+[2023-11-17 13:09:26 -0600] [10973] [INFO] Booting worker with pid: 10973
+[2023-11-17 13:09:26 -0600] [10974] [INFO] Booting worker with pid: 10974
+[2023-11-17 13:09:26 -0600] [10975] [INFO] Booting worker with pid: 10975
+[2023-11-17 13:09:26 -0600] [10976] [INFO] Booting worker with pid: 10976
+[2023-11-17 13:24:41 -0600] [10970] [INFO] Handling signal: term
+[2023-11-17 19:24:42 +0000] [10976] [INFO] Worker exiting (pid: 10976)
+[2023-11-17 19:24:42 +0000] [10975] [INFO] Worker exiting (pid: 10975)
+[2023-11-17 19:24:42 +0000] [10974] [INFO] Worker exiting (pid: 10974)
+[2023-11-17 19:24:42 +0000] [10973] [INFO] Worker exiting (pid: 10973)
+[2023-11-17 13:24:42 -0600] [10970] [INFO] Shutting down: Master
+[2023-11-17 13:47:59 -0600] [13299] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 13:47:59 -0600] [13299] [INFO] Listening at: http://10.0.0.90:9000 (13299)
+[2023-11-17 13:47:59 -0600] [13299] [INFO] Using worker: gthread
+[2023-11-17 13:47:59 -0600] [13302] [INFO] Booting worker with pid: 13302
+[2023-11-17 13:47:59 -0600] [13303] [INFO] Booting worker with pid: 13303
+[2023-11-17 13:47:59 -0600] [13304] [INFO] Booting worker with pid: 13304
+[2023-11-17 13:47:59 -0600] [13305] [INFO] Booting worker with pid: 13305
+[2023-11-17 20:01:13 +0000] [13305] [WARNING] Invalid request from ip=198.199.118.74: Invalid HTTP request line: 'SSH-2.0-Go'
+[2023-11-17 14:16:34 -0600] [13299] [INFO] Handling signal: term
+[2023-11-17 20:16:35 +0000] [13302] [INFO] Worker exiting (pid: 13302)
+[2023-11-17 20:16:35 +0000] [13303] [INFO] Worker exiting (pid: 13303)
+[2023-11-17 20:16:35 +0000] [13305] [INFO] Worker exiting (pid: 13305)
+[2023-11-17 20:16:35 +0000] [13304] [INFO] Worker exiting (pid: 13304)
+[2023-11-17 14:16:35 -0600] [13299] [INFO] Shutting down: Master
+[2023-11-17 14:17:16 -0600] [14420] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:17:16 -0600] [14420] [INFO] Listening at: http://10.0.0.90:9000 (14420)
+[2023-11-17 14:17:16 -0600] [14420] [INFO] Using worker: gthread
+[2023-11-17 14:17:16 -0600] [14423] [INFO] Booting worker with pid: 14423
+[2023-11-17 14:17:16 -0600] [14424] [INFO] Booting worker with pid: 14424
+[2023-11-17 14:17:16 -0600] [14425] [INFO] Booting worker with pid: 14425
+[2023-11-17 14:17:16 -0600] [14426] [INFO] Booting worker with pid: 14426
+[2023-11-17 14:21:22 -0600] [14420] [INFO] Handling signal: term
+[2023-11-17 20:21:23 +0000] [14425] [INFO] Worker exiting (pid: 14425)
+[2023-11-17 20:21:23 +0000] [14424] [INFO] Worker exiting (pid: 14424)
+[2023-11-17 20:21:23 +0000] [14423] [INFO] Worker exiting (pid: 14423)
+[2023-11-17 20:21:23 +0000] [14426] [INFO] Worker exiting (pid: 14426)
+[2023-11-17 14:21:23 -0600] [14420] [INFO] Shutting down: Master
+[2023-11-17 14:27:55 -0600] [14480] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:27:55 -0600] [14480] [INFO] Listening at: http://10.0.0.90:9000 (14480)
+[2023-11-17 14:27:55 -0600] [14480] [INFO] Using worker: gthread
+[2023-11-17 14:27:55 -0600] [14483] [INFO] Booting worker with pid: 14483
+[2023-11-17 14:27:55 -0600] [14483] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tu_proyecto'
+[2023-11-17 14:27:55 -0600] [14483] [INFO] Worker exiting (pid: 14483)
+[2023-11-17 14:27:55 -0600] [14480] [ERROR] Worker (pid:14483) exited with code 3
+[2023-11-17 14:27:55 -0600] [14480] [ERROR] Shutting down: Master
+[2023-11-17 14:27:55 -0600] [14480] [ERROR] Reason: Worker failed to boot.
+[2023-11-17 14:29:50 -0600] [14494] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:29:50 -0600] [14494] [INFO] Listening at: http://10.0.0.90:9000 (14494)
+[2023-11-17 14:29:50 -0600] [14494] [INFO] Using worker: gthread
+[2023-11-17 14:29:50 -0600] [14497] [INFO] Booting worker with pid: 14497
+[2023-11-17 14:29:50 -0600] [14497] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 95, in init_process
+    super().init_process()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/educm/SINSCRIP/sinscrip/venv_sinscrip/lib/python3.7/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sinscrip'
+[2023-11-17 14:29:50 -0600] [14497] [INFO] Worker exiting (pid: 14497)
+[2023-11-17 14:29:50 -0600] [14494] [ERROR] Worker (pid:14497) exited with code 3
+[2023-11-17 14:29:50 -0600] [14494] [ERROR] Shutting down: Master
+[2023-11-17 14:29:50 -0600] [14494] [ERROR] Reason: Worker failed to boot.
+[2023-11-17 14:30:58 -0600] [14502] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:30:58 -0600] [14502] [INFO] Listening at: http://10.0.0.90:9000 (14502)
+[2023-11-17 14:30:58 -0600] [14502] [INFO] Using worker: gthread
+[2023-11-17 14:30:58 -0600] [14505] [INFO] Booting worker with pid: 14505
+[2023-11-17 14:30:58 -0600] [14506] [INFO] Booting worker with pid: 14506
+[2023-11-17 14:30:58 -0600] [14507] [INFO] Booting worker with pid: 14507
+[2023-11-17 14:30:58 -0600] [14508] [INFO] Booting worker with pid: 14508
+[2023-11-17 14:40:08 -0600] [14502] [INFO] Handling signal: term
+[2023-11-17 20:40:08 +0000] [14506] [INFO] Worker exiting (pid: 14506)
+[2023-11-17 20:40:08 +0000] [14505] [INFO] Worker exiting (pid: 14505)
+[2023-11-17 20:40:08 +0000] [14507] [INFO] Worker exiting (pid: 14507)
+[2023-11-17 20:40:08 +0000] [14508] [INFO] Worker exiting (pid: 14508)
+[2023-11-17 14:40:08 -0600] [14502] [INFO] Shutting down: Master
+[2023-11-17 14:40:27 -0600] [14537] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:40:27 -0600] [14537] [INFO] Listening at: http://10.0.0.90:9000 (14537)
+[2023-11-17 14:40:27 -0600] [14537] [INFO] Using worker: gthread
+[2023-11-17 14:40:27 -0600] [14540] [INFO] Booting worker with pid: 14540
+[2023-11-17 14:40:27 -0600] [14541] [INFO] Booting worker with pid: 14541
+[2023-11-17 14:40:27 -0600] [14542] [INFO] Booting worker with pid: 14542
+[2023-11-17 14:40:27 -0600] [14543] [INFO] Booting worker with pid: 14543
+[2023-11-17 20:41:29 +0000] [14541] [WARNING] Invalid request from ip=10.1.46.95: Invalid HTTP method: '\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ù\x95Bìs"\x93!\x04\x86\x8f'
+[2023-11-17 14:42:08 -0600] [14537] [INFO] Handling signal: term
+[2023-11-17 20:42:09 +0000] [14540] [INFO] Worker exiting (pid: 14540)
+[2023-11-17 20:42:09 +0000] [14543] [INFO] Worker exiting (pid: 14543)
+[2023-11-17 20:42:18 +0000] [14541] [INFO] Worker exiting (pid: 14541)
+[2023-11-17 14:42:38 -0600] [14537] [INFO] Shutting down: Master
+[2023-11-17 14:42:41 -0600] [14568] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:42:41 -0600] [14568] [INFO] Listening at: http://10.0.0.90:9000 (14568)
+[2023-11-17 14:42:41 -0600] [14568] [INFO] Using worker: gthread
+[2023-11-17 14:42:41 -0600] [14571] [INFO] Booting worker with pid: 14571
+[2023-11-17 14:42:41 -0600] [14572] [INFO] Booting worker with pid: 14572
+[2023-11-17 14:42:41 -0600] [14573] [INFO] Booting worker with pid: 14573
+[2023-11-17 14:42:42 -0600] [14574] [INFO] Booting worker with pid: 14574
+[2023-11-17 14:46:05 -0600] [14568] [INFO] Handling signal: term
+[2023-11-17 20:46:06 +0000] [14573] [INFO] Worker exiting (pid: 14573)
+[2023-11-17 20:46:06 +0000] [14572] [INFO] Worker exiting (pid: 14572)
+[2023-11-17 20:46:06 +0000] [14574] [INFO] Worker exiting (pid: 14574)
+[2023-11-17 20:46:06 +0000] [14571] [INFO] Worker exiting (pid: 14571)
+[2023-11-17 14:46:06 -0600] [14568] [INFO] Shutting down: Master
+[2023-11-17 14:48:12 -0600] [14621] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:50:55 -0600] [14662] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:52:31 -0600] [14668] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 14:52:31 -0600] [14668] [INFO] Listening at: http://10.0.0.90:9000 (14668)
+[2023-11-17 14:52:31 -0600] [14668] [INFO] Using worker: gthread
+[2023-11-17 14:52:31 -0600] [14671] [INFO] Booting worker with pid: 14671
+[2023-11-17 14:52:31 -0600] [14672] [INFO] Booting worker with pid: 14672
+[2023-11-17 14:52:31 -0600] [14673] [INFO] Booting worker with pid: 14673
+[2023-11-17 14:52:31 -0600] [14674] [INFO] Booting worker with pid: 14674
+[2023-11-17 14:53:48 -0600] [14668] [INFO] Handling signal: term
+[2023-11-17 20:53:48 +0000] [14671] [INFO] Worker exiting (pid: 14671)
+[2023-11-17 20:53:48 +0000] [14672] [INFO] Worker exiting (pid: 14672)
+[2023-11-17 20:53:48 +0000] [14673] [INFO] Worker exiting (pid: 14673)
+[2023-11-17 20:53:48 +0000] [14674] [INFO] Worker exiting (pid: 14674)
+[2023-11-17 14:53:48 -0600] [14668] [INFO] Shutting down: Master
+[2023-11-17 15:00:00 -0600] [14768] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:30:30 -0600] [14814] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:32:13 -0600] [14836] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:32:25 -0600] [14843] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:32:25 -0600] [14843] [INFO] Listening at: http://10.0.0.90:9000 (14843)
+[2023-11-17 15:32:25 -0600] [14843] [INFO] Using worker: gthread
+[2023-11-17 15:32:25 -0600] [14846] [INFO] Booting worker with pid: 14846
+[2023-11-17 15:32:25 -0600] [14847] [INFO] Booting worker with pid: 14847
+[2023-11-17 15:32:25 -0600] [14848] [INFO] Booting worker with pid: 14848
+[2023-11-17 15:32:25 -0600] [14849] [INFO] Booting worker with pid: 14849
+[2023-11-17 15:32:32 -0600] [14843] [INFO] Handling signal: term
+[2023-11-17 21:32:32 +0000] [14846] [INFO] Worker exiting (pid: 14846)
+[2023-11-17 21:32:32 +0000] [14847] [INFO] Worker exiting (pid: 14847)
+[2023-11-17 21:32:32 +0000] [14848] [INFO] Worker exiting (pid: 14848)
+[2023-11-17 21:32:32 +0000] [14849] [INFO] Worker exiting (pid: 14849)
+[2023-11-17 15:32:32 -0600] [14843] [INFO] Shutting down: Master
+[2023-11-17 15:32:41 -0600] [14855] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:32:41 -0600] [14855] [INFO] Listening at: http://0.0.0.0:9000 (14855)
+[2023-11-17 15:32:41 -0600] [14855] [INFO] Using worker: gthread
+[2023-11-17 15:32:41 -0600] [14858] [INFO] Booting worker with pid: 14858
+[2023-11-17 15:32:41 -0600] [14859] [INFO] Booting worker with pid: 14859
+[2023-11-17 15:32:41 -0600] [14860] [INFO] Booting worker with pid: 14860
+[2023-11-17 15:32:41 -0600] [14861] [INFO] Booting worker with pid: 14861
+[2023-11-17 15:37:56 -0600] [14887] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:39:10 -0600] [14908] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:39:45 -0600] [14855] [INFO] Handling signal: term
+[2023-11-17 21:39:45 +0000] [14859] [INFO] Worker exiting (pid: 14859)
+[2023-11-17 21:39:45 +0000] [14860] [INFO] Worker exiting (pid: 14860)
+[2023-11-17 21:39:45 +0000] [14858] [INFO] Worker exiting (pid: 14858)
+[2023-11-17 21:39:45 +0000] [14861] [INFO] Worker exiting (pid: 14861)
+[2023-11-17 15:39:45 -0600] [14855] [INFO] Shutting down: Master
+[2023-11-17 15:40:51 -0600] [14949] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:40:51 -0600] [14949] [INFO] Listening at: http://0.0.0.0:9000 (14949)
+[2023-11-17 15:40:51 -0600] [14949] [INFO] Using worker: gthread
+[2023-11-17 15:40:51 -0600] [14952] [INFO] Booting worker with pid: 14952
+[2023-11-17 15:40:51 -0600] [14953] [INFO] Booting worker with pid: 14953
+[2023-11-17 15:40:51 -0600] [14954] [INFO] Booting worker with pid: 14954
+[2023-11-17 15:40:51 -0600] [14955] [INFO] Booting worker with pid: 14955
+[2023-11-17 15:43:59 -0600] [14949] [INFO] Handling signal: term
+[2023-11-17 21:44:00 +0000] [14953] [INFO] Worker exiting (pid: 14953)
+[2023-11-17 21:44:00 +0000] [14952] [INFO] Worker exiting (pid: 14952)
+[2023-11-17 21:44:00 +0000] [14955] [INFO] Worker exiting (pid: 14955)
+[2023-11-17 21:44:00 +0000] [14954] [INFO] Worker exiting (pid: 14954)
+[2023-11-17 15:44:00 -0600] [14949] [INFO] Shutting down: Master
+[2023-11-17 15:44:30 -0600] [14979] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:50:46 -0600] [14999] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:54:00 -0600] [15017] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 15:54:00 -0600] [15017] [INFO] Listening at: http://0.0.0.0:9000 (15017)
+[2023-11-17 15:54:00 -0600] [15017] [INFO] Using worker: gthread
+[2023-11-17 15:54:00 -0600] [15020] [INFO] Booting worker with pid: 15020
+[2023-11-17 15:54:00 -0600] [15021] [INFO] Booting worker with pid: 15021
+[2023-11-17 15:54:00 -0600] [15022] [INFO] Booting worker with pid: 15022
+[2023-11-17 15:54:00 -0600] [15023] [INFO] Booting worker with pid: 15023
+[2023-11-17 15:55:32 -0600] [15017] [INFO] Handling signal: term
+[2023-11-17 21:55:32 +0000] [15021] [INFO] Worker exiting (pid: 15021)
+[2023-11-17 21:55:32 +0000] [15020] [INFO] Worker exiting (pid: 15020)
+[2023-11-17 21:55:32 +0000] [15022] [INFO] Worker exiting (pid: 15022)
+[2023-11-17 21:55:32 +0000] [15023] [INFO] Worker exiting (pid: 15023)
+[2023-11-17 15:55:32 -0600] [15017] [INFO] Shutting down: Master
+[2023-11-17 16:02:51 -0600] [15085] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:02:51 -0600] [15085] [INFO] Listening at: http://0.0.0.0:9000 (15085)
+[2023-11-17 16:02:51 -0600] [15085] [INFO] Using worker: sync
+[2023-11-17 16:02:51 -0600] [15088] [INFO] Booting worker with pid: 15088
+[2023-11-17 16:02:51 -0600] [15089] [INFO] Booting worker with pid: 15089
+[2023-11-17 16:02:51 -0600] [15090] [INFO] Booting worker with pid: 15090
+[2023-11-17 16:02:51 -0600] [15091] [INFO] Booting worker with pid: 15091
+[2023-11-17 16:04:46 -0600] [15085] [INFO] Handling signal: term
+[2023-11-17 22:04:46 +0000] [15088] [INFO] Worker exiting (pid: 15088)
+[2023-11-17 22:04:46 +0000] [15090] [INFO] Worker exiting (pid: 15090)
+[2023-11-17 22:04:46 +0000] [15089] [INFO] Worker exiting (pid: 15089)
+[2023-11-17 22:04:46 +0000] [15091] [INFO] Worker exiting (pid: 15091)
+[2023-11-17 16:04:46 -0600] [15085] [INFO] Shutting down: Master
+[2023-11-17 16:05:44 -0600] [15113] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:05:44 -0600] [15113] [INFO] Listening at: http://0.0.0.0:9000 (15113)
+[2023-11-17 16:05:44 -0600] [15113] [INFO] Using worker: sync
+[2023-11-17 16:05:44 -0600] [15116] [INFO] Booting worker with pid: 15116
+[2023-11-17 16:05:44 -0600] [15117] [INFO] Booting worker with pid: 15117
+[2023-11-17 16:05:44 -0600] [15118] [INFO] Booting worker with pid: 15118
+[2023-11-17 16:05:44 -0600] [15119] [INFO] Booting worker with pid: 15119
+[2023-11-17 16:07:13 -0600] [15113] [INFO] Handling signal: term
+[2023-11-17 22:07:13 +0000] [15116] [INFO] Worker exiting (pid: 15116)
+[2023-11-17 22:07:13 +0000] [15117] [INFO] Worker exiting (pid: 15117)
+[2023-11-17 22:07:13 +0000] [15118] [INFO] Worker exiting (pid: 15118)
+[2023-11-17 22:07:13 +0000] [15119] [INFO] Worker exiting (pid: 15119)
+[2023-11-17 16:07:13 -0600] [15113] [INFO] Shutting down: Master
+[2023-11-17 16:08:53 -0600] [15474] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:08:53 -0600] [15474] [INFO] Listening at: http://0.0.0.0:9000 (15474)
+[2023-11-17 16:08:53 -0600] [15474] [INFO] Using worker: sync
+[2023-11-17 16:08:53 -0600] [15477] [INFO] Booting worker with pid: 15477
+[2023-11-17 16:08:53 -0600] [15478] [INFO] Booting worker with pid: 15478
+[2023-11-17 16:08:53 -0600] [15479] [INFO] Booting worker with pid: 15479
+[2023-11-17 16:08:53 -0600] [15480] [INFO] Booting worker with pid: 15480
+[2023-11-17 16:11:04 -0600] [15474] [INFO] Handling signal: term
+[2023-11-17 22:11:04 +0000] [15478] [INFO] Worker exiting (pid: 15478)
+[2023-11-17 22:11:04 +0000] [15477] [INFO] Worker exiting (pid: 15477)
+[2023-11-17 22:11:04 +0000] [15479] [INFO] Worker exiting (pid: 15479)
+[2023-11-17 16:11:11 -0600] [15504] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:11:34 -0600] [15474] [INFO] Shutting down: Master
+[2023-11-17 16:12:11 -0600] [15511] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:12:11 -0600] [15511] [INFO] Listening at: http://0.0.0.0:9000 (15511)
+[2023-11-17 16:12:11 -0600] [15511] [INFO] Using worker: sync
+[2023-11-17 16:12:11 -0600] [15514] [INFO] Booting worker with pid: 15514
+[2023-11-17 16:12:11 -0600] [15515] [INFO] Booting worker with pid: 15515
+[2023-11-17 16:12:11 -0600] [15516] [INFO] Booting worker with pid: 15516
+[2023-11-17 16:12:11 -0600] [15517] [INFO] Booting worker with pid: 15517
+[2023-11-17 16:14:03 -0600] [15511] [INFO] Handling signal: term
+[2023-11-17 22:14:03 +0000] [15514] [INFO] Worker exiting (pid: 15514)
+[2023-11-17 22:14:03 +0000] [15515] [INFO] Worker exiting (pid: 15515)
+[2023-11-17 22:14:03 +0000] [15517] [INFO] Worker exiting (pid: 15517)
+[2023-11-17 22:14:03 +0000] [15516] [INFO] Worker exiting (pid: 15516)
+[2023-11-17 16:14:03 -0600] [15511] [INFO] Shutting down: Master
+[2023-11-17 16:14:09 -0600] [15537] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:14:09 -0600] [15537] [INFO] Listening at: http://10.0.0.90:9000 (15537)
+[2023-11-17 16:14:09 -0600] [15537] [INFO] Using worker: sync
+[2023-11-17 16:14:09 -0600] [15540] [INFO] Booting worker with pid: 15540
+[2023-11-17 16:14:09 -0600] [15541] [INFO] Booting worker with pid: 15541
+[2023-11-17 16:14:09 -0600] [15542] [INFO] Booting worker with pid: 15542
+[2023-11-17 16:14:09 -0600] [15543] [INFO] Booting worker with pid: 15543
+[2023-11-17 16:15:25 -0600] [15537] [CRITICAL] WORKER TIMEOUT (pid:15543)
+[2023-11-17 22:15:25 +0000] [15543] [INFO] Worker exiting (pid: 15543)
+[2023-11-17 16:15:26 -0600] [15537] [ERROR] Worker (pid:15543) exited with code 1
+[2023-11-17 16:15:26 -0600] [15537] [ERROR] Worker (pid:15543) exited with code 1.
+[2023-11-17 16:15:26 -0600] [15551] [INFO] Booting worker with pid: 15551
+[2023-11-17 16:17:30 -0600] [15537] [INFO] Handling signal: term
+[2023-11-17 22:17:30 +0000] [15540] [INFO] Worker exiting (pid: 15540)
+[2023-11-17 22:17:30 +0000] [15541] [INFO] Worker exiting (pid: 15541)
+[2023-11-17 22:17:30 +0000] [15542] [INFO] Worker exiting (pid: 15542)
+[2023-11-17 22:17:30 +0000] [15551] [INFO] Worker exiting (pid: 15551)
+[2023-11-17 16:17:30 -0600] [15537] [INFO] Shutting down: Master
+[2023-11-17 16:18:22 -0600] [15592] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:18:22 -0600] [15592] [INFO] Listening at: http://10.0.0.90:9000 (15592)
+[2023-11-17 16:18:22 -0600] [15592] [INFO] Using worker: sync
+[2023-11-17 16:18:22 -0600] [15595] [INFO] Booting worker with pid: 15595
+[2023-11-17 16:18:22 -0600] [15596] [INFO] Booting worker with pid: 15596
+[2023-11-17 16:18:22 -0600] [15597] [INFO] Booting worker with pid: 15597
+[2023-11-17 16:18:22 -0600] [15598] [INFO] Booting worker with pid: 15598
+[2023-11-17 16:20:35 -0600] [15592] [INFO] Handling signal: term
+[2023-11-17 22:20:35 +0000] [15595] [INFO] Worker exiting (pid: 15595)
+[2023-11-17 22:20:35 +0000] [15597] [INFO] Worker exiting (pid: 15597)
+[2023-11-17 22:20:35 +0000] [15596] [INFO] Worker exiting (pid: 15596)
+[2023-11-17 22:20:35 +0000] [15598] [INFO] Worker exiting (pid: 15598)
+[2023-11-17 16:20:35 -0600] [15592] [INFO] Shutting down: Master
+[2023-11-17 16:21:37 -0600] [16189] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:21:37 -0600] [16189] [INFO] Listening at: http://10.0.0.90:9000 (16189)
+[2023-11-17 16:21:37 -0600] [16189] [INFO] Using worker: sync
+[2023-11-17 16:21:37 -0600] [16192] [INFO] Booting worker with pid: 16192
+[2023-11-17 16:21:37 -0600] [16193] [INFO] Booting worker with pid: 16193
+[2023-11-17 16:21:37 -0600] [16194] [INFO] Booting worker with pid: 16194
+[2023-11-17 16:21:37 -0600] [16195] [INFO] Booting worker with pid: 16195
+[2023-11-17 16:22:55 -0600] [16189] [CRITICAL] WORKER TIMEOUT (pid:16193)
+[2023-11-17 22:22:55 +0000] [16193] [INFO] Worker exiting (pid: 16193)
+[2023-11-17 16:22:55 -0600] [16189] [ERROR] Worker (pid:16193) exited with code 1
+[2023-11-17 16:22:55 -0600] [16189] [ERROR] Worker (pid:16193) exited with code 1.
+[2023-11-17 16:22:55 -0600] [16200] [INFO] Booting worker with pid: 16200
+[2023-11-17 16:24:06 -0600] [16189] [INFO] Handling signal: term
+[2023-11-17 22:24:06 +0000] [16192] [INFO] Worker exiting (pid: 16192)
+[2023-11-17 22:24:06 +0000] [16195] [INFO] Worker exiting (pid: 16195)
+[2023-11-17 22:24:06 +0000] [16194] [INFO] Worker exiting (pid: 16194)
+[2023-11-17 22:24:06 +0000] [16200] [INFO] Worker exiting (pid: 16200)
+[2023-11-17 16:24:06 -0600] [16189] [INFO] Shutting down: Master
+[2023-11-17 16:24:41 -0600] [16211] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:30:18 -0600] [16276] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:30:18 -0600] [16276] [INFO] Listening at: http://10.0.0.90:9000 (16276)
+[2023-11-17 16:30:18 -0600] [16276] [INFO] Using worker: sync
+[2023-11-17 16:30:18 -0600] [16279] [INFO] Booting worker with pid: 16279
+[2023-11-17 16:30:18 -0600] [16280] [INFO] Booting worker with pid: 16280
+[2023-11-17 16:30:18 -0600] [16281] [INFO] Booting worker with pid: 16281
+[2023-11-17 16:30:18 -0600] [16282] [INFO] Booting worker with pid: 16282
+[2023-11-17 16:35:55 -0600] [16276] [INFO] Handling signal: term
+[2023-11-17 22:35:55 +0000] [16279] [INFO] Worker exiting (pid: 16279)
+[2023-11-17 22:35:55 +0000] [16282] [INFO] Worker exiting (pid: 16282)
+[2023-11-17 22:35:55 +0000] [16280] [INFO] Worker exiting (pid: 16280)
+[2023-11-17 22:35:55 +0000] [16281] [INFO] Worker exiting (pid: 16281)
+[2023-11-17 16:35:55 -0600] [16276] [INFO] Shutting down: Master
+[2023-11-17 16:35:59 -0600] [16354] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:35:59 -0600] [16354] [INFO] Listening at: http://10.0.0.90:9000 (16354)
+[2023-11-17 16:35:59 -0600] [16354] [INFO] Using worker: sync
+[2023-11-17 16:35:59 -0600] [16357] [INFO] Booting worker with pid: 16357
+[2023-11-17 16:35:59 -0600] [16358] [INFO] Booting worker with pid: 16358
+[2023-11-17 16:35:59 -0600] [16359] [INFO] Booting worker with pid: 16359
+[2023-11-17 16:36:00 -0600] [16360] [INFO] Booting worker with pid: 16360
+[2023-11-17 16:37:44 -0600] [16354] [INFO] Handling signal: term
+[2023-11-17 22:37:44 +0000] [16359] [INFO] Worker exiting (pid: 16359)
+[2023-11-17 22:37:44 +0000] [16360] [INFO] Worker exiting (pid: 16360)
+[2023-11-17 22:37:44 +0000] [16358] [INFO] Worker exiting (pid: 16358)
+[2023-11-17 22:38:00 +0000] [16357] [INFO] Worker exiting (pid: 16357)
+[2023-11-17 16:38:00 -0600] [16354] [INFO] Shutting down: Master
+[2023-11-17 16:47:42 -0600] [16451] [INFO] Starting gunicorn 21.2.0
+[2023-11-17 16:47:42 -0600] [16451] [INFO] Listening at: unix:/home/educm/SINSCRIP/sinscrip/gunicorn.sock (16451)
+[2023-11-17 16:47:42 -0600] [16451] [INFO] Using worker: sync
+[2023-11-17 16:47:42 -0600] [16454] [INFO] Booting worker with pid: 16454
+[2023-11-17 16:47:42 -0600] [16455] [INFO] Booting worker with pid: 16455
+[2023-11-17 16:47:42 -0600] [16456] [INFO] Booting worker with pid: 16456
+[2023-11-17 16:58:56 -0600] [16451] [INFO] Handling signal: term
+[2023-11-17 22:58:56 +0000] [16454] [INFO] Worker exiting (pid: 16454)
+[2023-11-17 22:58:56 +0000] [16455] [INFO] Worker exiting (pid: 16455)
+[2023-11-17 22:58:56 +0000] [16456] [INFO] Worker exiting (pid: 16456)
+[2023-11-17 16:58:56 -0600] [16451] [INFO] Shutting down: Master
+[2023-11-21 10:58:57 -0600] [19480] [INFO] Starting gunicorn 21.2.0
+[2023-11-21 10:58:57 -0600] [19480] [INFO] Listening at: http://10.0.0.90:9000 (19480)
+[2023-11-21 10:58:57 -0600] [19480] [INFO] Using worker: sync
+[2023-11-21 10:58:57 -0600] [19483] [INFO] Booting worker with pid: 19483
+[2023-11-21 10:58:57 -0600] [19484] [INFO] Booting worker with pid: 19484
+[2023-11-21 10:58:57 -0600] [19485] [INFO] Booting worker with pid: 19485
+[2023-11-21 10:58:57 -0600] [19486] [INFO] Booting worker with pid: 19486
+[2023-11-21 11:00:13 -0600] [19480] [CRITICAL] WORKER TIMEOUT (pid:19484)
+[2023-11-21 11:00:13 -0600] [19480] [CRITICAL] WORKER TIMEOUT (pid:19486)
+[2023-11-21 17:00:13 +0000] [19484] [INFO] Worker exiting (pid: 19484)
+[2023-11-21 17:00:13 +0000] [19486] [INFO] Worker exiting (pid: 19486)
+[2023-11-21 11:00:13 -0600] [19480] [ERROR] Worker (pid:19486) exited with code 1
+[2023-11-21 11:00:13 -0600] [19480] [ERROR] Worker (pid:19486) exited with code 1.
+[2023-11-21 11:00:13 -0600] [19480] [ERROR] Worker (pid:19484) exited with code 1
+[2023-11-21 11:00:13 -0600] [19480] [ERROR] Worker (pid:19484) exited with code 1.
+[2023-11-21 11:00:13 -0600] [19488] [INFO] Booting worker with pid: 19488
+[2023-11-21 11:00:13 -0600] [19489] [INFO] Booting worker with pid: 19489
+[2023-11-21 11:00:19 -0600] [19480] [INFO] Handling signal: term
+[2023-11-21 17:00:19 +0000] [19485] [INFO] Worker exiting (pid: 19485)
+[2023-11-21 17:00:19 +0000] [19488] [INFO] Worker exiting (pid: 19488)
+[2023-11-21 17:00:19 +0000] [19489] [INFO] Worker exiting (pid: 19489)
+[2023-11-21 17:00:48 +0000] [19483] [INFO] Worker exiting (pid: 19483)
+[2023-11-21 11:00:48 -0600] [19480] [INFO] Shutting down: Master

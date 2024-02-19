@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Agrega estilo tabla de datos Bootstrap -->
+    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Boostrap5/js/bootstrap.min.js' %}">
+    <title>Subdireccion académica</title>
+
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Contenedor principal */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            border: 2px solid;
+            border-image: linear-gradient(to right, #f5f5f5, #dddddd) 1;
+        }
+
+        .center-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        /* Estilos básicos para los botones */
+        #capcurs_button,
+        #cordins_button,
+        #sinsevi_button,
+        #siayb_button {
+            background-color: #007BFF; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            padding: 10px 20px; /* Espaciado interno (arriba/abajo izquierda/derecha) */
+            border: none; /* Borde */
+            border-radius: 5px; /* Borde redondeado */
+            text-decoration: none; /* Sin subrayado de texto en el enlace */
+            cursor: pointer; /* Cursor al pasar el mouse */
+            margin: 5px; /* Margen exterior */
+        }
+
+        /* Estilos para el enlace dentro de los botones */
+        #capcurs_link,
+        #cordins_link,
+        #sinsevi_link,
+        #siayb_link {
+            text-decoration: none; /* Sin subrayado de texto en el enlace */
+        }
+
+        /* Estilos cuando se pasa el mouse sobre los botones */
+        #capcurs_button:hover,
+        #cordins_button:hover,
+        #sinsevi_button:hover,
+        #siayb_button:hover {
+            background-color: #0056b3; /* Cambiar color de fondo al pasar el mouse */
+        }
+
+        /* Estilos cuando se hace clic en los botones */
+        #capcurs_button:active,
+        #cordins_button:active,
+        #sinsevi_button:active,
+        #siayb_button:active {
+            background-color: #004196; /* Cambiar color de fondo al hacer clic */
+        }
+
+    </style>
+</head>
+
+<body onload="mostrarFechaHora()">
+<header>
+    <!-- CONTENIDO DEL Encabezado -->
+    <!-- La imagen institucional -->
+    <div class="center-image">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
+    </div>
+</header>
+
+<main>
+    <!-- panel_control.html -->
+    <h1>Bienvenidos a la Subdirección de educación</h1>
+    <h1 id="fecha-hora"></h1>
+
+    <div>
+        <a href="{% url 'capcursapp:iniciar_sesion' %}" id="capcurs_link"><button id="capcurs_button">CAPCURS</button></a>
+        <a href="{% url 'cordins:iniciar_sesion' %}" id="cordins_link"><button id="cordins_button">SICAR</button></a>
+        <a href="{% url 'sinsevi:inicio_sesionE' %}" id="sinsevi_link"><button id="sinsevi_button">SINSEVI</button></a>
+        <a href="{% url 'siayb:inicio_siayb' %}" id="siayb_link"><button id="siayb_button">SIAB</button></a>
+    </div>
+
+
+</main>
+<footer>
+    <!-- Aquí puedes agregar el contenido de tu pie de página -->
+    <p class="text-center">Panel de Control Escolar</p>
+</footer>
+
+
+
+<script>
+    function mostrarFechaHora() {
+        var fechaHora = new Date();
+        var opcionesFecha = { day: 'numeric', month: 'long', year: 'numeric' };
+        var opcionesHora = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        var fecha = fechaHora.toLocaleDateString('es-ES', opcionesFecha);
+        var hora = fechaHora.toLocaleTimeString('es-ES', opcionesHora);
+        document.getElementById("fecha-hora").innerHTML = fecha + " - " + hora;
+        setTimeout(mostrarFechaHora, 1000); // Actualizar cada segundo
+    }
+</script>
+
+<script>
+    // Obtener las fechas límite desde el backend
+    var fl_capcurs = "{{config.fl_capcurs}}";
+    var fl_sinsevi = "{{config.fl_sinsevi}}";
+    var fl_siayb = "{{config.fl_siayb}}";
+
+    function checkFechaLimite(buttonId, fechaLimite, linkId) {
+        var now = new Date();
+        var limite = new Date(fechaLimite);
+        var button = document.getElementById(buttonId);
+        var link = document.getElementById(linkId);
+
+        if (now > limite) {
+            alert("La fecha límite de este botón ha caducado. No se permite el acceso al enlace.");
+            // Deshabilitar el botón y cancelar la acción predeterminada del enlace
+            button.disabled = true;
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+            });
+        }
+    }
+
+    // Agregar un controlador de eventos de clic a cada botón
+    document.getElementById("capcurs_button").addEventListener("click", function() {
+        checkFechaLimite("capcurs_button", fl_capcurs, "capcurs_link");
+    });
+
+    document.getElementById("cordins_button").addEventListener("click", function() {
+        checkFechaLimite("cordins_button", fl_sinsevi, "cordins_link");
+    });
+
+    document.getElementById("sinsevi_button").addEventListener("click", function() {
+        checkFechaLimite("sinsevi_button", fl_sinsevi, "sinsevi_link");
+    });
+
+    document.getElementById("siayb_button").addEventListener("click", function() {
+        checkFechaLimite("siayb_button", fl_siayb, "siayb_link");
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Agrega estilo tabla de datos Boostrap -->
+    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS_SIAB/guardar_boleta.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>ALtas y bajas</title>
+
+    <style>
+        /* Estilos para el mensaje de felicitación */
+        .felicidades {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 25px;
+            color: green;
+            opacity: 0; /* Establece la opacidad inicial en 0 */
+            animation: fade-in 1s forwards; /* Aplica la animación fade-in durante 1 segundo */
+        }
+        /* Estilos para el contenedor de los mensajes */
+        .mensajes {
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Animación de fade-in */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<main>
+    <div class="mensajes">
+        {% if messages %}
+            {% for message in messages %}
+                <h1 class="felicidades" {% if message.tags %} {% endif %}>{{ message }}</h1>
+            {% endfor %}
+        {% endif %}
+        <h3 class="felicidades">El proceso de Altas y bajas ha finalizado</h3>
+        <h1 class="felicidades">¡Felicitaciones!</h1>
+    </div>
+    <form method="post" id="formulario" action="/siayb/logout/">
+        {% csrf_token %} <!-- Incluye el token CSRF en el formulario -->
+        <input type="hidden" name="nom_program" value="{{ usuario.nom_program }}">
+        <div class="container" id="print">
+            <!-- La imagen institucional-->
+            <div class="center-image">
+                <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="500">
+            </div>
+            <div>
+                <h1>CAMBIOS EN LA INSCRIPCION {{ periodo }} {{ anio }}</h1>
+            </div>
+
+            <div>
+
+                <table id="datos_estudiante" class="table" style="width: 100%;">
+                    <tr>
+                        <th style="text-align: left;">PROGRAMA </th>
+                        <td style="text-align: left;">{{ programa.cve_posgrad }} - {{ programa.nom_program }}</td>
+                        <th style="text-align: left;">PERIODO ACADÉMICO </th>
+                        <td style="text-align: left;">{{ periodo }} {{ anio }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;">ESTUDIANTE </th>
+                        <td style="text-align: left;">{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
+                        <th style="text-align: left;">CATEGORÍA</th>
+                        <td style="text-align: left;">{{ estudiante.niveestu }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;">MATRICULA </th>
+                        <td style="text-align: left;">{{ estudiante.cve_estud }}</td>
+                        <th style="text-align: left;">FECHA DEL MOVIMIENTO </th>
+                        <td style="text-align: left;" id="fechaAyb">{{ fecha_ayb }}</td>
+                    </tr>
+                </table>
+
+
+
+            </div>
+
+            <!-- MOVIMIENTOS-->
+            <div>
+                <h6>ALTAS Y BAJAS </h6>
+            </div>
+            <table id="tabla-cursos" class="table" style="width:100%">
+                <thead class="thead-light">
+                <tr>
+
+                    <th scope="col">CLAVE</th>
+                    <th scope="col">NOMBRE DEL CURSO</th>
+                    <th scope="col">CLAVE</th>
+                    <th scope="col">PROFESOR TITULAR</th>
+                    <th scope="col">MOVIMIENTO</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for curso in movimientos %}
+                    <tr>
+                        <td>
+                            {% if curso.gpo_670 %}
+                                {{ curso.cve_curso }}-{{ curso.gpo_670 }}
+                            {% else %}
+                                {{ curso.cve_curso }}
+                            {% endif %}
+                        </td>
+                        <td>{{ curso.nombre }}</td>
+                        <td>{{ curso.cve_academic }}</td>
+                        <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
+                        {% if curso.alta_baja %}
+                          <td class="estado-alta">ALTA</td>
+                        {% else %}
+                          <td class="estado-baja">BAJA</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- MIS CURSOS -->
+            <div>
+                <h6> INSCRIPCIÓN FINAL</h6>
+            </div>
+            <table id="tabla-cursos" class="table" style="width:100%">
+                <thead class="thead-light">
+                <tr>
+
+                    <th scope="col">CLAVE</th>
+                    <th scope="col">NOMBRE DEL CURSO</th>
+                    <th scope="col">CLAVE</th>
+                    <th scope="col">PROFESOR TITULAR</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for curso in capcursos %}
+                    <tr>
+                        <td>
+                            {% if curso.gpo_670 %}
+                                {{ curso.cve_curso }}-{{ curso.gpo_670 }}
+                            {% else %}
+                                {{ curso.cve_curso }}
+                            {% endif %}
+                        </td>
+                        <td>{{ curso.nombre }}</td>
+                        <td>{{ curso.cve_academic }}</td>
+                        <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="firmas_est_cons">
+            <div>
+                <table id="firmas_estudiante" class="table" style="width:100%">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ESTUDIANTE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+                <table id="firmas_estudiante" class="table" style="width:100%">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">PROFESOR CONSEJERO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ consejero.nombres }} {{ consejero.apellidos }} </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    // Obtén la fecha en formato estándar desde el elemento HTML
+    var fechaString = document.getElementById('fechaAyb').innerText;
+
+    // Crea un objeto Date con la fecha en formato estándar
+    var fecha = new Date(fechaString);
+
+    // Opciones de formato para la fecha en español
+    var options = { day: 'numeric', month: 'long', year: 'numeric' };
+
+    // Formatea la fecha en español
+    var fechaFormateada = fecha.toLocaleDateString('es-ES', options);
+
+    // Actualiza el contenido del elemento HTML con la fecha formateada en español
+    document.getElementById('fechaAyb').innerText = fechaFormateada;
+</script>
+
+</body>
+
+</html>

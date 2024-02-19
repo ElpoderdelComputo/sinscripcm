@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Agrega estilo tabla de datos Boostrap -->
+    <link rel="stylesheet" href="{% static 'CSS/eliminarcurso.css' %}">
+    <title>Eliminar Curso</title>
+</head>
+<body>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="popup-content">
+            <form id="eliminar-curso-form" method="POST">
+                {% csrf_token %}
+                <h1>Confirma eliminación del curso: </h1>
+                <h2>"{{ elcurso.cve_curso}} : {{ elcurso.nombre }}"</h2>
+                <h2>Titular: "{{ elcurso.cve_academic }} : {{ elcurso.nom_academic }} {{ elcurso.apellidos }}"</h2>
+
+                <div class="row">
+                    <button type="submit" class="btn btn-primary" id="eliminar-curso-btn">Eliminar</button>
+
+                    <a class="btn btn-warning" href="#" onclick="cerrarVentanaEmergente(event)">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ... resto del código HTML de la ventana emergente ... -->
+
+<script>
+    function cerrarVentanaEmergente(event) {
+        event.preventDefault();
+        if (window.opener) {
+            window.opener.location.reload();
+        }
+        window.close();
+    }
+
+    document.getElementById('eliminar-curso-form').addEventListener('submit', (event) => {
+        event.preventDefault(); // Evitar que se envíe el formulario de forma predeterminada
+
+        const formData = new FormData(event.target);
+
+        fetch("{% url 'sinsevi:elimina_uncurso' elcurso.id %}", {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Modificar el contenido de la ventana emergente actual
+                const popupContainer = newWindow.document.getElementById('popup-container');
+                popupContainer.innerHTML = '';
+                const heading = newWindow.document.createElement('h1');
+                heading.style.textAlign = 'center';
+                heading.style.margin = '10px 0';
+                heading.textContent = 'Respuesta del servidor:';
+                popupContainer.appendChild(heading);
+                const message = newWindow.document.createElement('p');
+                message.style.textAlign = 'center';
+                message.textContent = data.message;
+                popupContainer.appendChild(message);
+                // Lógica para mostrar la respuesta del servidor en la ventana emergente
+                console.log(data);
+
+                // Cerrar la ventana emergente después de recibir la respuesta del servidor
+                window.close();
+
+                // Recargar la página principal desde donde se llamó la ventana emergente
+                if (window.opener) {
+                    window.opener.location.reload();
+                }
+            })
+            .catch(error => {
+                console.log('Error al eliminar el curso:', error);
+            })
+            .finally(() => {
+                if (window.opener) {
+                    window.opener.location.href = "{% url 'sinsevi:mis_cursos' %}";
+                }
+            window.close();
+        });
+    });
+
+    window.addEventListener('message', (event) => {
+        if (event.data === 'close') {
+            window.close(); // Cerrar la ventana emergente en respuesta al mensaje recibido
+        }
+    });
+</script>
+
+</body>
+</html>

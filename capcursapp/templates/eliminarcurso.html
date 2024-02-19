@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Agrega estilo tabla de datos Boostrap -->
+    <link rel="stylesheet" href="{% static 'CSS/eliminarcurso.css' %}">
+    <title>EliminarCurso</title>
+</head>
+
+<body>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="popup-content">
+            <form id="eliminar-curso-form" method="POST">
+                <h1>Confirma eliminación del curso:</h1>
+                <h2>"{{ curso.cve_curso_id }} : {{ curso.nombre }}"</h2>
+                <h2>Titular: "{{ curso.cve_academic_id }} : {{ curso.nom_academic }} {{ curso.apellidos }}"</h2>
+                {% csrf_token %}
+                <div class="row">
+                    <button type="submit" class="btn btn-primary" id="eliminar-curso-btn">Eliminar</button>
+                    <a class="btn btn-warning" href="#" onclick="cerrarVentanaEmergente(event)">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function cerrarVentanaEmergente(event) {
+        event.preventDefault();
+        if (window.opener) {
+            window.opener.location.href = "{% url 'capcursapp:mostrar_cursos' %}";
+        }
+        window.close();
+    }
+</script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const eliminarCursoForm = document.getElementById('eliminar-curso-form');
+
+        eliminarCursoForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evitar que se envíe el formulario de forma predeterminada
+
+            console.log('Se hizo clic en el botón "eliminar-curso-btn"');
+
+            const formData = new FormData(eliminarCursoForm);
+
+            fetch("{% url 'capcursapp:eliminar_curso' curso.id %}", {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Modificar el contenido de la ventana emergente actual
+                    const popupContainer = newWindow.document.getElementById('popup-container');
+                    popupContainer.innerHTML = '';
+                    const heading = newWindow.document.createElement('h1');
+                    heading.style.textAlign = 'center';
+                    heading.style.margin = '10px 0';
+                    heading.textContent = 'Respuesta del servidor:';
+                    popupContainer.appendChild(heading);
+                    const message = newWindow.document.createElement('p');
+                    message.style.textAlign = 'center';
+                    message.textContent = data.message;
+                    popupContainer.appendChild(message);
+                })
+                .catch(error => {
+                    console.log('Error al eliminar el curso:', error);
+                })
+                .finally(() => {
+                    if (window.opener) {
+                        window.opener.location.href = "{% url 'capcursapp:mostrar_cursos' %}";
+                    }
+                    window.close();
+                });
+
+        });
+    });
+
+    window.addEventListener('message', (event) => {
+        if (event.data === 'close') {
+            window.close(); // Cerrar la ventana emergente en respuesta al mensaje recibido
+        }
+    });
+
+</script>
+
+</body>
+</html>

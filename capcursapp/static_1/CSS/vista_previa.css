@@ -1,0 +1,86 @@
+/* Estilo general */
+@page {
+    size: letter landscape;
+}
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Contenedor principal */
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #f5f5f5, #dddddd) 1;
+}
+
+/* Estilo para la imagen institucional */
+img {
+  display: flex;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+
+/* Estilo para el encabezado */
+h1 {
+  font-family: Verdana sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
+h2 {
+  font-family: Arial sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilo para la tabla de cursos*/
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+    table-layout: auto; /*se ajusta al tamaño del text*/
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 11px; /* Tamaño de fuente del cuerpo de la tabla */
+    text-align: center;
+    vertical-align: middle;
+    height: fit-content;
+    word-wrap: break-word;
+}
+
+
+th {
+    height: fit-content;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-size: 12px; /* Tamaño de fuente de los encabezados */
+    font-weight: bold;
+    color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #d5d2d2;
+}
+

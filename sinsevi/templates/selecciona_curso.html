@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar cursos</title>
+    <!-- Agrega estilo tabla de datos Boostrap -->
+    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS_EST/selecciona_curso.css' %}">
+</head>
+
+<body>
+<main>
+    <!-- La imagen institucional -->
+    <div class="center-image">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
+    </div>
+
+    <form action="{% url 'sinsevi:crea_asistira' %}" method="post" id="formulario">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+
+        <!-- Tabla desplegable si existen colabs-->
+        <div class="container" content="center">
+            <div class="row border-custom">
+                <fieldset>
+                    <h1>Selecciona un curso</h1>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div style="display:flex;">
+                                    <label for="cve_program">Programa:  </label>
+                                    <select name="cve_program" id="cve_program" class="form-select">
+                                        <option value="" selected disabled>-- Selecciona un Programa --</option>
+                                        {% for clave, valor in programas.items %}
+                                            <option value="{{ clave }}">{{ valor }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div style="display:flex;">
+                                    <label for="cve_curso">Curso:</label>
+                                    <select name="cve_curso" id="cve_curso" class="form-select">
+                                        <option value="" selected disabled>-- Selecciona un Curso --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Campo oculto. SIrve para recuperar cve_academic-->
+                    <input type="hidden" name="cve_academic" id="cve_academic" value="">
+                    <input type="hidden" name="id_curso" id="id_curso" value="">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label for="profesor_titular">Profesor Titular:</label>
+                                <input type="text" name="profesor_titular" id="profesor_titular" class="form-control_1" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="creditos">Créditos:</label>
+                                <input type="text" name="creditos" id="creditos" class="form-control_1" readonly>
+                            </div>
+                        </div>
+
+                        <!-- Tabla desplegable si existen colabs-->
+                        <div class="col-md-3">
+                            <div class="tabla-colabs-container_edit">
+                                <legend>Colaboradores</legend>
+                                <table class="table" id="tabla-colabs">
+                                    <thead class="table-header">
+                                    <tr>
+                                        <th>Clave</th>
+                                        <th>Nombre</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tabla-colabs-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="container" content="center">
+            <div class="row border-custom">
+                <h1>Horarios de clases</h1>
+                <!-- Tabla para Teoría -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="6">Teoría</th>
+                    </tr>
+                    <tr>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Aula-Observaciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="lunes_ini" id="lunes_ini" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="lunes_fin" id="lunes_fin" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="martes_ini" id="martes_ini" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="martes_fin" id="martes_fin" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="miercoles_ini" id="miercoles_ini" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="miercoles_fin" id="miercoles_fin" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="jueves_ini" id="jueves_ini" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="jueves_fin" id="jueves_fin" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="viernes_ini" id="viernes_ini" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="viernes_fin" id="viernes_fin" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <textarea type="text" name="observaciones" id="observaciones" class="form-control-1" readonly rows="1"></textarea>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Tabla para Práctica -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="6">Práctica</th>
+                    </tr>
+                    <tr>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Aula-Observaciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="lunes_inip" id="lunes_inip" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="lunes_finp" id="lunes_finp" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="martes_inip" id="martes_inip" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="martes_finp" id="martes_finp" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="miercoles_inip" id="miercoles_inip" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="miercoles_finp" id="miercoles_finp" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="jueves_inip" id="jueves_inip" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="jueves_finp" id="jueves_finp" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="horario-container">
+                                <input type="time" name="viernes_inip" id="viernes_inip" class="form-control" readonly>
+                                <span>-</span>
+                                <input type="time" name="viernes_finp" id="viernes_finp" class="form-control" readonly>
+                            </div>
+                        </td>
+                        <td>
+                            <textarea type="text" name="observacionesp" id="observacionesp" class="form-control-1" readonly rows="1"></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Limites -->
+        <div>
+            <input type="submit" value="Guardar curso" class="btn btn-success" id="guardar">
+            <a class="btn btn-danger" href="{% url 'sinsevi:mis_cursos' %}">Cancelar</a>
+        </div>
+    </form>
+</main>
+
+
+<!-- Scripts asociados al html -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+    const selectPrograma = document.getElementById('cve_program');
+    const selectCurso = document.getElementById('cve_curso');
+    // Suponiendo que 'cursos_por_programa_json' es una cadena JSON válida generada en el servidor
+    const jsonString = '{{ cursos_por_programa_json|safe }}';
+
+    // Convertir la cadena JSON en un objeto JavaScript
+    const cursosPorPrograma = JSON.parse(jsonString);
+
+    function actualizarSelectCurso(programa) {
+        const cursos = cursosPorPrograma[programa] || [];
+
+        // Limpiar el select
+        selectCurso.innerHTML = '';
+
+        // Agregar opción "Selecciona un curso" al inicio
+        const optionSeleccionaCurso = document.createElement('option');
+        optionSeleccionaCurso.value = '';
+        optionSeleccionaCurso.textContent = '-- Selecciona un curso --';
+        selectCurso.appendChild(optionSeleccionaCurso);
+
+        cursos.forEach(curso => {
+            const option = document.createElement('option');
+            option.value = curso.cve_curso;
+            option.textContent = curso.cve_curso + ' : ' + curso.nombre;
+            option.setAttribute('data-cve-academic', curso.cve_academic);
+            option.setAttribute('data-id-curso' ,curso.id);  // Asegúrate de tener un campo id_curso en tu objeto curso
+            selectCurso.appendChild(option);
+        });
+
+         selectCurso.disabled = cursos.length === 0;
+        // Aquí obtenemos el valor de cve_academic del curso seleccionado
+        const selectedCurso = cursos.find(curso => curso.cve_curso === selectCurso.value);
+        const idCursocve_academic = document.getElementById('cve_academic');
+        idCursocve_academic.value = selectedCurso ? selectedCurso.cve_academic : '';
+    }
+
+    selectPrograma.addEventListener('change', function () {
+        const programaSeleccionado = selectPrograma.value;
+        actualizarSelectCurso(programaSeleccionado);
+    });
+
+
+    $(document).ready(function() {
+        // Función para actualizar el campo oculto id_curso
+        function actualizarIdCurso() {
+            const selectedValue = $('#cve_curso').val();
+            const selectedOption = $('#cve_curso option:selected');
+            const cveAcademic = selectedOption.attr('data-cve-academic');
+            const idCurso = selectedOption.attr('data-id-curso');
+
+            const idCursocve_academic = document.getElementById('cve_academic');
+            idCursocve_academic.value = cveAcademic;
+
+            const idCursoid_curso = document.getElementById('id_curso');
+            idCursoid_curso.value = idCurso;
+        }
+
+
+        // Llama a actualizarIdCurso al cargar la página para asegurarte de que el campo oculto esté actualizado
+        $('#cve_curso').change(function() {
+            actualizarIdCurso();
+            var selectedValue = $(this).val();
+            var cveAcademic = $('#cve_academic').val(); // Recupera el valor correcto de cve_academic
+            var idCurso = $('#id_curso').val(); // Recupera el valor correcto de id_curso
+            $.ajax({
+                url: "{% url 'sinsevi:buscar_curso' %}",
+                type: 'GET',
+                data: {
+                    'id_curso': idCurso,
+                    'cve_curso': selectedValue,
+                    'cve_academic': cveAcademic, // Envía el valor correcto de cve_academic
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // Combina los valores del profesor en un solo campo
+                    var profesorTitular = data['cve_academic'] + ' : ' + data['nom_academic'] + ' ' + data['apellidos'];
+                    $('#profesor_titular').val(profesorTitular);
+
+                    // Actualiza el resto de los campos con la información recibida
+                    $('#creditos').val(data['creditos']);
+                    $('#participacion').val(data['participacion']);
+                    $('#id_curso').val(data['id_curso']);
+                    // ...id_curso
+
+                    // Actualiza los campos de horarios con la información recibida
+                    updateHorario($('#lunes_ini'), $('#lunes_fin'), data['lunes_ini'], data['lunes_fin']);
+                    updateHorario($('#martes_ini'), $('#martes_fin'), data['martes_ini'], data['martes_fin']);
+                    updateHorario($('#miercoles_ini'), $('#miercoles_fin'), data['miercoles_ini'], data['miercoles_fin']);
+                    updateHorario($('#jueves_ini'), $('#jueves_fin'), data['jueves_ini'], data['jueves_fin']);
+                    updateHorario($('#viernes_ini'), $('#viernes_fin'), data['viernes_ini'], data['viernes_fin']);
+                    // ... Actualiza los campos de los demás días de la semana
+
+                    // Validar y actualizar el campo observacionesp
+                    if (data['observacionesp'] !== 'Por definir') {
+                        $('#observacionesp').val(data['observacionesp']);
+                    } else {
+                        $('#observacionesp').val('');
+                    }
+
+                    // Validar y actualizar el campo observaciones
+                    if (data['observaciones'] !== 'Por definir') {
+                        $('#observaciones').val(data['observaciones']);
+                    } else {
+                        $('#observaciones').val('');
+                    }
+
+                    // Actualiza los campos de horarios prácticos con la información recibida
+                    updateHorario($('#lunes_inip'), $('#lunes_finp'), data['lunes_inip'], data['lunes_finp']);
+                    updateHorario($('#martes_inip'), $('#martes_finp'), data['martes_inip'], data['martes_finp']);
+                    updateHorario($('#miercoles_inip'), $('#miercoles_finp'), data['miercoles_inip'], data['miercoles_finp']);
+                    updateHorario($('#jueves_inip'), $('#jueves_finp'), data['jueves_inip'], data['jueves_finp']);
+                    updateHorario($('#viernes_inip'), $('#viernes_finp'), data['viernes_inip'], data['viernes_finp']);
+                    // ... Actualiza los campos de horarios prácticos de los demás días de la semana
+                },
+
+                error: function() {
+                    alert('Hubo un error al buscar el curso seleccionado');
+                }
+
+            });
+        });
+    });
+    // Función para actualizar los campos de horarios
+    function updateHorario($inicio, $fin, inicioValue, finValue) {
+        // Verificar si los valores recibidos son válidos
+        console.log("inicioValue:", inicioValue, "finValue:", finValue);
+
+        if (inicioValue && finValue && inicioValue !== "00:00:00" && finValue !== "00:00:00") {
+            $inicio.val(inicioValue);
+            $fin.val(finValue);
+        } else {
+            $inicio.val("");
+            $fin.val("");
+        }
+    }
+
+</script>
+
+<script>
+    function actualizarTabla(data) {
+        var tabla = $('#tabla-colabs-body');
+        tabla.empty();
+        if (data.length > 0) {
+            $.each(data, function(index, row) {
+                var fila = '<tr>' +
+                    '<td>' + row.clave + '</td>' +
+                    '<td>' + row.nombre + ' ' + row.apellido + '</td>' +
+                    '</tr>';
+                tabla.append(fila);
+            });
+            $('.tabla-colabs-container').addClass('mostrar');
+
+
+        } else {
+            tabla.html('<tr><td colspan="3">¡Sin colaboradores!</td></tr>');
+            $('.tabla-colabs-container').removeClass('mostrar');
+        }
+    }
+
+    function cargarTabla() {
+        var cve_curso = $('#cve_curso').val();
+        var url = '/sinsevi/hay_colaboradores/' + cve_curso + '/';
+        console.log('La URL del endpoint es: ' + url);
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json', // Agregar dataType
+            success: function(response) {
+                var data = [];
+                $.each(response.data, function(key, value) {
+                    data.push(value);
+                });
+                actualizarTabla(data); // Agregar console.log() antes de esta línea
+            },
+
+            error: function(error) {
+                $('#tabla-colabs-body').html('');
+                $('.tabla-colabs-container').removeClass('mostrar');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        // Cargar la tabla al cargar la página
+        cargarTabla();
+
+        // Agregar evento change al elemento select
+        $('#cve_curso').change(function() {
+            // Cuando cambie la selección, volver a cargar la tabla
+            cargarTabla();
+        });
+    });
+</script>
+
+
+<script>
+    const guardarBtn = document.querySelector('#guardar');
+    guardarBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const formulario = document.querySelector('#formulario');
+        const formData = new FormData(formulario);
+
+        // Obtener el valor de cve_academic y agregarlo al formulario
+        const profesorTitularElement = document.getElementById('profesor_titular');
+        if (profesorTitularElement) {
+            const profesorTitularValue = profesorTitularElement.value;
+            const cveAcademic = profesorTitularValue.substring(0, 6);
+            formData.append('cve_academic', cveAcademic);
+        }
+
+        // Obtener el valor de cve_program y agregarlo al formulario
+        const cveProgramElement = document.getElementById('cve_program');
+        if (cveProgramElement) {
+            const cveProgramValue = cveProgramElement.value;
+            formData.append('cve_program', cveProgramValue);
+        }
+
+        // Obtener el valor de cve_curso y agregarlo al formulario
+        const cveCursoElement = document.getElementById('cve_curso');
+        if (cveCursoElement) {
+            const cveCursoValue = cveCursoElement.value;
+            formData.append('cve_curso', cveCursoValue);
+        }
+
+        // Obtener el valor de cve_curso y agregarlo al formulario
+        const id_cursoElement = document.getElementById('id_curso');
+        if (id_cursoElement) {
+            const id_cursoValue = id_cursoElement.value;
+            formData.append('id_curso', id_cursoValue);
+        }
+
+
+        fetch('/sinsevi/crea_asistira/', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Curso guardado con éxito. Código de estado: ${response.status}`);
+                }
+
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new TypeError('La respuesta del servidor no es un objeto JSON válido.');
+                }
+
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '../mis_cursos/';
+                } else {
+                    alert('Error al guardar el curso: ' + data.error);
+                    console.log('Error al guardar el formulario:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Revisa la selección de Curso.');
+            });
+    });
+</script>
+
+</body>
+</html>
