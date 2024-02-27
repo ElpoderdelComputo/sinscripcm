@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.3.0-web/css/fontawesome.min.css' %}">
+    <script src="{% static 'JS/iniciosesion.js' %}"></script>
+    <title></title>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'CSS/iniciosesion.css' %}">
+</head>
+
+<body class="text-center">
+<main>
+    <form method="post" action="{% url 'capcursapp:verificar_credenciales' %}" class="formulario" id="formulario">
+        {% csrf_token %}
+        <!-- <img class="mb-4" src="{% static 'imagenes/colpos_logo1.png' %}" alt="" width="315" height="90"> -->
+        <img class="mb-4" src="{% static 'imagenes/colpos_logo1.png' %}" alt="" width="315" height="90">
+        <br>
+    <div>
+        <h1>Sistema de Captura de Cursos</h1>
+        <h2>(CAPCURS)</h2>
+    </div>
+        <!-- Grupo que contiene la entrada correo -->
+        <div class="formulario__grupo row align-items-center" id="grupo__correo">
+            <div class="col-sm-11 form-floating">
+                <input type="email" class="formulario_input form-control" id="username" name="username"
+                       placeholder="ejemplo@colpos.com" required>
+                <label for="username" class="formulario_label">Correo institucional</label>
+            </div>
+            <div class="col-sm-1">
+                <i class="formulario_validacion-estado fa fa-times-circle-o"></i>
+            </div>
+        </div>
+        <!-- Grupo que contiene la contraseña -->
+        <div class="formulario__grupo row align-items-center" id="grupo__password">
+            <div class="form-floating col-sm-11">
+                <input type="password" class="formulario_input form-control" id="password" name="password" placeholder="Password" required>
+                <label for="password">Contraseña</label>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn-toggle-password" type="button">
+                    <i class="far fa-eye-slash"></i>
+                </button>
+            </div>
+        </div>
+        <input type="submit" value="Iniciar sesión">
+        <div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+        </div>
+    <div id="error-message"></div>
+
+        <div id="error-message">
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+    </form>
+</main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    const btnTogglePassword = document.querySelector('.btn-toggle-password');
+    const inputPassword = document.querySelector('#password');
+
+    btnTogglePassword.addEventListener('click', function() {
+        if (inputPassword.type === 'password') {
+            inputPassword.type = 'text';
+            btnTogglePassword.innerHTML = '<i class="far fa-eye"></i>';
+        } else {
+            inputPassword.type = 'password';
+            btnTogglePassword.innerHTML = '<i class="far fa-eye-slash"></i>';
+        }
+    });
+</script>
+
+</body>
+</html>

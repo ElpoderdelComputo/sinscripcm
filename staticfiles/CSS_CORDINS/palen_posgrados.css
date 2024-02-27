@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  width: 90%;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #f5f5f5, #dddddd) 1;
+}
+
+/* Estilo para la imagen institucional */
+img {
+  display: flex;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 5px;
+  justify-content: center;
+
+}
+
+/* Estilo para el encabezado */
+h1 {
+  font-family: Verdana sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
+h2 {
+  font-family: Arial sans-serif;
+  font-size: 2.2rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-container h1 {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo para la tabla de cursos */
+
+
+tr:nth-child(even) {
+  background-color: #d5d2d2;
+}
+
+.logout-button {
+  background-color: #f44336; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 8px 10px; /* Espacio interno del botón */
+  font-size: 16px; /* Tamaño de fuente del botón */
+  border: none; /* Borde del botón */
+  border-radius: 4px; /* Radio de borde del botón */
+  cursor: pointer; /* Cursor al pasar por encima del botón */
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Color de fondo del botón al pasar por encima */
+}
+
+#respuesta-servidor {
+  color: #0c7003; /* Color del texto en blanco */
+  padding: 10px; /* Espacio interno alrededor del contenido */
+  border-radius: 5px; /* Bordes redondeados */
+  text-align: center; /* Texto centrado */
+  font-size: 18px; /* Tamaño de fuente */
+}
+
+
+/* Estilo predeterminado (rojo) cuando no está marcada */
+.aeta-checkbox {
+    background-color: red;
+}
+
+/* Estilo para cuando está marcada (verde) */
+.aeta-checkbox:checked {
+    background-color: green;
+}

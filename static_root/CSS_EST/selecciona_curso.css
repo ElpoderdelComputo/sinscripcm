@@ -1,0 +1,277 @@
+/* Estilo general */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #eef0fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%; /* Puedes ajustar el valor según tus necesidades */
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 2px solid;
+    /*border-image: linear-gradient(to right, #444343, #dddddd) 1;*/
+    border-color: #d2cece;
+}
+
+/* Imagen institucional */
+.center-image {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Titulos */
+h1 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+legend {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Estilos para el formulario */
+#formulario {
+    text-align: center;
+    margin-top: 1rem;
+
+}
+
+/* Campos de formulario */
+.form-group {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+
+}
+.form-group label {
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+
+/* SELECT DONDE SELECCIONAN CURSO  */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para los inputs */
+.form-control_1 {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 100%;
+}
+
+/* Estilos para el input de solo lectura */
+.form-control_1[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.row.border-custom {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.row.border-custom:hover {
+    border-color: #4CAF50;
+    transform: translate(2px, -2px);
+}
+
+.row {
+    padding-top: 1px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+
+
+/* Estilos para las cajas de profesor titular y créditos */
+div[id="cve_academic"],
+div[id="nom_academic"],
+div[id="apellidos"],
+div[id="creditos"],
+div[id="observaciones"] {
+    display: inline-block;
+    width: calc(50% - 20px);
+    margin-right: 20px;
+}
+
+
+/* Estilos para la tabla */
+.tabla-colabs-container_edit {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-colabs-container_edit legend {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Estilos para la tabla */
+.tabla-colabs-container_edit {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-colabs-container_edit legend {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    font-size: 0.8rem;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Estilos para la cabecera de la tabla */
+.table-header th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Estilos para las filas de la tabla */
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Cambios para el texto "Teoría" */
+.table th[colspan="6"] {
+    font-size: 20px;
+}
+
+/* Estilo para el contenedor de horarios */
+.horario-container {
+    display: flex; /* Utilizar flexbox para alinear los elementos en una fila */
+    justify-content: center; /* Alinear horizontalmente los elementos en el centro */
+    align-items: center; /* Alinear verticalmente los elementos en el centro */
+    font-size: 14px; /* Tamaño de fuente heredado para que coincida con otros elementos de la tabla */
+}
+
+/* Estilo para los encabezados de la tabla */
+.horario-container th {
+    text-align: center; /* Alinear el texto de los encabezados al centro */
+    font-weight: bold; /* Añadir negrita para destacar el separador */
+}
+
+/* Estilo para el separador '-' entre las horas */
+.horario-container span {
+    margin: 0 5px; /* Espacio entre los campos de tiempo y el separador */
+    font-weight: bold; /* Añadir negrita para destacar el separador */
+    font-size: 14px;
+}
+
+/* Estilo para ocultar los controles del campo de tiempo */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* Estilo para el campo de tiempo */
+input[type="time"] {
+    border: none; /* Eliminar el borde del campo de tiempo */
+    background-color: transparent; /* Fondo transparente para ocultar el control nativo */
+    font-size: 14px; /* Tamaño de fuente heredado para que coincida con otros elementos de la tabla */
+    width: 70px; /* Ajustar el ancho para que se muestre en una sola línea */
+}
+
+/* Estilos para los botones */
+/* Estilos para los botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos para el botón de éxito (Guardar curso) */
+.btn-success {
+    background-color: #4caf50; /* Color de fondo */
+    color: black; /* Color de texto */
+    font-weight: bold;
+}
+
+.btn-success:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilos para el botón de peligro (Cancelar) */
+.btn-danger {
+    background-color: #f44336; /* Color de fondo */
+    color: black; /* Color de texto */
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f; /* Color de fondo al pasar el ratón */
+}

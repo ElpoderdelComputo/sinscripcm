@@ -1,0 +1,264 @@
+@page {
+    size: letter landscape;
+}
+
+img {
+    display: flex;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #eef0fa;
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centramos horizontalmente */
+    align-items: flex-start; /* Centramos verticalmente hacia arriba */
+    min-height: 100vh; /* Asegura que el contenido ocupe al menos la altura de la ventana */
+}
+
+/* Estilos para la sección principal */
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%; /* Puedes ajustar el valor según tus necesidades */
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 2px solid;
+    /*border-image: linear-gradient(to right, #444343, #dddddd) 1;*/
+    border-color: #d2cece;
+}
+
+/* Estilo para el encabezado */
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: auto;
+    text-align: center; /* Alineación al centro horizontal */
+}
+
+.container {
+    text-align: center;
+    justify-items: center;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn.btn-info {
+    /* Estilos específicos para el botón "Regresar" */
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn.btn-light {
+    /* Estilos específicos para el botón "Firmar" */
+    background-color: #f8f9fa;
+    color: #000;
+}
+.btn:hover {
+    color: #fff;
+    background-color: #155403;
+    border-color: #0062cc;
+}
+
+/* Estilos para la imagen */
+.center-image {
+    text-align: center;
+}
+
+.center-image img {
+    max-width: 100%;
+}
+
+
+/* Estilos para la tabla */
+#datos_estudiante {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    max-width: 100%; /* Ancho máximo que puede ocupar la tabla */
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#datos_estudiante td, #datos_estudiante th {
+    border: 1px solid #ddd;
+    padding: 2px;
+    font-size: 10px; /* Tamaño de fuente del cuerpo de la tabla */
+    text-align: left;
+    vertical-align: middle;
+    height: fit-content;
+    word-wrap: break-word;
+}
+
+
+#tabla-cursos {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+    table-layout: auto; /*se ajusta al tamaño del text*/
+}
+
+#tabla-cursos td, #tabla-cursos th {
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 11px; /* Tamaño de fuente del cuerpo de la tabla */
+    text-align: left;
+    vertical-align: middle;
+    height: fit-content;
+    word-wrap: break-word;
+}
+
+#tabla-cursos th {
+    height: fit-content;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: #c5c5c5; /* Color de fondo del encabezado */
+    font-size: 12px; /* Tamaño de fuente de los encabezados */
+    font-weight: bold;
+    color: black; /* Color del texto del encabezado */
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilos para la tabla en dispositivos pequeños */
+@media screen and (max-width: 767px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
+.logout-button {
+    background-color: #f44336; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    padding: 8px 10px; /* Espacio interno del botón */
+    font-size: 16px; /* Tamaño de fuente del botón */
+    border: none; /* Borde del botón */
+    border-radius: 4px; /* Radio de borde del botón */
+    cursor: pointer; /* Cursor al pasar por encima del botón */
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Color de fondo del botón al pasar por encima */
+}
+.botones-pdf {
+    display: flex; /* Utilizar flexbox para alinear elementos en una fila */
+    align-items: center; /* Alinear elementos verticalmente en el centro */
+    justify-content: center; /* Centrar elementos horizontalmente */
+}
+
+.botones-pdf > div {
+    margin-right: 20px; /* Espacio entre los elementos */
+}
+
+
+.firmas_est_cons {
+    display: flex; /* Utilizar flexbox para alinear elementos en una fila */
+}
+
+.firmas_est_cons > div {
+    flex: 1; /* Hacer que ambos divs ocupen el mismo ancho en la fila */
+    margin-right: 20px; /* Espacio entre las tablas (puedes ajustarlo según tus necesidades) */
+}
+
+/* Estilos para el encabezado (thead) */
+#firmas_estudiante thead {
+    background-color: #c5c5c5; /* Color de fondo del encabezado */
+    color: black; /* Color del texto del encabezado */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilos para el cuerpo de la tabla (tbody) */
+#firmas_estudiante tbody {
+    background-color: #f8f9fa; /* Color de fondo del cuerpo de la tabla */
+}
+
+/* Estilos para las celdas (th y td) */
+#firmas_estudiante th{
+    padding: 7px; /* Espaciado interno de las celdas */
+    text-align: center; /* Alinear el texto al centro */
+    font-size: 10px; /* Tamaño de fuente */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+}
+
+#firmas_estudiante td {
+    padding: 14px; /* Espaciado interno de las celdas */
+    text-align: center; /* Alinear el contenido horizontalmente al centro */
+    vertical-align: center; /* Alinear el contenido verticalmente abajo */
+    font-size: 10px; /* Tamaño de fuente */
+    font-family: Arial, sans-serif;/* Estilo de fuente itálica */
+}
+
+
+/* Estilos para el div de éxito adjuntar pdf */
+#respuesta-servidor {
+    padding: 10px;
+    color: #4CAF50; /* Color del texto blanco */
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Opcional: Estilos para animación de desvanecimiento */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.fade-in-out {
+    animation: fadeInOut 3s ease-in-out;
+}
+
+

@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Agrega estilo tabla de datos Boostrap -->
+    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Boostrap5/js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="{% static 'DataTables/jQuery-3.6.0/jquery-3.6.0.min.js' %}">
+    <link rel="stylesheet" href="{% static 'CSS/agregacurso.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>{{ titulo }}</title>
+</head>
+
+<body>
+<main>
+    <!-- La imagen institucional -->
+    <div class="center-image">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
+    </div>
+    <hr>
+    <h1> {{ usuario.cve_posgrad }} - {{ usuario.nom_program }}</h1>
+    <legend id="error-cve-curso-profesor" style="display: none; color: red;">La combinación de clave de curso y clave académica ya existe en la base de datos.</legend>
+    <br>
+    <form action="{% url 'capcursapp:agregar_curso' %}?from=agregar_curso" method="POST" class="row g-2"  id="formulario">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                Curso registrado exitosamente!
+            </div>
+        {% endif %}
+        <div class="container" content="center">
+            <div class="row border-custom-1">
+                <div class="row">
+                    <div class="col-md-5">
+                        <fieldset>
+                            <legend style="text-align: center;">Curso</legend>
+                            <hr>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div style="display:flex; align-items:center; justify-content: center;">
+                                        <label for="cve_curso" style="width:150px;">Clave:</label>
+                                        <select name="cve_curso" id="cve_curso" class="form-select" style="width:calc(100% - 150px);">
+                                            <option value="" selected disabled>-- Selecciona un Curso --</option>
+                                            {% for curso in loscursos %}
+                                                <option value="{{ curso.cve_curso }}" {% if curso.cve_curso == formulario.cve_curso.value %}selected{% endif %}>
+                                                    {{ curso.cve_curso }} : {{ curso.nombre }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div style="display:flex; align-items:center;">
+                                        <label for="creditos" style="display:inline-block;width:150px;">Créditos:</label>
+                                        <input type="text" name="creditos" id="creditos" class="form-control_1" style="width:calc(100% - 150px);" readonly>
+                                        <input type="hidden" name="id_catacurs" id="id_catacurs" value="{{ id_catacurs }}">
+
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- Cuadro del profesor titular -->
+                    <div class="col-md-7">
+                        <fieldset>
+                            <legend style="text-align: center;">Profesor titular</legend>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div style="display:flex;">
+                                            <label for="cve_program">Programa: </label>
+                                            <select name="cve_program" id="cve_program" class="form-select">
+                                                <option value="" selected disabled>-- Selecciona un Programa --</option>
+                                                {% for clave, valor in programas.items %}
+                                                    <option value="{{ clave }}">{{ valor }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+
+                                        <div style="display:flex;">
+                                            <label for="cve_academic">Profesor:</label>
+                                            <select name="cve_academic" id="cve_academic" class="form-select">
+                                                <option value="">Selecciona un Profesor</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <!-- Boton para agregar colaboradores -->
+                            <div class="container" content="center">
+                                <div class="row">
+                                    {% if formulario.cve_curso.value %}
+                                        <div>
+                                            <a class="btn btn-outline-secondary" onclick="abrirVentanaEmergente()" id="btnAgregarColaboradores">Agregar Colaboradores</a>
+
+                                        </div>
+                                    {% else %}
+                                        <div>
+                                            <a class="btn btn-secondary" id="btnAgregarColaboradores" disabled>+ Colaboradores</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- Tabla desplegable si existen colabs-->
+                    <div class="tabla-colabs-container">
+                        <legend>Colaboradores</legend>
+                        <table class="table" id="tabla-colabs">
+                            <thead>
+                            <tr>
+                                <th>Clave</th>
+                                <th>Nombre</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabla-colabs-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Fin-->
+        <legend>Ingrese horarios donde corresponda</legend>
+        <!-- Limites -->
+        <div class="container" content="center">
+            <div class="row border-custom">
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label></label>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="teoria"></label><input type="text" disabled name="teoria" id="teoria" style="color: #0a0a0a; border: none; background-color: transparent; font-size: large;"  class="form-control" value="Teoría">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Lunes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lunes_ini"></label>
+                                <input type="time" name="lunes_ini" id="lunes_ini" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lunes_fin"></label>
+                                <input type="time" name="lunes_fin" id="lunes_fin" class="form-control" value="00:00" onblur="validarHorario('lunes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Martes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="martes_ini"></label>
+                                <input type="time" name="martes_ini" id="martes_ini" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="martes_fin"></label>
+                                <input type="time" name="martes_fin" id="martes_fin" class="form-control" value="00:00" onblur="validarHorario('martes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Miércoles</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="miercoles_ini"></label>
+                                <input type="time" name="miercoles_ini" id="miercoles_ini" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="miercoles_fin"></label>
+                                <input type="time" name="miercoles_fin" id="miercoles_fin" class="form-control" value="00:00" onblur="validarHorario('miercoles')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Jueves</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="jueves_ini"></label>
+                                <input type="time" name="jueves_ini" id="jueves_ini" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="jueves_fin"></label>
+                                <input type="time" name="jueves_fin" id="jueves_fin" class="form-control" value="00:00" onblur="validarHorario('jueves')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Viernes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="viernes_ini"></label>
+                                <input type="time" name="viernes_ini" id="viernes_ini" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="viernes_fin"></label>
+                                <input type="time" name="viernes_fin" id="viernes_fin" class="form-control" value="00:00" onblur="validarHorario('viernes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Aula-Observaciones</label>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="observaciones"></label><textarea type="text" name="observaciones" id="observaciones" rows="1" class="form-control">Por definir </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                            </div>
+                            <div class="col-md-12">
+                                <label for="practica"></label><input type="text" disabled name="practica" id="practica" style="color: #0a0a0a; border: none; background-color: transparent; font-size: large;" class="form-control" value="Práctica">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="lunes_inip"></label>
+                                <input type="time" name="lunes_inip" id="lunes_inip" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lunes_finp"></label>
+                                <input type="time" name="lunes_finp" id="lunes_finp" class="form-control" value="00:00" onblur="validarHorario('lunes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="martes_inip"></label>
+                                <input type="time" name="martes_inip" id="martes_inip" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="martes_finp"></label>
+                                <input type="time" name="martes_finp" id="martes_finp" class="form-control" value="00:00" onblur="validarHorario('martes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="miercoles_inip"></label>
+                                <input type="time" name="miercoles_inip" id="miercoles_inip" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="miercoles_finp"></label>
+                                <input type="time" name="miercoles_finp" id="miercoles_finp" class="form-control" value="00:00" onblur="validarHorario('miercoles')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="jueves_inip"></label>
+                                <input type="time" name="jueves_inip" id="jueves_inip" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="jueves_finp"></label>
+                                <input type="time" name="jueves_finp" id="jueves_finp" class="form-control" value="00:00" onblur="validarHorario('jueves')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="viernes_inip"></label>
+                                <input type="time" name="viernes_inip" id="viernes_inip" class="form-control" value="00:00">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="viernes_finp"></label>
+                                <input type="time" name="viernes_finp" id="viernes_finp" class="form-control" value="00:00" onblur="validarHorario('viernes')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="observacionesp"></label><textarea type="text" name="observacionesp" id="observacionesp" rows="1" class="form-control">Por definir </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Limites -->
+        <hr>
+        <br>
+        <div class="row" content="center">
+            <div class="col-md-10">
+                <input type="submit" value="Guardar curso" class="btn btn-primary" id="guardar">
+                <a class="btn btn-warning" href="{% url 'capcursapp:mostrar_cursos' %}">Cancelar</a>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-outline-dark" id="limpiar-formulario">Limpiar formulario</button>
+            </div>
+        </div>
+    </form>
+</main>
+
+<!-- Scripts asociados al html -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+    function limpiarFormulario() {
+        $('#formulario')[0].reset(); // Reinicia el formulario
+        localStorage.clear(); // Borra los valores guardados en localStorage
+    }
+
+    // Agrega un evento click al botón de limpiar formulario
+    $('#limpiar-formulario').click(function() {
+        limpiarFormulario();
+    });
+</script>
+
+<script>
+    const selectPrograma = document.getElementById('cve_program');
+    const selectAcademico = document.getElementById('cve_academic');
+    const academicosPorPrograma = {{ academicos_por_programa_json|safe }};
+
+    function actualizarSelectAcademico(programa) {
+        const academicos = academicosPorPrograma[programa] || [];
+
+        selectAcademico.innerHTML = '';
+
+        academicos.forEach(academico => {
+            const option = document.createElement('option');
+            option.value = academico.cve_academic;
+            option.textContent = academico.cve_academic + ' : ' +academico.nombres + ' ' + academico.apellidos;
+            selectAcademico.appendChild(option);
+        });
+
+        selectAcademico.disabled = academicos.length === 0;
+    }
+
+    selectPrograma.addEventListener('change', function () {
+        const programaSeleccionado = selectPrograma.value;
+        actualizarSelectAcademico(programaSeleccionado);
+    });
+</script>
+
+<!-- script para buscar curso selecionado y profesor-->
+<script>
+    $(document).ready(function() {
+        $('#cve_curso').change(function() {
+            var selectedValue = $(this).val();
+            $.ajax({
+                url: "{% url 'capcursapp:buscar_elemento' %}",
+                type: 'GET',
+                data: {
+                    'elemento': selectedValue,
+                    'tipo_elemento': 'curso'
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#creditos').val(data['creditos']);
+                    $('#id_catacurs').val(data['id_catacurs']);
+                    $('#cve_curso').val(data['cve_curso']);
+                },
+                error: function() {
+                    alert('Hubo un error al buscar el curso seleccionado');
+                }
+            });
+        });
+
+        $('#cve_academic').change(function() {
+            var selectedValue = $(this).val();
+            $.ajax({
+                url: "{% url 'capcursapp:buscar_elemento' %}",
+                type: 'GET',
+                data: {
+                    'elemento': selectedValue,
+                    'tipo_elemento': 'profesor'
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#nom_academic').val(data['nom_academic']);
+                    $('#apellidos').val(data['apellidos']);
+                    $('#correo').val(data['correo']);
+                },
+                error: function() {
+                    alert('Hubo un error al buscar el profesor seleccionado');
+                }
+            });
+        });
+    });
+
+</script>
+
+<!-- Scripts que verifica si un curso con mismo cve academic y curso -->
+<script>
+    function verificarCursoProfesor() {
+        var cve_curso = $('#cve_curso').val();
+        var cve_academic = $('#cve_academic').val();
+        var errorElement = $('#error-cve-curso-profesor');
+
+        $.ajax({
+            url: "{% url 'capcursapp:verificar_curso_existente' %}",
+            type: 'GET',
+            data: { cve_curso: cve_curso, cve_academic: cve_academic },
+            dataType: 'json',
+            success: function(response) {
+                if (response.existe) {
+                    errorElement.show();
+                    errorElement.text("El curso y el profesor que ha seleccionado ya ha sido registrado anteriormente.");
+                } else {
+                    errorElement.hide();
+                    errorElement.text("");
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                errorElement.show();
+                errorElement.text("Ha ocurrido un error al verificar la existencia del curso y el profesor.");
+            }
+        });
+    }
+</script>
+
+<script>
+    document.getElementById('btnAgregarColaboradores').onclick = function() {
+        const selectedValue = document.getElementById('cve_curso').value;
+        if (selectedValue) {
+            abrirVentanaEmergente(selectedValue);
+        }
+        return false;
+    };
+
+    function abrirVentanaEmergente(cve_curso) {
+        const url = "/capcurs/agregar_colab/" + cve_curso + "/";
+        const width = 900;
+        const height = 500;
+
+        // Obtener las dimensiones de la ventana actual
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+
+        // Calcular las coordenadas para centrar la ventana emergente
+        const left = (screenWidth - width) / 2;
+        const top = (screenHeight - height) / 2;
+
+        // Abrir la ventana emergente en el centro de la pantalla
+        const newWindow = window.open(url, "_blank", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+        newWindow.focus();
+    }
+</script>
+
+<script>
+    window.addEventListener('load', () => {
+        const select = document.getElementById('cve_curso');
+        const btnAgregarColab = document.getElementById('btnAgregarColaboradores');
+
+        select.addEventListener('change', () => {
+            const selectedValue = select.value;
+            const url = "/capcurs/agregar_colab/" + selectedValue + "/";
+            btnAgregarColab.href = url + "?from=agregar_curso";
+            btnAgregarColab.disabled = !selectedValue; // Habilita o deshabilita el botón según si se seleccionó un valor
+        });
+    });
+</script>
+
+<!-- Scripts que guarda la última selección del usuario -->
+<script>
+    function actualizarTabla(data) {
+        var tabla = $('#tabla-colabs-body');
+        tabla.empty();
+        if (data.length > 0) {
+            $.each(data, function(index, row) {
+                var fila = '<tr>' +
+                    '<td>' + row.clave + '</td>' +
+                    '<td>' + row.nombre + ' ' + row.apellido + '</td>' +
+                    '<td><button class="btn btn-danger btn-eliminar-colab" data-cve-academic="' + row.clave + '" ><i class="fas fa-trash"></i></button></td>' +
+                    '</tr>';
+                tabla.append(fila);
+            });
+            $('.tabla-colabs-container').addClass('mostrar');
+
+            // Agregar evento para el botón eliminar
+            $('.btn-eliminar-colab').click(function(event) {
+                event.preventDefault();
+                // Mostrar mensaje de confirmación
+                if (confirm("¿Estás seguro de que deseas eliminar al colaborador?")) {
+                    var cve_academic = $(this).data('cve-academic');
+                    var cve_curso = $('#cve_curso').val(); // Obtener el valor de cve_curso del input correspondiente
+                    var data = {
+                        'cve_academic': cve_academic,
+                        'cve_curso': cve_curso // Agregar cve_curso al objeto de datos
+                    };
+                    elimina_colaborador(data);
+                }
+            });
+
+        } else {
+            tabla.html('<tr><td colspan="3">¡Sin colaboradores!</td></tr>');
+            $('.tabla-colabs-container').removeClass('mostrar');
+        }
+    }
+
+    function cargarTabla() {
+        var cve_curso = $('#cve_curso').val();
+        var url = '/capcurs/hay_colabs/' + cve_curso + '/';
+        console.log('La URL del endpoint es: ' + url);
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json', // Agregar dataType
+            success: function(response) {
+                var data = [];
+                $.each(response.data, function(key, value) {
+                    data.push(value);
+                });
+                actualizarTabla(data); // Agregar console.log() antes de esta línea
+            },
+
+            error: function(error) {
+                $('#tabla-colabs-body').html('');
+                $('.tabla-colabs-container').removeClass('mostrar');
+            }
+        });
+    }
+
+    function elimina_colaborador(data) {
+        $.ajax({
+            url: '{% url "capcursapp:elimina_colaborador" %}',
+            type: 'POST',
+            data: data, // Utilizar el objeto de datos recibido
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if (response.success) {
+                    $('#mensaje-eliminar').html('El colaborador ha sido eliminado correctamente.');
+                    cargarTabla();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        cargarTabla();
+    });
+
+</script>
+
+<!-- Scripts que valida los horarios -->
+<script>
+    function validarHorario(dia) {
+        var inicio = document.getElementById(dia + "_ini").value;
+        var fin = document.getElementById(dia + "_fin").value;
+        if (inicio > fin) {
+            alert("El horario de inicio debe ser menor que el horario de fin.");
+            document.getElementById(dia + "_ini").value = "00:00";
+            document.getElementById(dia + "_fin").value = "00:00";
+        }
+
+        var iniciop = document.getElementById(dia + "_inip").value;
+        var finp = document.getElementById(dia + "_finp").value;
+        if (iniciop > finp) {
+            alert("El horario de inicio debe ser menor que el horario de fin.");
+            document.getElementById(dia + "_inip").value = "00:00";
+            document.getElementById(dia + "_finp").value = "00:00";
+        }
+    }
+    // Obtener todos los elementos de entrada de tiempo
+    var inputsTiempo = document.querySelectorAll('input[type="time"]');
+
+    // Añadir el evento 'blur' a cada elemento de entrada de tiempo
+    inputsTiempo.forEach(function(input) {
+        input.addEventListener('blur', function() {
+            var dia = input.getAttribute('data-dia');
+            validarHorario(dia);
+        });
+    });
+</script>
+
+<script>
+    const guardarBtn = document.querySelector('#guardar');
+
+    guardarBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const formulario = document.querySelector('#formulario');
+        const formData = new FormData(formulario);
+
+        fetch('/capcursapp/crear_capcurs/', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Curso guardado con éxito. Código de estado: ${response.status}`);
+                }
+
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new TypeError('La respuesta del servidor no es un objeto JSON válido.');
+                }
+
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '../mostrar_cursos/';
+                } else {
+                    alert('Error al guardar el formulario.');
+                    console.log('Error al guardar el formulario:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Revisa la selección de Profesor titular.');
+            })
+    });
+</script>
+
+</body>
+</html>
