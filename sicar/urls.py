@@ -3,7 +3,7 @@ from django.contrib import admin
 
 
 from .views import iniciar_sesion, logout_view, verificar_credenciales, panel_posgrados, actualizar_checkbox, recibir_archivo
-app_name = 'cordins'
+app_name = 'sicar'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

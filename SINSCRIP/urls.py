@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('capcursapp/', include('capcursapp.urls')),
-    path('cordins/', include('cordins.urls')),
+    path('sicar/', include('sicar.urls')),
     path('sinsevi/', include('sinsevi.urls')),
     path('siab/', include('siab.urls')),
     path('', panel_control, name='panel_control'),

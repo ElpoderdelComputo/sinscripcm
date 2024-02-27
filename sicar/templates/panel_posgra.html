@@ -130,7 +130,7 @@
 
 <script>
     document.getElementById("logout-button").addEventListener("click", function() {
-        window.location.href = "/cordins/logout/";
+        window.location.href = "../logout/";
     });
 
     const tablaEstudiantes = new DataTable('#tabla_estudiantes');
@@ -176,7 +176,7 @@
                 const csrftoken = getCookie("csrftoken");
 
                 // Agregar el token CSRF al encabezado de la solicitud
-                fetch(`/cordins/recibir_archivo/`, {
+                fetch(`/sicar/recibir_archivo/`, {
                     method: "POST",
                     body: formData,
                     headers: {

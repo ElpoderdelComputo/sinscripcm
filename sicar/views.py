@@ -26,7 +26,7 @@ def iniciar_sesion(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('cordins:iniciar_sesion')
+    return redirect('sicar:iniciar_sesion')
 
 def verificar_credenciales(request):
 
@@ -43,7 +43,7 @@ def verificar_credenciales(request):
             login(request, user)
             request.session['usuario_id'] = user.id
             print('si se autentico mano', user.cve_program)
-            return redirect('cordins:panel_posgrados')
+            return redirect('sicar:panel_posgrados')
         else:
             # Las credenciales son inválidas
             messages.error(request, 'Usuario o contraseña incorrectos.')
@@ -91,7 +91,7 @@ def panel_posgrados(request):
     except Coordinaciones.DoesNotExist:
         # Si el usuario no existe, redirige al inicio de sesión
         messages.error(request, 'Usuario o contraseña incorrectos.')
-        return redirect('cordins:iniciar_sesion')
+        return redirect('sicar:iniciar_sesion')
 
     periodo = settings.PERIODO
     anio = settings.ANIO
@@ -182,8 +182,8 @@ def  enviar_aviso(cve_estud):
     coordinacion = Coordinaciones.objects.filter(cve_program=estudiante.cve_program).first()
 
     # Envía el correo electrónico al estudiante, consejero y coordinacón
-    destinatario = [estudiante.username, coordinacion.username]
-    #destinatario = ['rodriguez.rosales@colpos.mx']
+    #destinatario = [estudiante.username, coordinacion.username]
+    destinatario = ['rodriguez.rosales@colpos.mx']
     # Codificar destinatarios
     destinatario_encoded = [Header(d, 'utf-8').encode() for d in destinatario]
 
