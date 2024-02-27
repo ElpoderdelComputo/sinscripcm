@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,10 +21,10 @@
         <!-- <img class="mb-4" src="{% static 'imagenes/colpos_logo1.png' %}" alt="" width="315" height="90"> -->
         <img class="mb-4" src="{% static 'imagenes/colpos_logo1.png' %}" alt="" width="315" height="90">
         <br>
-    <div>
-        <h1>Sistema de Captura de Cursos</h1>
-        <h2>(CAPCURS)</h2>
-    </div>
+        <div>
+            <h1>Sistema de Captura de Cursos</h1>
+            <h2>(CAPCURS)</h2>
+        </div>
         <!-- Grupo que contiene la entrada correo -->
         <div class="formulario__grupo row align-items-center" id="grupo__correo">
             <div class="col-sm-11 form-floating">
@@ -50,19 +50,20 @@
         </div>
         <input type="submit" value="Iniciar sesión">
         <div>
-            <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+            <p class="copyright mt-5 mb-3 text-muted">&copy; <span id="currentYear"></span></p>
+            <a href="{% url 'sinsevi:about' %}">Acerca de</a>
         </div>
-    <div id="error-message"></div>
+        <div id="error-message"></div>
 
         <div id="error-message">
-  {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
 
     </form>
 </main>
@@ -83,6 +84,16 @@
             btnTogglePassword.innerHTML = '<i class="far fa-eye-slash"></i>';
         }
     });
+</script>
+<script>
+    // Obtener el elemento donde se mostrará el año actual
+    const currentYearElement = document.getElementById('currentYear');
+
+    // Obtener el año actual
+    const currentYear = new Date().getFullYear();
+
+    // Asignar el año actual al elemento
+    currentYearElement.textContent = currentYear;
 </script>
 
 </body>

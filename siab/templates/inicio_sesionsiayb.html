@@ -50,7 +50,8 @@
         </div>
         <input type="submit" value="Iniciar sesión">
         <div>
-            <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+            <p class="copyright mt-5 mb-3 text-muted">&copy; <span id="currentYear"></span></p>
+            <a href="{% url 'sinsevi:about' %}">Acerca de</a>
         </div>
         <div id="error-message"></div>
         <div id="error-message">
@@ -64,7 +65,17 @@
         </div>
     </form>
 </main>
+<script>
+    // Obtener el elemento donde se mostrará el año actual
+    const currentYearElement = document.getElementById('currentYear');
+
+    // Obtener el año actual
+    const currentYear = new Date().getFullYear();
+
+    // Asignar el año actual al elemento
+    currentYearElement.textContent = currentYear;
+</script>
 </body>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'JS_SI/inicio_sesionEst.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'JS_SI/inicio_sesionEst.js' %}"></script>
 </html>

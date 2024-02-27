@@ -22,7 +22,7 @@
         <br>
         <div>
             <h2>VALIDACIÓN DE INSCRIPCIONES</h2>
-           <!-- <h2>SIAPI</h2> -->
+            <!-- <h2>SIAPI</h2> -->
         </div>
         <!-- Grupo que contiene la entrada correo -->
         <div class="formulario__grupo row align-items-center" id="grupo__correo">
@@ -49,7 +49,8 @@
         </div>
         <input type="submit" value="Iniciar sesión">
         <div>
-            <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+            <p class="copyright mt-5 mb-3 text-muted">&copy; <span id="currentYear"></span></p>
+            <a href="{% url 'sinsevi:about' %}">Acerca de</a>
         </div>
         <div id="error-message"></div>
 
@@ -82,6 +83,16 @@
             btnTogglePassword.innerHTML = '<i class="far fa-eye-slash"></i>';
         }
     });
+</script>
+<script>
+    // Obtener el elemento donde se mostrará el año actual
+    const currentYearElement = document.getElementById('currentYear');
+
+    // Obtener el año actual
+    const currentYear = new Date().getFullYear();
+
+    // Asignar el año actual al elemento
+    currentYearElement.textContent = currentYear;
 </script>
 
 </body>
