@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#about {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    text-align: center; /* Para centrar los botones */
+}
+
+.social-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.linkedin-button {
+    background-color: #0077b5; /* Color de fondo del botón de LinkedIn */
+}
+
+.github-button {
+    background-color: #333; /* Color de fondo del botón de GitHub */
+}
+
+.youtube-button {
+    background-color: #ff0000; /* Color de fondo del botón de YouTube */
+}
+
+.tiktok-button {
+    background-color: #000; /* Color de fondo del botón de TikTok */
+}
+
+.facebook-button {
+    background-color: #1877f2; /* Color de fondo del botón de Facebook */
+}
+
+.button-icon {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}

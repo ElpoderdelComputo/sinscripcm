@@ -4,8 +4,7 @@ from sinsevi.views import inicio_sesionE
 
 from .views import mis_cursos, verificar_credencialEst, selecciona_curso, buscar_curso, crea_asistira, crea_asistira690,\
     elimina_uncurso, logout_view, guardar_boleta, generarPDF, cursos_asistire, recibir_archivo, hay_colaboradores, elimina_inv_690,\
-    est_sin_aeta, actualizar_cvu, fuera_de_linea
-
+    est_sin_aeta, actualizar_cvu, fuera_de_linea, about
 app_name = 'sinsevi'
 
 urlpatterns = [
@@ -28,5 +27,6 @@ urlpatterns = [
     path('est_sin_aeta/', est_sin_aeta, name='est_sin_aeta'),
     path('actualizar_cvu/', actualizar_cvu, name='actualizar_cvu'),
     path('fuera_de_linea/', fuera_de_linea, name='fuera_de_linea'),
+    path('about/', about, name='about'),
 ]
 

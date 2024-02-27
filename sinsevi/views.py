@@ -29,6 +29,8 @@ def logout_view(request):
     logout(request)
     return redirect('sinsevi:inicio_sesionE')
 
+def about(request):
+    return render(request, 'acerca_de.html')
 
 def verificar_credencialEst(request):
     # Verificar si el sistema esta en linea
