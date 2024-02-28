@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'sinsevi',
     'sicar',
     'siab',
+    'corsheaders'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 X_FRAME_OPTIONS ='SAMEORIGIN'
@@ -173,6 +175,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    # ...otros dominios permitidos...
+]
 
 '''
 Para pruebas en produccion con debug = False ejecutar

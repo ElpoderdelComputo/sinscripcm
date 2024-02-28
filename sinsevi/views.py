@@ -32,6 +32,47 @@ def logout_view(request):
 def about(request):
     return render(request, 'acerca_de.html')
 
+def compartir_tablas1(request):
+    academicos = list(Academic.objects.all().values())
+    #estudiantes = list(Sinsevi.objects.all().values())
+    estudiantes= Estudian.objects.all().values('cve_estud', 'nombres', 'apellidos', 'cve_program', 'periingr', 'fechingr', 'e_mail', 'niveestu' )
+    consejero_estudiante = list(estudiante_consejero.objects.all().values())
+
+    datos_totales = {
+        'academicos': academicos,
+        'estudiantes': estudiantes,
+        'consejero_estudiante': consejero_estudiante,
+    }
+
+    return JsonResponse(datos_totales, safe=False)
+
+from django.http import JsonResponse
+from .models import Academic, Estudian, estudiante_consejero
+
+def compartir_tablas(request):
+    try:
+        # Obtener datos de la tabla Academic
+        academicos = list(Academic.objects.all().values('cve_academic', 'nombres', 'apellidos', 'cve_program', 'grado', 'activo', 'email',  'extension' ))
+
+        # Obtener datos de la tabla Estudian
+        estudiantes = list(Estudian.objects.all().values('cve_estud', 'nombres', 'apellidos', 'cve_program', 'periingr', 'fechingr', 'e_mail', 'niveestu'))
+
+        # Obtener datos de la tabla estudiante_consejero
+        consejero_estudiante = list(estudiante_consejero.objects.all().values('cve_estud', 'cve_academic', 'registro','agno' ))
+
+        # Organizar los datos en un diccionario
+        datos_totales = {
+            'academicos': academicos,
+            'estudiantes': estudiantes,
+            'consejero_estudiante': consejero_estudiante,
+        }
+
+        return JsonResponse(datos_totales, safe=False)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
 def verificar_credencialEst(request):
     # Verificar si el sistema esta en linea
     if settings.sinsevi_on == 0:
