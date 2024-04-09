@@ -153,10 +153,15 @@
 
     <p id="mensaje-advertencia" style="color: red;"></p>
 
-    <div>
-        <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar </a>
-        <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+    <div style="display: flex; justify-content: space-between;">
+        <div style="text-align: center; flex-grow: 1;">
+            <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar</a>
+        </div>
+        <div class="button-container">
+            <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+        </div>
     </div>
+
     <hr>
     <div>
         <!-- Aquí puedes agregar el contenido de tu pie de página -->

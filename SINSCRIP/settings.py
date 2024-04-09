@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'SINSCRIP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sinscrip_5',
+        'NAME': 'sinscrip2',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -104,34 +104,34 @@ DATABASES = {
 
 #>>> CONFIGURACIONES <<<#
 # Periodo de inscripciones
-PERIODO = 'PRIMAVERA'
+PERIODO = 'VERANO'
 NO_PERIODO = 1 #NUMERO DE PERIODO 1, 2 Ó 3
 ANIO = 2024
 
-FECHA_LIMITE = '2024-3-5 17:00:00'
+FECHA_LIMITE = '2024-4-5 17:00:00'
 capcurs_on = 1   #Cambiar a 1 para activar
-FL_CAPCURS = '2024-3-5 17:00:00' # Fecha limite de captura de cursos
+FL_CAPCURS = '2024-4-5 17:00:00' # Fecha limite de captura de cursos
 
 sinsevi_on = 1  #Cambiar a 1 para activar
 coordins_on = 1  #Cambiar a 1 para activar
-FL_SINSEVI = '2024-3-5 17:00:00' # Fecha limite de inscripciones
+FL_SINSEVI = '2024-4-5 17:00:00' # Fecha limite de inscripciones
 
 siayb_on = 1     #Cambiar a 1 para activar
-FL_SIAYB = '2024-3-5 17:00:00'   # Fecha limite de altas y bajas
+FL_SIAYB = '2024-4-5 17:00:00'   # Fecha limite de altas y bajas
 
 # FECHA DE NUEVO INGRESO
-FN_INGRESO = '2023-09-04'  # Fecha de registro de los estudiantes de nuevo ingreso
+FN_INGRESO = '2024-01-08'  # Fecha de registro de los estudiantes de nuevo ingreso
 
 # Periodo de AETAS que se van a subir al sistema
-PERIODO_AETA = 'O'
-ANIO_AETA = 2023
+PERIODO_AETA = 'OTOÑO' #P=PRIMAVERA, O= OTOÑO, V = VERANO
+ANIO_AETA = 2023  # SE CARGARAN AETAS OTOÑO 2023
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Backend predeterminado de Django
     'capcursapp.backends.CoordinacionesBackend',  # Backend personalizado para el modelo Coordinaciones
-    'sinsevi.backends.EstudianBackend', # Backend personalizado para el modelo Estudian
+    'sinsevi.backends.EstudianBackend' # Backend personalizado para el modelo Estudian
 ]
 
 

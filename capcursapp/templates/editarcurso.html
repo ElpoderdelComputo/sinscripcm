@@ -390,7 +390,7 @@
     };
 
     function abrirVentanaEmergente(cve_curso) {
-        const url = "/capcurs/agregar_colab/" + cve_curso + "/";
+        const url = "/capcursapp/agregar_colab/" + cve_curso + "/";
         const width = 900;
         const height = 500;
 
@@ -447,7 +447,7 @@
 
     function cargarTabla() {
         var cve_curso = $('#cve_curso').val();
-        var url = '/capcurs/hay_colabs/' + cve_curso + '/';
+        var url = '/capcursapp/hay_colabs/' + cve_curso + '/';
         console.log('La URL del endpoint es: ' + url);
         $.ajax({
             url: url,

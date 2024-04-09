@@ -34,9 +34,9 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">CLAVE DEL CURSO</th>
+                <th scope="col">CLAVE</th>
                 <th scope="col">NOMBRE DEL CURSO</th>
-                <th scope="col">CLAVE DEL PROFESOR</th>
+                <th scope="col">CLAVE</th>
                 <th scope="col">PROFESOR TITULAR</th>
                 <th scope="col">COLABORADORES</th>
                 <th scope="col">CRÉDITOS</th>
@@ -201,7 +201,7 @@
             margin: [10, 10],
             html2canvas: { scale: 2 },
             jsPDF: { orientation: 'landscape' },
-            fontSize: 14, // Cambia el tamaño de fuente aquí (en puntos)
+            fontSize: 12, // Cambia el tamaño de fuente aquí (en puntos)
         };
 
         html2pdf().from(element).set(opt).outputPdf('datauristring').then(function (archivoAdjunto) {

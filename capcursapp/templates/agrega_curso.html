@@ -467,7 +467,7 @@
     };
 
     function abrirVentanaEmergente(cve_curso) {
-        const url = "/capcurs/agregar_colab/" + cve_curso + "/";
+        const url = "/capcursapp/agregar_colab/" + cve_curso + "/";
         const width = 900;
         const height = 500;
 
@@ -492,7 +492,7 @@
 
         select.addEventListener('change', () => {
             const selectedValue = select.value;
-            const url = "/capcurs/agregar_colab/" + selectedValue + "/";
+            const url = "/capcursapp/agregar_colab/" + selectedValue + "/";
             btnAgregarColab.href = url + "?from=agregar_curso";
             btnAgregarColab.disabled = !selectedValue; // Habilita o deshabilita el botón según si se seleccionó un valor
         });
@@ -538,7 +538,7 @@
 
     function cargarTabla() {
         var cve_curso = $('#cve_curso').val();
-        var url = '/capcurs/hay_colabs/' + cve_curso + '/';
+        var url = '/capcursapp/hay_colabs/' + cve_curso + '/';
         console.log('La URL del endpoint es: ' + url);
         $.ajax({
             url: url,

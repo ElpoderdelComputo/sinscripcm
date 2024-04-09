@@ -22,7 +22,8 @@
         </div>
         <br>
         <h1>{{ usuario.cve_posgrad }} - {{ usuario.nom_program }}</h1>
-        <h2>Cursos programados: {{ periodo }} {{ anio }}</h2>
+        <h2 id="periodo_anio">Cursos programados: {{ periodo }} {{ anio }}</h2>
+
         <p></p>
         <table id="tabla-cursos" style="width:100%">
             <thead>
@@ -180,8 +181,12 @@
 <script>
     function descargarPDF() {
         const element = document.getElementById('contenido');
+        const periodo_anio = document.getElementById('periodo_anio').innerText.trim();
+        const fileName = `${periodo_anio}.pdf`;
+
+
         const options = {
-            filename: 'Cursos_otoño_2023.pdf',
+            filename: fileName,
             margin: [10, 10, 10, 10],
             image: { type: 'jpeg', quality: 0.9 },
             html2canvas: { scale: 2 },
@@ -194,6 +199,7 @@
             .save();
     }
 </script>
+
 
 </body>
 </html>

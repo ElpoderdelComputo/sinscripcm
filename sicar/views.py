@@ -16,7 +16,6 @@ from capcursapp.models import Coordinaciones
 from sinsevi.models import Estudian
 import logging  # Importa el módulo de registro
 logger = logging.getLogger(__name__)  # Configura el objeto logger
-from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 
 
@@ -24,9 +23,11 @@ def iniciar_sesion(request):
     # Cerrar sesión (antes de redireccionar)
     return render(request, 'inicio_cordins.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('sicar:iniciar_sesion')
+
 
 def verificar_credenciales(request):
 
@@ -95,7 +96,9 @@ def panel_posgrados(request):
 
     periodo = settings.PERIODO
     anio = settings.ANIO
+
     periodo_aeta = settings.PERIODO_AETA
+
     anio_aeta = settings.ANIO_AETA
     fn_ingreso = settings.FN_INGRESO
 
@@ -130,23 +133,28 @@ def recibir_archivo(request):
         cve_estud = request.POST.get('cve_estud')
         cve_program = request.POST.get('cve_program')
 
-        print('Estudiante: ', cve_estud,' ', cve_program)
+        #print('Estudiante: ', cve_estud, ' ', cve_program)
 
-        #archivo = request.FILES["archivo"]
         archivo = request.FILES["pdf"]
-        periodo = settings.PERIODO_AETA
+
+        if settings.PERIODO_AETA == 'PRIMAVERA':
+            periodo = 'P'
+        elif settings.PERIODO_AETA == 'VERANO':
+            periodo = 'V'
+        else:
+            periodo = 'O'
+
         anio = settings.ANIO
 
         nombre_archivo = str(cve_program) + str(cve_estud) + 'AETA' + str(periodo) + str(anio) + '.pdf'
 
-        #nombre_archivo = archivo.name
         if archivo.size > 2097152:
-            print('pesa mas de 2 mb')
+            # print('pesa mas de 2 mb')
             mensage = 'El documento PDF debe pesar menos de 2 MB'
             return JsonResponse({"message": mensage})
 
         # Ruta donde se almacenarán los archivos (directorio 'boletas_2023' en el directorio de medios de Django)
-        ruta_archivos = os.path.join("AETA_2023", nombre_archivo)
+        ruta_archivos = os.path.join("AETAS", nombre_archivo)
 
         # Guardar el archivo en el servidor
         with open(ruta_archivos, "wb") as destino:
@@ -171,8 +179,7 @@ def recibir_archivo(request):
     return JsonResponse({"message": "No se ha recibido ningún archivo o el método de solicitud no es válido."})
 
 
-
-def  enviar_aviso(cve_estud):
+def enviar_aviso(cve_estud):
     print('ejecutando enviar_aviso')
     estudiante = get_object_or_404(Estudian, cve_estud=cve_estud)
 
@@ -216,7 +223,7 @@ def  enviar_aviso(cve_estud):
         smtp_server = 'smtp.gmail.com'
         smtp_port = 587
         smtp_usuario = 'sinscripcolpos@gmail.com'
-        smtp_password = 'murvdxcfnfroschr'  # Asegúrate de utilizar las credenciales correctas
+        smtp_password = 'zapj lqre wdod tqwt'   # Asegúrate de utilizar las credenciales correctas
         smtp = smtplib.SMTP(smtp_server, smtp_port)
         smtp.ehlo()
         smtp.starttls()

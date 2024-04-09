@@ -19,9 +19,11 @@ def iniciar_sesion(request):
     # Cerrar sesión (antes de redireccionar)
     return render(request, 'iniciosesion.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('capcursapp:iniciar_sesion')
+
 
 def verificar_credenciales2(request):
     messages.error(request, 'El sistema aún no está disponible.')
@@ -60,6 +62,21 @@ def cursos_guardados(request):
     return render(request, 'cursos_guardados.html', {'coordinacion': coordinacion,
                                                      'cursos_posgra': cursos_posgra, 'periodo':periodo, 'anio': anio})
 
+
+def eliminar_colab_sin_titular():
+    # Obtener la lista de cursos
+    cursos = Imparegu.objects.filter()
+
+    for curso in cursos:
+        # Verificar si hay titulares y colaboradores para el curso actual en Imparegu
+        tiene_titulares = Imparegu.objects.filter(cve_curso=curso.cve_curso, participa='TITULAR').exists()
+        tiene_colaboradores = Imparegu.objects.filter(cve_curso=curso.cve_curso, participa='COLABORADOR').exists()
+
+        # Si hay colaboradores pero no titulares, eliminar todos los registros relacionados con el curso en Imparegu
+        if tiene_colaboradores and not tiene_titulares:
+            Imparegu.objects.filter(cve_curso=curso.cve_curso).delete()
+
+
 def mostrar_cursos(request):
     usuario_id = request.session.get('usuario_id')
     periodo = settings.PERIODO
@@ -80,6 +97,7 @@ def mostrar_cursos(request):
         cve_program = coordinacion.cve_program
 
         miscursospersonal = Capcurs.objects.filter(cve_program=coordinacion.cve_program)
+        #eliminar_colab_sin_titular() # revisar que no haya colaboradores sin titulares
 
     except Coordinaciones.DoesNotExist:
         messages.error(request, 'Usuario o contraseña incorrectos.')
@@ -182,7 +200,6 @@ def crear_capcurs(request):
     return JsonResponse({'success': True})
 
 
-
 def academic_to_dict(academic):
     return {
         'id': academic.id,
@@ -196,21 +213,32 @@ def academic_to_dict(academic):
         'email': academic.email
     }
 
-#envia informacion del objeto usuario, loscursos y academicos
+
 #envia informacion del objeto usuario, loscursos y academicos
 def agregar_curso(request):
     global loscursos, academicos
     usuario_id = request.session.get('usuario_id')
     usuario = Coordinaciones.objects.get(id=usuario_id)
+
     try:
         # Obtener todos los registros de la tabla Catacurs que tienen la misma cve_program que el usuario
 
         todos_los_cursos = Catacurs.objects.filter(cve_program=usuario.cve_program, vigente="S")
+        # los cursos a excluir
+        esp = usuario.cve_program + str(670)
+        inv = usuario.cve_program + str(690)
+        exg = usuario.cve_program + str(691)
+        epd = usuario.cve_program + str(692)
 
-        loscursos = todos_los_cursos.order_by('cve_curso')
-        # Crear un diccionario para almacenar los cursos únicos
-        academicos1 = Academic.objects.all()
-        academicos = academicos1.order_by('cve_academic')
+        # Crear lista de claves a excluir
+        excluir = [esp, inv, exg, epd]
+
+        # Excluir los cursos con claves contenidas en la lista "excluir"
+        loscursos = todos_los_cursos.exclude(cve_curso__in=excluir).order_by('cve_curso')
+
+        # Academicos activos
+        academicos_activos = Academic.objects.filter(activo='S')
+        academicos = academicos_activos.order_by('cve_academic')
     except Academic.DoesNotExist:
         messages.error(request, 'Lo siento, elemento no encntrado en la base de datos')
 
@@ -225,14 +253,15 @@ def agregar_curso(request):
 
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
-        academicos = Academic.objects.filter(cve_program=programa).order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
 
-    return render(request, 'agrega_curso.html', {'loscursos': loscursos, 'usuario': usuario, 'programas': programas, 'academicos_por_programa_json': academicos_por_programa_json})
-
-
+    return render(request, 'agrega_curso.html', {'loscursos': loscursos,
+                                                 'usuario': usuario,
+                                                 'programas': programas,
+                                                 'academicos_por_programa_json': academicos_por_programa_json})
 
 
 # vista que busca al curso seleccionado y devuelve el objeto
@@ -353,6 +382,24 @@ def elimina_colaborador(request):
 
 
 def eliminar_curso(request, id_curso):
+    print('entro a la funcion')
+    if request.method == 'GET':
+        try:
+            curso = Capcurs.objects.get(pk=id_curso)
+        except Capcurs.DoesNotExist:
+            return JsonResponse({'error': 'El curso no existe'}, status=404)
+
+        impare_list = Imparegu.objects.filter(cve_curso=str(curso.cve_curso))
+
+        impare_list.delete()
+        curso.delete()
+        messages.success(request, 'El curso se ha eliminado correctamente.')
+        return redirect('capcursapp:mostrar_cursos')
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+
+def eliminar_curso_1(request, id_curso):
     curso = Capcurs.objects.get(pk=id_curso)
     clave = curso.cve_curso_id
     impare_list = Imparegu.objects.filter(cve_curso=str(clave)) #clave que viene de url debo tratarlo como str
@@ -378,12 +425,13 @@ def agregar_colab(request, cve_curso):
              'CIENCIAS FORESTALES', 'FRUTICULTURA', 'GANADERIA', 'GENETICA', 'HIDROCIENCIAS', 'PRODUCCIÓN DE SEMILLAS'
              ]
 
+
     programas = dict(zip(clave, valor))
 
     academicos_por_programa = {}
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
-        academicos = Academic.objects.filter(cve_program=programa).order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
@@ -407,7 +455,7 @@ def agregar_colab_edit(request, cve_curso):
     academicos_por_programa = {}
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
-        academicos = Academic.objects.filter(cve_program=programa).order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
@@ -516,7 +564,6 @@ def guardar_enviar(request, nom_program):
                                                    'periodo': periodo, 'anio': anio})
 
 
-
 # IMplementacion de envio de pdf
 def generarPDF(request):
     if request.method == 'POST':
@@ -524,8 +571,8 @@ def generarPDF(request):
         usuario = Coordinaciones.objects.filter(username=elusuario.username).first()
         archivo_adjunto = request.FILES.get('pdf')
         # Envía el correo electrónico
-        #destinatario = ['rodriguez.rosales@colpos.mx']
-        destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
+        destinatario = ['rodriguez.rosales@colpos.mx']
+        #destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
 
         asunto = 'Cursos Programados' + ' ' + usuario.cve_posgrad + '-' + usuario.nom_program
         periodo = settings.PERIODO

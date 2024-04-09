@@ -1,3 +1,5 @@
+import os
+from io import BytesIO
 import smtplib
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
@@ -9,14 +11,13 @@ from django.utils.html import strip_tags
 from SINSCRIP import settings
 from capcursapp.models import Academic
 from sinsevi.forms import AsistiraForm, SinseviForm, Alta_bajaForm
-from sinsevi.models import CapcursappCoordinaciones, estudiante_consejero, Capcurs, Catacurs, Becarios, Asistira, Catabeca, \
+from sinsevi.models import CapcursappCoordinaciones, estudiante_consejero, Capcurs, Catacurs, Becarios, Asistira, \
+    Catabeca, \
     Imparegu, Estudian, Sinsevi, Estud_nacion, Catanaci, AltaBaja, Orientador
 from django.http import JsonResponse, HttpResponse
 from PyPDF2 import PdfWriter, PdfReader
-from io import BytesIO
 from reportlab.pdfgen import canvas
 from PIL import Image
-import os
 
 
 
@@ -80,7 +81,7 @@ def mis_cursos_siayb(request):
 
     try:
         estudiante.incrementar_cont_veces()
-        if estudiante.cont_final >= 5: # cambiar de 5 a1
+        if estudiante.cont_final >= 5:  # cambiar de 5 a1
             return redirect('siab:inicio_siayb')
     except Estudian.DoesNotExist:
         messages.error(request, 'El usuario no existe.')
@@ -92,19 +93,21 @@ def mis_cursos_siayb(request):
 
     programa = get_object_or_404(CapcursappCoordinaciones, cve_program=cve_program)
 
-    beca = Becarios.objects.filter(cve_estud=cve_estud).first()
-    if beca is None:
-        entidad_beca = ''
-        cvu = ''
-    else:
-        entidad_beca = Catabeca.objects.filter(cve_becaria=beca.cve_becaria).first()
+    try:
+        beca = get_object_or_404(Becarios, cve_estud=cve_estud)
+        print('Si Beca: ', beca.cve_becaria, beca.cvu)
         cvu = beca.cvu
+        entidad_beca = get_object_or_404(Catabeca, cve_becaria=beca.cve_becaria)
+    except Becarios.DoesNotExist:
+        print('No tiene beca')
+        entidad_beca = ''
+        cvu = 0
 
-    # Filtra los registros de la tabla Estudiante_Consejero donde el campo cve_estud coincida con el valor de cve_estud.
+    # Filtra los registros de la tabla Consejo donde el campo cve_estud coincida con el valor de cve_estud.
     fecha_nuevo_ingr = settings.FN_INGRESO
 
     try:
-        consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud)
+        consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud, orden=1)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
     except estudiante_consejero.DoesNotExist:
         if estudiante.fechingr == fecha_nuevo_ingr:
@@ -134,8 +137,7 @@ def mis_cursos_siayb(request):
     cred_inv = 0
 
     for curso in capcursos:
-        if cve_program == 'ECD':
-            cve_program = 'EST'
+        print(curso.credima)
         if curso.cve_curso in [str(cve_program) + '680', str(cve_program) + '681', str(cve_program) + '682']:
             cred_seminarios += curso.credima
         elif curso.cve_curso == str(cve_program) + '690':
@@ -143,13 +145,13 @@ def mis_cursos_siayb(request):
         else:
             cred_regular += curso.credima
 
-    cred_inv = cred_inv-cred_regular
-    if cred_inv <= 0:
-        cred_inv = 0
-    total = cred_regular + cred_seminarios + cred_inv
+    cred_inv1 = cred_inv - cred_regular
+    if cred_inv1 <= 0:
+        cred_inv1 = 0
+    total = cred_regular + cred_seminarios + cred_inv1
     suma_creditos = {
         'cred_seminarios': cred_seminarios,
-        'cred_inv': cred_inv,
+        'cred_inv': cred_inv1,
         'cred_regular': cred_regular,
         'total': total,
     }
@@ -323,8 +325,7 @@ def revisa_altas_bajas(cve_estud, cve_curso, cve_academic):
 
     return JsonResponse(response_data)
 
-#funcion que agrega curso regular a asistirá y sisevi
-#APP SIAYB
+
 def crea_asistiraAyB(request):
     usuario_id = request.session.get('usuario_id')
     usuario = Estudian.objects.get(id=usuario_id)
@@ -415,7 +416,6 @@ def crea_asistiraAyB(request):
     return JsonResponse({'success': True})
 
 
-#funcion que agrega INVESTIGACION
 def crea_asistira690(request):
     # Obtener el ID de usuario de la sesión
     usuario_id = request.session.get('usuario_id')
@@ -455,7 +455,7 @@ def crea_asistira690(request):
                                                    cve_academic=consejero_estudiante.cve_academic).first()
             print('EL investigador es: ', investigador.cve_academic)
             # Obtener datos del curso en Catacurs
-            catacurs = Catacurs.objects.filter(cve_curso=codigo_690, gpo_670=investigador.gpo_670).first()
+            catacurs = Catacurs.objects.filter(cve_curso=codigo_690, gpo_670=investigador.gpo_670, credima=9).first()
             print('Este es el curso Y GPO: ', catacurs.cve_curso, catacurs.gpo_670)
 
             if catacurs is None:
@@ -474,7 +474,7 @@ def crea_asistira690(request):
                         cve_curso=codigo_690,
                         gpo_670=investigador.gpo_670,
                         califica=0,
-                        creditos=9,
+                        creditos=catacurs.credima,
                         periodo=settings.PERIODO,
                         agno=settings.ANIO,
                         observa='PEND.',  # valor por defecto
@@ -482,7 +482,7 @@ def crea_asistira690(request):
                         per_vi_cur=catacurs.periodo,
                         ano_vi_cur=catacurs.agno,
                         no_periodo=settings.NO_PERIODO,  # valor por defecto primavera = 1 verano y otoño: 2,3
-                        isevaluated=0  # cambiara a 1 cuando se haya evaluado
+                        #isevaluated=0  # cambiara a 1 cuando se haya evaluado
                     )
 
                     # Obtener datos del profesor
@@ -493,8 +493,8 @@ def crea_asistira690(request):
                         cve_estud=usuario.cve_estud,
                         cve_curso=codigo_690,
                         nombre=catacurs.nombre,
-                        credimi = catacurs.credimi,
-                        credima = catacurs.credima,
+                        credimi=catacurs.credimi,
+                        credima=catacurs.credima,
                         cve_academic=investigador.cve_academic,
                         nom_academic=profesor.nombres,
                         apellidos=profesor.apellidos,
@@ -504,15 +504,15 @@ def crea_asistira690(request):
 
                     # Crear registro Alta_baja
                     alta_baja = AltaBaja.objects.create(
-                        cve_estud = usuario.cve_estud,
-                        cve_curso = codigo_690,
-                        nombre= catacurs.nombre,
-                        cve_academic = investigador.cve_academic,
-                        nom_academic = profesor.nombres,
-                        apellidos = profesor.apellidos,
-                        gpo_670 = investigador.gpo_670,
+                        cve_estud=usuario.cve_estud,
+                        cve_curso=codigo_690,
+                        nombre=catacurs.nombre,
+                        cve_academic=investigador.cve_academic,
+                        nom_academic=profesor.nombres,
+                        apellidos=profesor.apellidos,
+                        gpo_670=investigador.gpo_670,
                         fech_mov=timezone.now().date(),  # Establecer la fecha actual
-                        alta_baja = 1, #alta de curso
+                        alta_baja=1,  #alta de curso
                     )
                     revisa_altas_bajas(usuario.cve_estud, codigo_690, investigador.cve_academic)
 
@@ -632,22 +632,18 @@ def guardar_boletayb(request):
     except:
         cvu = ''
 
-    # Filtra los registros de la tabla Estudiante_Consejero donde el campo cve_estud coincida con el valor de cve_estud.
+    # Filtra los registros de la tabla Consejo donde el campo cve_estud coincida con el valor de cve_estud.
     fecha_nuevo_ingr = settings.FN_INGRESO
     try:
         consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
         consejero_orientador = 'PROFESOR(A) CONSEJERO'
-    except estudiante_consejero.DoesNotExist:
+    except Academic.DoesNotExist:
         # buscamos en la tabla orientador
         consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
         consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
-    except Orientador.DoesNotExist:
-        # buscamos en la tabla orientador
-        consejero_estudiante = 'SIN DATOS'
-        consejero = 'SIN DATOS'
-        consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
+
 
     # nacionalidad
     # Acceder a la tabla 'Estud_nacion' y filtrar por 'cve_estud'
@@ -728,7 +724,7 @@ def altas_bajas(request):
         entidad_beca = ''
     else:
         entidad_beca = Catabeca.objects.filter(cve_becaria=beca.cve_becaria).first()
-        # Filtra los registros de la tabla Estudiante_Consejero donde el campo cve_estud coincida con el valor de cve_estud.
+        # Filtra los registros de la tabla consejo donde el campo cve_estud coincida con el valor de cve_estud.
     try:
         cvu = beca.cvu
     except:
@@ -738,7 +734,7 @@ def altas_bajas(request):
         consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
         consejero_orientador = 'PROFESOR(A) CONSEJERO'
-    except estudiante_consejero.DoesNotExist:
+    except Academic.DoesNotExist:
         # buscamos en la tabla orientador
         consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
@@ -777,28 +773,47 @@ def generarPDF(request):
         if estudiante.email_ayb > 0:
             return redirect('siab:altas_bajas')
 
-        consejero_estudiante = estudiante_consejero.objects.filter(cve_estud=estudiante.cve_estud).first()
         try:
+            consejero_estudiante = estudiante_consejero.objects.filter(cve_estud=estudiante.cve_estud).first()
             consejero = Academic.objects.filter(cve_academic=consejero_estudiante.cve_academic).first()
-        except:
-            # buscamos en la tabla orientador
+        except estudiante_consejero.DoesNotExist:
             consejero_estudiante = Orientador.objects.get(cve_estud=estudiante.cve_estud)
             consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
 
         coordinacion = CapcursappCoordinaciones.objects.filter(cve_program=estudiante.cve_program).first()
 
         archivo_adjunto = request.FILES.get('pdf')
+
+        sello_path = 'static/imagenes/sello_subedu.png'
+        # Agrega el sello al PDF en memoria
+        pdf_stream_con_sello = agregar_sello(archivo_adjunto.read(), sello_path)
+
+        #crear nombre del archivo
+        nombre_archivo = (f'{estudiante.cve_program}-{estudiante.cve_estud}-{estudiante.nombres}_{estudiante.apellidos}'
+                          f'-{settings.PERIODO}_{settings.ANIO}.pdf')
+
+        archivo_adjunto.name = nombre_archivo
+
+        # Guardar el archivo PDF con sello en disco
+        ruta_archivos = os.path.join("ALTASYBAJAS", nombre_archivo)
+
+        with open(ruta_archivos, "wb") as destino:
+            destino.write(pdf_stream_con_sello.read())
+
         # Envía el correo electrónico
-        destinatario = ['rodriguez.rosales@colpos.mx']
-        #destinatario = ['sinscripcolpos@gmail.com', estudiante.username, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
+        #destinatario = ['rodriguez.rosales@colpos.mx']
+        destinatario = ['sinscripcolpos@gmail.com', estudiante.username, 'servacadmontecillo@colpos.mx',
+                        consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
 
         asunto = 'Boleta de Altas y Bajas' + ' ' + str(
             estudiante.cve_estud) + ' ' + estudiante.nombres + ' ' + estudiante.apellidos
         periodo = settings.PERIODO
-        mensaje = 'COLEGIO DE POSTGRADUADOS\n\n'
-        mensaje += 'Se adjunta documento PDF de la boleta de altas y bajas para el periodo de ' + periodo + ' del estudiante ' + estudiante.cve_program + '-' + str(
-            estudiante.cve_estud) + '-' + estudiante.nombres + ' ' + estudiante.apellidos + '.'
-        mensaje += '\nSe incluyen los movimientos de altas y bajas asi como la inscripción final.'
+        anio = settings.ANIO
+        mensaje = 'ESTIMADOS: \n\n'
+        mensaje += ('Se adjunta documento PDF de la boleta de ALTAS Y BAJAS para el periodo de ' + periodo + str(anio) +
+                    '\ndel estudiante ' + estudiante.cve_program + '-' + str(
+                    estudiante.cve_estud) + '-' + estudiante.nombres + ' ' + estudiante.apellidos + '.')
+        mensaje += '\n\nSe incluyen los movimientos de altas y bajas asi como la inscripción final.'
         mensaje += '\n\nAtentamente,\n\n'
         mensaje += 'SUBDIRECCIÓN DE EDUCACIÓN\n'
         mensaje += 'CAMPUS MONTECILLO'
@@ -808,20 +823,14 @@ def generarPDF(request):
         email = EmailMultiAlternatives(
             asunto,
             str(mensaje_plano),
-            'Sistema de Altas y Bajas',
+            'SIAB - CAMPUS MONTECILLO',
             destinatario
         )
 
-        #crear nombre del archivo
-        nombre_archivo = f'{estudiante.cve_program}-{estudiante.cve_estud}-{estudiante.nombres}_{estudiante.apellidos}-{settings.PERIODO}_{settings.ANIO}.pdf'
-        archivo_adjunto.name = nombre_archivo
-
-        sello_path = 'static/imagenes/sello_subedu.png'
-        # Agrega el sello al PDF en memoria
-        pdf_stream_con_sello = agregar_sello(archivo_adjunto.read(), sello_path)
-
         # Adjuntar el archivo PDF al correo electrónico
-        email.attach(archivo_adjunto.name, pdf_stream_con_sello.read(), 'application/pdf')
+        # email.attach(archivo_adjunto.name, pdf_stream_con_sello.read(), 'application/pdf')
+        with open(ruta_archivos, 'rb') as adjunto:
+            email.attach(nombre_archivo, adjunto.read(), 'application/pdf')
 
         # Envía el correo electrónico utilizando SMTP
         try:

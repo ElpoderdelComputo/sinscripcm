@@ -19,7 +19,7 @@ main {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*  align-items: center; */
     max-width: 100%; /* Puedes ajustar el valor según tus necesidades */
     margin: 0 auto;
     margin-top: 10px;
@@ -96,10 +96,11 @@ div#contador-container h1#cuenta-regresiva {
     border-collapse: collapse;
     font-size: 12px;
     margin: 0 auto; /* Centrar la tabla horizontalmente */
-    max-width: 100%; /* Ancho máximo que puede ocupar la tabla */
+    max-width: 50%; /* Ancho máximo que puede ocupar la tabla */
     text-align: left;
     margin-top: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 #datos_estudiante td, #datos_estudiante th {
@@ -176,9 +177,11 @@ td form {
 #creditos {
     font-family: Arial, sans-serif;
     border-collapse: collapse;
-    width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+    width: 30%; /* Asegura que la tabla ocupe todo el ancho disponible */
     font-size: 10px;
     margin-bottom: 5px;
+    align-items: center;
+    margin: 0 auto; /* Centra horizontalmente la tabla */
 }
 
 /* Estilo para las filas impares */
@@ -231,6 +234,7 @@ td form {
     border-radius: 4px; /* Bordes redondeados */
     cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
     transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    float: right; /* Alinear a la derecha */
 }
 
 /* Estilo al pasar el cursor por encima del botón */

@@ -4,9 +4,7 @@
 
 img {
     display: flex;
-    margin: auto;
-    margin-top: 0;
-    margin-bottom: 5px;
+    margin: 0 auto 5px;
     justify-content: center;
 }
 
@@ -30,12 +28,10 @@ main {
     flex-direction: column;
     align-items: center;
     max-width: 100%; /* Puedes ajustar el valor según tus necesidades */
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 10px auto 0;
     background-color: #ffffff;
-    border: 2px solid;
     /*border-image: linear-gradient(to right, #444343, #dddddd) 1;*/
-    border-color: #d2cece;
+    border: 2px solid #d2cece;
 }
 
 /* Estilo para el encabezado */
@@ -115,11 +111,10 @@ a:hover {
     font-family: Arial, sans-serif;
     border-collapse: collapse;
     font-size: 12px;
-    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    /* Centrar la tabla horizontalmente */
     max-width: 100%; /* Ancho máximo que puede ocupar la tabla */
     text-align: left;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 10px auto 20px;
 }
 
 #datos_estudiante td, #datos_estudiante th {
