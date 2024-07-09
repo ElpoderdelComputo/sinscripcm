@@ -12,4 +12,9 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SINSCRIP.settings')
 
+'''# Configurar las variables de entorno para los certificados SSL
+os.environ['HTTPS_CERTIFICATE'] = '/etc/letsencrypt/live/repca.colpos.mx/fullchain.pem'
+os.environ['HTTPS_KEY'] = '/etc/letsencrypt/live/repca.colpos.mx/privkey.pem'''
+
+
 application = get_wsgi_application()

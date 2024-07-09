@@ -144,7 +144,7 @@ def recibir_archivo(request):
         else:
             periodo = 'O'
 
-        anio = settings.ANIO
+        anio = settings.ANIO_AETA
 
         nombre_archivo = str(cve_program) + str(cve_estud) + 'AETA' + str(periodo) + str(anio) + '.pdf'
 
@@ -189,12 +189,10 @@ def enviar_aviso(cve_estud):
     coordinacion = Coordinaciones.objects.filter(cve_program=estudiante.cve_program).first()
 
     # Envía el correo electrónico al estudiante, consejero y coordinacón
-    #destinatario = [estudiante.username, coordinacion.username]
-    destinatario = ['rodriguez.rosales@colpos.mx']
+    destinatario = [estudiante.username, coordinacion.username]
+    #destinatario = ['rodriguez.rosales@colpos.mx']
     # Codificar destinatarios
     destinatario_encoded = [Header(d, 'utf-8').encode() for d in destinatario]
-
-    #destinatario = ['sinscripcolpos@gmail.com', estudiante.e_mailcp, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecas@colpos.mx']
     print('avisando a: ', estudiante.nombres)
     asunto = 'Mensaje del Sistema de Inscripciones en Linea'
     periodo = settings.PERIODO

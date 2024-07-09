@@ -23,9 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8vc@vtv@d6zjx4(qx9t=0l9pwds6280@xogb2dx0vw5l0=0+1v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1:8000', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '10.0.0.90',
+    '10.0.0.90:9000',
+    '200.23.26.90',
+    '200.23.26.90:9000',
+    'repca.colpos.mx',
+    'www.repca.colpos.mx'
+]
 
 
 # Configuración de HTTPS
@@ -93,10 +100,10 @@ WSGI_APPLICATION = 'SINSCRIP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sinscrip2',
+        'NAME': 'sinscrip',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '20educm20',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -105,19 +112,19 @@ DATABASES = {
 #>>> CONFIGURACIONES <<<#
 # Periodo de inscripciones
 PERIODO = 'VERANO'
-NO_PERIODO = 1 #NUMERO DE PERIODO 1, 2 Ó 3
+NO_PERIODO = 2 #NUMERO DE PERIODO 1, 2 Ó 3
 ANIO = 2024
 
-FECHA_LIMITE = '2024-4-5 17:00:00'
+FECHA_LIMITE = '2024-5-03 17:00:00'
 capcurs_on = 1   #Cambiar a 1 para activar
-FL_CAPCURS = '2024-4-5 17:00:00' # Fecha limite de captura de cursos
+FL_CAPCURS = '2024-5-20 17:00:00'  # Fecha limite de captura de cursos
 
 sinsevi_on = 1  #Cambiar a 1 para activar
 coordins_on = 1  #Cambiar a 1 para activar
-FL_SINSEVI = '2024-4-5 17:00:00' # Fecha limite de inscripciones
+FL_SINSEVI = '2024-5-3 17:00:00'  # Fecha limite de inscripciones
 
-siayb_on = 1     #Cambiar a 1 para activar
-FL_SIAYB = '2024-4-5 17:00:00'   # Fecha limite de altas y bajas
+siayb_on = 1 #Cambiar a 1 para activar
+FL_SIAYB = '2024-4-19 17:00:00'  # Fecha limite de altas y bajas
 
 # FECHA DE NUEVO INGRESO
 FN_INGRESO = '2024-01-08'  # Fecha de registro de los estudiantes de nuevo ingreso
@@ -177,7 +184,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",
+    'https://repca.colpos.mx',
+    'https://www.repca.colpos.mx'
     # ...otros dominios permitidos...
 ]
 

@@ -95,7 +95,14 @@ def verificar_credencialEst(request):
 
 
 def fuera_de_linea(request):
-    return render(request, 'fuera_de_linea.html')
+    mensaje1 = settings.mensaje1
+    mensaje2 = settings.mensaje2
+    render_data = {
+        'mensaje1': mensaje1,
+        'mensaje2': mensaje2
+    }
+
+    return render(request, 'fuera_de_linea.html', render_data)
 
 
 def mis_cursos(request):
@@ -444,6 +451,8 @@ def crea_asistira690(request):
         # Calcular el código del curso
         if usuario.cve_program == 'ECD':
             codigo_690 = 'EST690'
+        elif usuario.niveestu == 'DOC - INV':
+            codigo_690 = 'DMI690'
         else:
             codigo_690 = usuario.cve_program + '690'
 

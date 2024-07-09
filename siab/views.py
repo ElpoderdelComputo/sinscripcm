@@ -79,6 +79,12 @@ def mis_cursos_siayb(request):
     if estudiante.email_ayb > 0:
         return redirect('siab:altas_bajas')
 
+    # Verifica si el estudiante se inscribió
+    if estudiante.cont_final == 0:
+        print('No se inscribio')
+        messages.error(request, 'No finalizó el proceso de Inscripciónes')
+        return redirect('siab:altas_bajas')
+
     try:
         estudiante.incrementar_cont_veces()
         if estudiante.cont_final >= 5:  # cambiar de 5 a1
@@ -440,7 +446,12 @@ def crea_asistira690(request):
 
     try:
         # Calcular el código del curso
-        codigo_690 = usuario.cve_program + '690'
+        if usuario.cve_program == 'ECD':
+            codigo_690 = 'EST690'
+        elif usuario.niveestu == 'DOC - INV':
+            codigo_690 = 'DMI690'
+        else:
+            codigo_690 = usuario.cve_program + '690'
 
         # Verificar si el curso ya existe en la tabla Asistira
         if Asistira.objects.filter(cve_estud=usuario.cve_estud, cve_curso=codigo_690).exists():
@@ -789,8 +800,9 @@ def generarPDF(request):
         pdf_stream_con_sello = agregar_sello(archivo_adjunto.read(), sello_path)
 
         #crear nombre del archivo
-        nombre_archivo = (f'{estudiante.cve_program}-{estudiante.cve_estud}-{estudiante.nombres}_{estudiante.apellidos}'
-                          f'-{settings.PERIODO}_{settings.ANIO}.pdf')
+        nombre_archivo = (
+            f'{estudiante.cve_program}_AyB_{estudiante.cve_estud}-{estudiante.nombres}_{estudiante.apellidos}'
+            f'-{settings.PERIODO}_{settings.ANIO}.pdf')
 
         archivo_adjunto.name = nombre_archivo
 
@@ -802,7 +814,7 @@ def generarPDF(request):
 
         # Envía el correo electrónico
         #destinatario = ['rodriguez.rosales@colpos.mx']
-        destinatario = ['sinscripcolpos@gmail.com', estudiante.username, 'servacadmontecillo@colpos.mx',
+        destinatario = [estudiante.username, 'servacadmontecillo@colpos.mx',
                         consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
 
         asunto = 'Boleta de Altas y Bajas' + ' ' + str(

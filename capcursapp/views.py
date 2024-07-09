@@ -242,9 +242,9 @@ def agregar_curso(request):
     except Academic.DoesNotExist:
         messages.error(request, 'Lo siento, elemento no encntrado en la base de datos')
 
-    clave = ['AEC', 'BOT', 'COA', 'DES', 'ECO', 'EDA', 'ENT', 'ECD', 'FIV', 'FIT', 'FOR', 'FRU', 'GAN', 'GEN', 'HID', 'IDI', 'SEM', '']
+    clave = ['AEC', 'BOT', 'COA', 'DES', 'ECO', 'EDA', 'ENT', 'ECD', 'FIV', 'FIT', 'FOR', 'FRU', 'GAN', 'GEN', 'HID', 'IDI', 'SEM']
     valor = ['AGROECOLOGÍA Y SUSTENTABILIDAD', 'BOTANICA', 'CÓMPUTO APLICADO', 'DESARROLLO RURAL', 'ECONOMÍA',
-             'EDAFOLOGÍA', 'ENTOMOLOGÍA Y ACAROLOGIA' ,'ESTADISTICA Y CIENCIA DE DATOS', 'FISIOLOGIA VEGETAL', 'FITOPATOLOGIA',
+             'EDAFOLOGÍA', 'ENTOMOLOGÍA Y ACAROLOGIA','ESTADISTICA Y CIENCIA DE DATOS', 'FISIOLOGIA VEGETAL', 'FITOPATOLOGIA',
              'CIENCIAS FORESTALES', 'FRUTICULTURA', 'GANADERIA', 'GENETICA', 'HIDROCIENCIAS', 'IDIOMAS', 'PRODUCCIÓN DE SEMILLAS']
 
     programas = dict(zip(clave, valor))
@@ -253,6 +253,8 @@ def agregar_curso(request):
 
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
+        # idiomas se quita el doctorado porque son licenciaturas
+        #academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by('cve_academic')
         academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
@@ -425,7 +427,6 @@ def agregar_colab(request, cve_curso):
              'CIENCIAS FORESTALES', 'FRUTICULTURA', 'GANADERIA', 'GENETICA', 'HIDROCIENCIAS', 'PRODUCCIÓN DE SEMILLAS'
              ]
 
-
     programas = dict(zip(clave, valor))
 
     academicos_por_programa = {}
@@ -571,8 +572,8 @@ def generarPDF(request):
         usuario = Coordinaciones.objects.filter(username=elusuario.username).first()
         archivo_adjunto = request.FILES.get('pdf')
         # Envía el correo electrónico
-        destinatario = ['rodriguez.rosales@colpos.mx']
-        #destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
+        #destinatario = ['rodriguez.rosales@colpos.mx']
+        destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
 
         asunto = 'Cursos Programados' + ' ' + usuario.cve_posgrad + '-' + usuario.nom_program
         periodo = settings.PERIODO

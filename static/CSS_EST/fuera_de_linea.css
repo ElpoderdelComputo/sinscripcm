@@ -1,0 +1,13 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+
+h1 {
+    color: #ff0000; /* Color rojo */
+}
+
+p {
+    font-size: 18px;
+}

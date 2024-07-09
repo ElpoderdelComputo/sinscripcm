@@ -205,3 +205,37 @@ tr:hover {
         transform: translateY(0); /* Se desplaza hacia abajo */
     }
 }
+
+/* Estilos para el mensaje de felicitación */
+/* Estilos para el mensaje de felicitación */
+.felicidades {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 28px; /* Tamaño de fuente ligeramente más grande */
+    color: #4CAF50; /* Color verde más suave */
+    opacity: 0; /* Establece la opacidad inicial en 0 */
+    animation: fade-in 1s forwards; /* Aplica la animación fade-in durante 1 segundo */
+    transition: color 0.3s ease-in-out; /* Transición suave del color */
+}
+
+/* Estilos para el contenedor de los mensajes */
+.mensajes {
+    position: fixed; /* Fija el contenedor en la parte superior de la página */
+    top: 0; /* Alinea el contenedor en la parte superior */
+    left: 0; /* Alinea el contenedor en la izquierda */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    text-align: center; /* Centra el texto horizontalmente */
+    background-color: #f4f4f4; /* Color de fondo */
+    padding: 20px 0; /* Añade espacio alrededor del texto */
+}
+/* Animación de fade-in */
+@keyframes fade-in {
+    from {
+        opacity: 0; /* Comienza con opacidad 0 */
+        transform: translateY(-20px); /* Inicia la animación desde arriba */
+    }
+    to {
+        opacity: 1; /* Termina con opacidad 1 */
+        transform: translateY(0); /* Se desplaza hacia abajo */
+    }
+}

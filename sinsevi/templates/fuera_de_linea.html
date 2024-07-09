@@ -1,34 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-{% load static %}
+<html lang="es">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuera de línea - Sistema de Inscripciones en Línea</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #ff0000; /* Color rojo */
-        }
-
-        p {
-            font-size: 18px;
-        }
-    </style>
+    <title>Fuera de Línea - Sistema de Inscripciones en Línea</title>
+    <link rel="stylesheet" href="{% static 'CSS_EST/fuera_de_linea.css' %}">
 </head>
 <body>
- <!-- La imagen institucional -->
+    <!-- Inicio del contenedor para la imagen central -->
     <div class="center-image">
-        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="700">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="Imagen Institucional" width="700">
     </div>
+    <!-- Fin del contenedor para la imagen central -->
 
     <h1>Fuera de línea</h1>
-    <p>El Sistema de Inscripciones en Línea no está disponible en este momento.</p>
-    <h1>ALTAS Y BAJAS Primavera 2024: 17 al 22 de enero 2024 de 9:00 am a 17:00 horas</h1>
+    <p>INSCRIPCIONES, ALTAS Y BAJAS EXTEMPORANEAS: Acudir a la Subdirección de Educación</p>
+    <p> de 9:00 am a 17:00 horas</p>
+    <p>Guía para altas y bajas: <a href="https://youtu.be/cthOD8kJFGw" target="_blank">Ver video</a></p>
+    
+    <!-- Links adicionales o información de contacto podría ir aquí -->
+
 </body>
 </html>
