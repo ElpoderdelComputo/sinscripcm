@@ -399,20 +399,6 @@ def eliminar_curso(request, id_curso):
         return JsonResponse({'error': 'Método no permitido'}, status=405)
 
 
-def eliminar_curso_1(request, id_curso):
-    curso = Capcurs.objects.get(pk=id_curso)
-    clave = curso.cve_curso_id
-    impare_list = Imparegu.objects.filter(cve_curso=str(clave)) #clave que viene de url debo tratarlo como str
-    if request.method == 'POST':
-        # Si se confirma la eliminación del curso mediante un formulario POST
-        curso.delete()  # Elimina el registro de la tabla Capcurs
-        impare_list.delete()  # Elimina todos los registros de la tabla Imparegu
-        response_data = {'message': 'Curso eliminado satisfactoriamente'}
-        return HttpResponseBadRequest(json.dumps(response_data))
-    else:
-        # Si se accede a la función mediante un método HTTP distinto de POST
-        return render(request, 'eliminarcurso.html', {'curso': curso})
-
 
 def agregar_colab(request, cve_curso):
     curso = Catacurs.objects.filter(cve_curso=cve_curso).first()
