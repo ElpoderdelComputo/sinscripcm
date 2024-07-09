@@ -22,10 +22,8 @@
     <div class="center-image">
         <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
     </div>
-    <hr>
     <h1> {{ usuario.cve_posgrad }} - {{ usuario.nom_program }}</h1>
     <legend id="error-cve-curso-profesor" style="display: none; color: red;">La combinación de clave de curso y clave académica ya existe en la base de datos.</legend>
-    <br>
     <form action="{% url 'capcursapp:agregar_curso' %}?from=agregar_curso" method="POST" class="row g-2"  id="formulario">
         {% csrf_token %}
         {{ formulario.as_p }}
@@ -59,10 +57,7 @@
                                         <label for="creditos" style="display:inline-block;width:150px;">Créditos:</label>
                                         <input type="text" name="creditos" id="creditos" class="form-control_1" style="width:calc(100% - 150px);" readonly>
                                         <input type="hidden" name="id_catacurs" id="id_catacurs" value="{{ id_catacurs }}">
-
                                     </div>
-                                    <br>
-                                    <br>
                                     <br>
                                 </div>
                             </div>
@@ -74,9 +69,9 @@
                             <legend style="text-align: center;">Profesor titular</legend>
                             <hr>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group">
-                                        <div style="display:flex;">
+                                        <div>
                                             <label for="cve_program">Programa: </label>
                                             <select name="cve_program" id="cve_program" class="form-select">
                                                 <option value="" selected disabled>-- Selecciona un Programa --</option>
@@ -88,10 +83,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <div class="form-group">
 
-                                        <div style="display:flex;">
+                                        <div>
                                             <label for="cve_academic">Profesor:</label>
                                             <select name="cve_academic" id="cve_academic" class="form-select">
                                                 <option value="">Selecciona un Profesor</option>
@@ -103,7 +98,7 @@
                             </div>
                             <br>
                             <!-- Boton para agregar colaboradores -->
-                            <div class="container" content="center">
+                            <div class="container_colab" content="center">
                                 <div class="row">
                                     {% if formulario.cve_curso.value %}
                                         <div>
@@ -141,7 +136,7 @@
         <!-- Fin-->
         <legend>Ingrese horarios donde corresponda</legend>
         <!-- Limites -->
-        <div class="container" content="center">
+        <div class="container_horarios" content="center">
             <div class="row border-custom">
                 <div class="row">
                     <div class="col-md-1">
@@ -329,9 +324,6 @@
             <div class="col-md-10">
                 <input type="submit" value="Guardar curso" class="btn btn-primary" id="guardar">
                 <a class="btn btn-warning" href="{% url 'capcursapp:mostrar_cursos' %}">Cancelar</a>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-outline-dark" id="limpiar-formulario">Limpiar formulario</button>
             </div>
         </div>
     </form>

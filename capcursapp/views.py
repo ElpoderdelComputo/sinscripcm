@@ -570,8 +570,8 @@ def generarPDF(request):
         usuario = Coordinaciones.objects.filter(username=elusuario.username).first()
         archivo_adjunto = request.FILES.get('pdf')
         # Envía el correo electrónico
-        #destinatario = ['rodriguez.rosales@colpos.mx']
-        destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
+        destinatario = ['rodriguez.rosales@colpos.mx']
+        #destinatario = ['servacadmontecillo@colpos.mx', 'sistema.inscripcioncm@colpos.mx', 'sinscripcolpos@gmail.com', usuario.username]
 
         asunto = 'Cursos Programados' + ' ' + usuario.cve_posgrad + '-' + usuario.nom_program
         periodo = settings.PERIODO

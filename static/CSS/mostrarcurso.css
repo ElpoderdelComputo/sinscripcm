@@ -12,8 +12,6 @@ main {
   width: 80%;
   margin: 0 auto;
   background-color: #f1f1f1;
-  border: 1px solid #999a99;
-
 }
 
 .container{
@@ -38,11 +36,12 @@ h1, h2 {
   font-family: Arial, sans-serif;
   font-weight: bold;
   margin-bottom: 2px;
+  margin-top: 10px;
   text-align: center;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 h2 {
@@ -132,6 +131,7 @@ h2 {
 /* Estilos para el contenedor de botones */
 
 .button-container {
+    margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
