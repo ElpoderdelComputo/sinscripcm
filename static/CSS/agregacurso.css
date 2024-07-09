@@ -1,10 +1,10 @@
 /* Estilo general */
 body {
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #333;
-    background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
 }
 
 /* Contenedor principal */
@@ -67,7 +67,7 @@ form {
   width: 150px;
   margin-bottom: 0.5rem;
 }
-.form-control_1{
+.form-control, .form-control_1 {
   display: block;
   width: 90%;
   padding: 0.5rem;
@@ -88,19 +88,6 @@ form {
   box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: #333;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 .form-control:focus {
   color: #333;
   background-color: #fff;
@@ -118,53 +105,15 @@ label {
 }
 
 /* Botones */
-.btn-outline-secondary {
-  display: inline-block;
-  float: none;
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  horiz-align: right;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: #6c6c6c;
-  border: 1px solid #6c6c6c;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 
-.btn-primary {
-  display: inline-block;
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: #007bff;
-  border: 1px solid #007bff;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 .btn-outline-dark {
   display: inline-block;
   horiz-align: right;
   float: right;
 }
 
-.btn-warning {
-  display: inline-block;
+.btn-primary, .btn-outline-secondary, .btn-warning {
+  /*display: inline-block;*/
   font-weight: 400;
   color: #fff;
   text-align: center;
@@ -173,14 +122,21 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: #be3131;
-  border: 1px solid #007bff;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.btn-primary {
+  background-color: #219e05;
+  border: 1px solid #007bff;
+}
+.btn-warning {
+  background-color: #ff0000;
+  border: 1px solid #007bff;
+}
+
 .btn:hover {
   color: #fff;
   background-color: #155403;
@@ -278,7 +234,7 @@ label {
 }
 
 #tabla-colabs {
-  margin-top: 0px;
+  margin-top: 1px;
   border-collapse: collapse;
   table-layout: auto;
   width: auto;
@@ -312,11 +268,65 @@ label {
   width: auto;
   font-size: 0.8rem;
   border-color: #0f5132;
-  margin-top: 0.5px;
+  margin-top: 1px;
   display: none;
 }
 
 .tabla-colabs-container.mostrar {
-  margin-top: 0.50px;
+  margin-top: 1px;
   display: block;
+}
+
+.container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.border-custom {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+input[type="time"] {
+  font-size: 1rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.col-md-6, .col-md-12 {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.border-custom {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+input[type="time"] {
+  font-size: 1rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.col-md-6, .col-md-12 {
+  display: flex;
+  align-items: center;
 }

@@ -1,17 +1,12 @@
 /* Estilos para el formulario */
-
-{
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Verdana sans-serif;
+  font-family: Verdana, sans-serif;
   justify-content: center;
   height: 100%;
   display: flex;
   align-items: center;
   background-color: #f5f5f5;
-   text-align: center;
+  text-align: center;
 }
 
 .main {
@@ -23,7 +18,7 @@ body {
 
 /* Estilo para el encabezado */
 h1 {
-  font-family: Verdana sans-serif;
+  font-family: Verdana, sans-serif;
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 20px;
@@ -32,7 +27,7 @@ h1 {
 
 /* Estilo para el encabezado */
 h2 {
-  font-family: Verdana sans-serif;
+  font-family: Verdana, sans-serif;
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 20px;
@@ -49,117 +44,51 @@ h2 {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos básicos para el grupo del formulario */
 .formulario__grupo {
-  position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-.formulario_label {
-  font-size: 17px;
-  display: flex;
-  margin-bottom: 10px;
-  color: #555;
-  font-weight: bold;
-  font-family: Verdana sans-serif;
-}
-
-.formulario_input {
-  font-size: 20px;
-  width: 100%;
-  height: 40px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.formulario_input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-}
-
+/* Estilos para el ícono de validación */
 .formulario_validacion-estado {
-  font-size: 20px;
-  color: #dc3545;
-}
-
-.formulario_validacion-estado.correcto {
-  color: #28a745;
-}
-
-.formulario_validacion-estado.fa-times-circle-o:before {
-  content: "\f00d";
-}
-
-.formulario_validacion-estado.correcto:before {
-  content: "\f00c";
-}
-/* Estilos para el botón de mostrar/ocultar contraseña */
-.btn-toggle-password {
-  background: none;
-  border: none;
-  color: #ccc;
-  cursor: pointer;
-  font-size: 1.2rem;
-  padding: 1px;
-}
-
-.btn-toggle-password:hover,
-.btn-toggle-password:focus {
-  color: #007bff;
-}
-
-
-
-/* Estilos para el input de contraseña */
-#password {
-  font-size: 20px;
+  font-size: 1.5em;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   width: 100%;
-  height: 40px;
-  padding: 5px 40px 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  transition: border-color 0.3s ease;
 }
 
-/* Estilos para cuando el input de contraseña está enfocado */
-#password:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+/* Alineación del input y label */
+.form-floating {
+  position: relative;
 }
 
-/* Estilos para el icono de ojo abierto */
-#password:focus + .btn-toggle-password i.fa-eye {
-  display: none;
+.form-floating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 0.5rem 0.75rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Estilos para el icono de ojo cerrado */
-#password:focus + .btn-toggle-password i.fa-eye-slash {
-  display: block;
+.form-floating input {
+  height: calc(3.5rem + 2px);
+  padding: 1rem 0.75rem;
 }
 
-/* Estilos para cuando se muestra la contraseña */
-#password[type="text"] {
-  padding-right: 40px;
-}
-
-/* Estilos para el icono de ojo abierto cuando se muestra la contraseña */
-#password[type="text"] + .btn-toggle-password i.fa-eye {
-  display: block;
-}
-
-/* Estilos para el icono de ojo cerrado cuando se muestra la contraseña */
-#password[type="text"] + .btn-toggle-password i.fa-eye-slash {
-  display: none;
+/* Ajustes para alinear el ícono al centro verticalmente */
+.row.align-items-center {
+  display: flex;
+  align-items: center;
 }
 
 /* Estilos para el botón */
 input[type="submit"] {
-  font-family: Verdana sans-serif;
+  font-family: Verdana, sans-serif;
   display: inline-block;
   background-color: #487cb2;
   color: #fff;
@@ -178,7 +107,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #1c8506;
 }
-
 input[type="submit"]:focus {
   outline: none;
   box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);

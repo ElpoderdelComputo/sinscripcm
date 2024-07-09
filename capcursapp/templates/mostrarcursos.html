@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- Agrega estilo tabla de datos Boostrap -->
-    <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <!--  <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}"> -->
     <link rel="stylesheet" href="{% static 'CSS/mostrarcurso.css' %}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.jqueryui.min.css">
@@ -23,7 +23,7 @@
     </div>
     <br>
     <h1>{{ usuario.cve_posgrad }} - {{ usuario.nom_program }}</h1>
-    <h2>Cursos programados {{ periodo }} {{ anio }}</h2>
+    <h2>Cursos programados para: {{ periodo }} {{ anio }}</h2>
     <p></p>
     <div>
         {% if messages %}
@@ -32,54 +32,60 @@
             {% endfor %}
         {% endif %}
     </div>
+    <div class="container">
 
-    <div class="button-container">
-      <a class="btn btn-success" href="{% url 'capcursapp:agregar_curso' %}" onclick="guardarSesion()">+ Seleccionar Curso</a>
-      <a href="https://youtu.be/ZhQWzUyv5L8" class="btn btn-primary" role="button" target="_blank">Ver Tutorial</a>
-    </div>
+        <section class="content-section">
+            <div class="button-container">
+                <a class="btn btn-success" href="{% url 'capcursapp:agregar_curso' %}" onclick="guardarSesion()">+ Seleccionar Curso</a>
+                <a href="https://youtu.be/ZhQWzUyv5L8" class="btn btn-primary" role="button" target="_blank">Ver Tutorial</a>
+            </div>
+        </section>
 
-    <p></p>
-    <table id="registrodecursos" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">CLAVE DEL CURSO</th>
-            <th scope="col">NOMBRE DEL CURSO</th>
-            <th scope="col">CLAVE DEL PROFESOR</th>
-            <th scope="col">PROFESOR TITULAR</th>
-            <th scope="col">CRÉDITOS</th>
-            <th scope="col">AULA - OBS.</th>
-            <th scope="col">EDITAR</th>
-            <th scope="col">ELIMINAR</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for curso in miscursospersonal %}
+        <p></p>
+        <table id="registrodecursos" class="display" style="width:100%">
+            <thead>
             <tr>
-                <!--La función forloop.counter devuelve el número de veces que se ha iterado el ciclo for -->
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ curso.cve_curso }}</td>
-                <td>{{ curso.nombre }}</td>
-                <td>{{ curso.cve_academic_id }}</td>
-                <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
-                <td>{{ curso.creditos }}</td>
-                <td>{{ curso.observaciones }}</td>
-                <td><a class="btn btn-light" href="{% url 'capcursapp:editar_curso' curso.id %}"><i class="fas fa-pencil-alt"></i></a></td>
-                <td>
-                    <button class="btn btn-danger" id="eliminar-curso-btn" onclick="abrirVentanaEmergente('{{ curso.id }}')" style="background-color: #ffffff; color:#ff0000; border-color: transparent;">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-
+                <th scope="col">ID</th>
+                <th scope="col">CLAVE </th>
+                <th scope="col">CURSO</th>
+                <th scope="col">CLAVE </th>
+                <th scope="col">PROFESOR TITULAR</th>
+                <th scope="col">CRÉDITOS</th>
+                <th scope="col">AULA - OBS.</th>
+                <th scope="col">EDITAR</th>
+                <th scope="col">ELIMINAR</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for curso in miscursospersonal %}
+                <tr>
+                    <!--La función forloop.counter devuelve el número de veces que se ha iterado el ciclo for -->
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ curso.cve_curso }}</td>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.cve_academic_id }}</td>
+                    <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
+                    <td>{{ curso.creditos }}</td>
+                    <td>{{ curso.observaciones }}</td>
+                    <td> <a class="btn btn-light editar-curso-btn" href="{% url 'capcursapp:editar_curso' curso.id %}">
+                        <i class="fas fa-pencil-alt"></i> Editar Curso
+                    </a></td>
+                    <td>
+                        <a href="{% url 'capcursapp:eliminar_curso' id_curso=curso.id %}" class="btn btn-danger" style="background-color: #ffffff; color:#ff0000; border-color: transparent;">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <div id="popup-container"></div>
-    <div>
+    <div class="button-container">
         <a class="btn btn-secondary" href="{% url 'capcursapp:vista_previa' usuario.nom_program %}">Vista previa</a>
         <a class="btn btn-secondary" href="{% url 'capcursapp:guardar_enviar' usuario.nom_program %}">Guardar y Enviar </a>
-        <button class="btn logout-button" type="submit" id="logout-button">Cerrar sesión</button>
+        <button class="btn logout-button" type="submit" id="logout-button"> Cerrar sesión </button>
     </div>
 
 </main>
@@ -88,9 +94,9 @@
 <script src="https://cdn.datatables.net/1.13.3/js/dataTables.jqueryui.min.js"></script>
 
 <script>
-  document.getElementById("logout-button").addEventListener("click", function() {
-    window.location.href = "../logout/";
-  });
+    document.getElementById("logout-button").addEventListener("click", function() {
+        window.location.href = "../logout/";
+    });
 </script>
 
 <script>
@@ -100,41 +106,37 @@
 </script>
 
 <script>
-  function guardarSesion() {
-    sessionStorage.setItem('vieneDeMostrarCurso', 'true');
-  }
-</script>
-
-<script>
-    function abrirVentanaEmergente(cursoId) {
-        const url = "{% url 'capcursapp:eliminar_curso' 0 %}".replace('0', cursoId);
-        const newWindow = window.open(url, "_blank", "width=400,height=300");
-        newWindow.focus();
+    function guardarSesion() {
+        sessionStorage.setItem('vieneDeMostrarCurso', 'true');
     }
 </script>
-
-
 <script>
-    const eliminarCursoBtn = document.getElementById('eliminar-curso-btn');
-    const popupContent = document.querySelector('.popup-content');
-    const closeBtns = document.querySelectorAll('.close');
+    // Obtener todos los elementos 'a' dentro de los elementos 'td' con la clase 'btn-danger'
+    const eliminarCursoLinks = document.querySelectorAll('td a.btn-danger');
 
-    if (eliminarCursoBtn) {
-      // Realizar operaciones con el botón
-      eliminarCursoBtn.addEventListener('click', () => {
-        console.log('Se hizo clic en el botón "eliminar-curso-btn"');
-        popupContent.classList.add('show-popup');
-      });
-    }
+    // Agregar un evento de clic a cada enlace
+    eliminarCursoLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            // Prevenir el comportamiento predeterminado del enlace
+            event.preventDefault();
 
-    closeBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            console.log('Se hizo clic en el botón "close"');
-            popupContent.classList.remove('show-popup');
+            // Mostrar un mensaje de confirmación
+            const confirmacion = confirm("¿Está seguro que desea eliminar el curso?");
+
+            // Si el usuario confirma la eliminación
+            if (confirmacion) {
+                // Obtener la URL del enlace
+                const url = this.getAttribute('href');
+                // Redirigir a la URL
+                window.location.href = url;
+            } else {
+                // Si el usuario cancela, no hacer nada
+                return false;
+            }
         });
     });
-
 </script>
+
 
 </body>
 </html>

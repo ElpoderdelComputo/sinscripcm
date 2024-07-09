@@ -589,7 +589,7 @@
     function validarHorario(dia) {
         var inicio = document.getElementById(dia + "_ini").value;
         var fin = document.getElementById(dia + "_fin").value;
-        if (inicio > fin) {
+        if (inicio >= fin) {
             alert("El horario de inicio debe ser menor que el horario de fin.");
             document.getElementById(dia + "_ini").value = "00:00";
             document.getElementById(dia + "_fin").value = "00:00";

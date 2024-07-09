@@ -54,7 +54,6 @@ def cursos_guardados(request):
     anio = settings.ANIO
     usuario = request.user
     coordinacion = Coordinaciones.objects.filter(username=usuario.username).first()
-    cve_program = coordinacion.cve_program
 
     cursos_posgra = Capcurs.objects.filter(cve_program=coordinacion.cve_program)
 
@@ -93,8 +92,6 @@ def mostrar_cursos(request):
             # El usuario ya ha generado el PDF, redirige a otra página o muestra un mensaje
             return redirect('capcursapp:cursos_guardados')
 
-        #miscursospersonal = Capcurs.objects.filter(cve_program=coordinacion.cve_program)
-        cve_program = coordinacion.cve_program
 
         miscursospersonal = Capcurs.objects.filter(cve_program=coordinacion.cve_program)
         #eliminar_colab_sin_titular() # revisar que no haya colaboradores sin titulares
@@ -229,9 +226,10 @@ def agregar_curso(request):
         inv = usuario.cve_program + str(690)
         exg = usuario.cve_program + str(691)
         epd = usuario.cve_program + str(692)
+        est = 'EST' + str(690)
 
         # Crear lista de claves a excluir
-        excluir = [esp, inv, exg, epd]
+        excluir = [esp, inv, exg, epd, est]
 
         # Excluir los cursos con claves contenidas en la lista "excluir"
         loscursos = todos_los_cursos.exclude(cve_curso__in=excluir).order_by('cve_curso')
@@ -239,7 +237,7 @@ def agregar_curso(request):
         # Academicos activos
         academicos_activos = Academic.objects.filter(activo='S')
         academicos = academicos_activos.order_by('cve_academic')
-    except Academic.DoesNotExist:
+    except Academic.Catacurs:
         messages.error(request, 'Lo siento, elemento no encntrado en la base de datos')
 
     clave = ['AEC', 'BOT', 'COA', 'DES', 'ECO', 'EDA', 'ENT', 'ECD', 'FIV', 'FIT', 'FOR', 'FRU', 'GAN', 'GEN', 'HID', 'IDI', 'SEM']
@@ -432,7 +430,7 @@ def agregar_colab(request, cve_curso):
     academicos_por_programa = {}
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
-        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, grado='DOCTORADO', activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)

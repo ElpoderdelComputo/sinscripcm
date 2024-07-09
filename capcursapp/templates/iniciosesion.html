@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'fontawesome-free-6.3.0-web/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{% static 'JS/iniciosesion.js' %}"></script>
     <title></title>
     <!-- Custom styles for this template -->
@@ -22,20 +22,20 @@
         <img class="mb-4" src="{% static 'imagenes/colpos_logo1.png' %}" alt="" width="315" height="90">
         <br>
         <div>
-            <h1>Sistema de Captura de Cursos</h1>
-            <h2>(CAPCURS)</h2>
+            <h1>SISTEMA DE CAPTURA DE CURSOS</h1>
         </div>
         <!-- Grupo que contiene la entrada correo -->
         <div class="formulario__grupo row align-items-center" id="grupo__correo">
-            <div class="col-sm-11 form-floating">
-                <input type="email" class="formulario_input form-control" id="username" name="username"
-                       placeholder="ejemplo@colpos.com" required>
-                <label for="username" class="formulario_label">Correo institucional</label>
-            </div>
-            <div class="col-sm-1">
-                <i class="formulario_validacion-estado fa fa-times-circle-o"></i>
-            </div>
-        </div>
+    <div class="col-sm-11 form-floating">
+        <input type="email" class="formulario_input form-control" id="username" name="username"
+               placeholder="ejemplo@colpos.com" required>
+        <label for="username" class="formulario_label">Correo institucional</label>
+    </div>
+    <div class="col-sm-1">
+        <i class="formulario_validacion-estado fa fa-times-circle-o"></i>
+    </div>
+</div>
+
         <!-- Grupo que contiene la contraseña -->
         <div class="formulario__grupo row align-items-center" id="grupo__password">
             <div class="form-floating col-sm-11">
@@ -44,10 +44,11 @@
             </div>
             <div class="col-sm-1">
                 <button class="btn-toggle-password" type="button">
-                    <i class="far fa-eye-slash"></i>
+                    <i class="far fa-eye"></i>
                 </button>
             </div>
         </div>
+
         <input type="submit" value="Iniciar sesión">
         <div>
             <p class="copyright mt-5 mb-3 text-muted">&copy; <span id="currentYear"></span></p>
@@ -72,19 +73,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    const btnTogglePassword = document.querySelector('.btn-toggle-password');
-    const inputPassword = document.querySelector('#password');
+    document.querySelector('.btn-toggle-password').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const icon = this.querySelector('i');
 
-    btnTogglePassword.addEventListener('click', function() {
-        if (inputPassword.type === 'password') {
-            inputPassword.type = 'text';
-            btnTogglePassword.innerHTML = '<i class="far fa-eye"></i>';
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
         } else {
-            inputPassword.type = 'password';
-            btnTogglePassword.innerHTML = '<i class="far fa-eye-slash"></i>';
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
         }
     });
 </script>
+
 <script>
     // Obtener el elemento donde se mostrará el año actual
     const currentYearElement = document.getElementById('currentYear');
