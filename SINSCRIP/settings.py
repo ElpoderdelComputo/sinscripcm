@@ -186,5 +186,3 @@ Para pruebas en produccion con debug = False ejecutar
 
 python manage.py runserver 10.0.0.90:9000 --insecure
 '''
-
-

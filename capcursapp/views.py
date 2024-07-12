@@ -252,8 +252,8 @@ def agregar_curso(request):
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
         # idiomas se quita el doctorado porque son licenciaturas
-        #academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by('cve_academic')
-        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by('cve_academic')
+        #academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
@@ -416,7 +416,7 @@ def agregar_colab(request, cve_curso):
     academicos_por_programa = {}
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
-        academicos = Academic.objects.filter(cve_program=programa, grado='DOCTORADO', activo='S').order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
