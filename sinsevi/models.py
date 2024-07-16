@@ -448,6 +448,7 @@ class Estudian(AbstractBaseUser):
     username = models.CharField(max_length=50, blank=True, null=True)
     aeta = models.BooleanField(default=False)  # tienen acta de evaluacion?
     consejop = models.BooleanField(default=False)  # tienen acta de evaluacion?
+    crsocial = models.BooleanField(default=0)  # tienen constancia de retibuicion social?
     password = models.CharField(max_length=128)
     niveestu = models.CharField(max_length=9, blank=True, null=True)
     cont_veces = models.IntegerField(default=0)

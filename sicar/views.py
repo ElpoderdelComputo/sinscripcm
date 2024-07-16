@@ -11,6 +11,8 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_exempt
+
 from SINSCRIP import settings
 from capcursapp.models import Coordinaciones
 from sinsevi.models import Estudian
@@ -105,7 +107,7 @@ def panel_posgrados(request):
     estudiantes = Estudian.objects.filter(cve_program=usuario.cve_program)
     data = [{'cve_estud': est.cve_estud, 'niveestu': est.niveestu, 'nombres': est.nombres,
              'apellidos': est.apellidos, 'fechingr': est.fechingr, 'consejop': est.consejop,
-             'aeta': est.aeta} for est in estudiantes]
+             'aeta': est.aeta, 'crsocial': est.crsocial} for est in estudiantes]
 
     return render(request, 'panel_posgra.html',
                   {'usuario': usuario, 'periodo': periodo, 'anio': anio, 'data': data, 'periodo_aeta': periodo_aeta,
@@ -127,13 +129,32 @@ def actualizar_checkbox(request):
         return JsonResponse({'status': 'error'})
 
 
+@csrf_exempt
+def update_crsocial(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            cve_estud = data.get('cve_estud')
+
+            crsocial = data.get('crsocial')
+            student = Estudian.objects.get(cve_estud=cve_estud)
+
+            if crsocial:
+                student.crsocial = True
+            else:
+                student.crsocial = False
+            student.save()
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+
 def recibir_archivo(request):
-    print('Recibieidno pdf')
+    #print('Recibieidno pdf')
     if request.method == "POST":
         cve_estud = request.POST.get('cve_estud')
         cve_program = request.POST.get('cve_program')
-
-        #print('Estudiante: ', cve_estud, ' ', cve_program)
 
         archivo = request.FILES["pdf"]
 
@@ -167,20 +188,20 @@ def recibir_archivo(request):
         estudiante.save()  # Guarda los cambios en la base de datos
 
         #correo_consejero, correo_corrd
-        print('Vamos a enviar el correo')
+        #print('Vamos a enviar el correo')
         enviar_aviso(estudiante.cve_estud)
-        print('FIn de Proceso email')
+        #print('FIn de Proceso email')
 
         mensage = 'El Acta de evaluación se ha guardado para: ' + estudiante.nombres + ' ' + estudiante.apellidos
 
         return JsonResponse({"message": mensage})
-    print('No es post Man')
+    #print('No es post Man')
 
     return JsonResponse({"message": "No se ha recibido ningún archivo o el método de solicitud no es válido."})
 
 
 def enviar_aviso(cve_estud):
-    print('ejecutando enviar_aviso')
+    #print('ejecutando enviar_aviso')
     estudiante = get_object_or_404(Estudian, cve_estud=cve_estud)
 
     if estudiante.cve_program == 'ECD':
@@ -189,11 +210,11 @@ def enviar_aviso(cve_estud):
     coordinacion = Coordinaciones.objects.filter(cve_program=estudiante.cve_program).first()
 
     # Envía el correo electrónico al estudiante, consejero y coordinacón
-    destinatario = [estudiante.username, coordinacion.username]
-    #destinatario = ['rodriguez.rosales@colpos.mx']
+    #destinatario = [estudiante.username, coordinacion.username]
+    destinatario = ['rodriguez.rosales@colpos.mx']
     # Codificar destinatarios
     destinatario_encoded = [Header(d, 'utf-8').encode() for d in destinatario]
-    print('avisando a: ', estudiante.nombres)
+    #print('avisando a: ', estudiante.nombres)
     asunto = 'Mensaje del Sistema de Inscripciones en Linea'
     periodo = settings.PERIODO
     anio = settings.ANIO
@@ -229,7 +250,7 @@ def enviar_aviso(cve_estud):
         smtp.sendmail(smtp_usuario, destinatario, email.message().as_bytes())
 
         smtp.quit()
-        print('FIn de enviar_aviso')
+        #print('FIn de enviar_aviso')
 
         # Después de procesar el archivo con éxito
         return HttpResponse('Archivo recibido correctamente.')

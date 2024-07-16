@@ -2,7 +2,8 @@ from django.urls import path
 from django.contrib import admin
 
 
-from .views import iniciar_sesion, logout_view, verificar_credenciales, panel_posgrados, actualizar_checkbox, recibir_archivo
+from .views import (iniciar_sesion, logout_view, verificar_credenciales, panel_posgrados, actualizar_checkbox,
+                    recibir_archivo, update_crsocial)
 app_name = 'sicar'
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path('verificar_credenciales/', verificar_credenciales, name='verificar_credenciales'),
     path('panel_posgrados/', panel_posgrados, name='panel_posgrados'),
     path('actualizar_checkbox/', actualizar_checkbox, name='actualizar_checkbox'),
+    path('update_crsocial/', update_crsocial, name='update_crsocial'),
     path('recibir_archivo/', recibir_archivo, name='recibir_archivo'),
 ]
