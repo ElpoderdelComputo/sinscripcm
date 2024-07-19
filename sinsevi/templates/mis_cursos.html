@@ -16,21 +16,19 @@
 </head>
 <body>
 
-
-<main>
+<header>
     <!-- La imagen institucional -->
     <div class="center-image">
-        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="500">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
     </div>
 
     <div>
-        <h1>INSCRIPCIONES {{ config.periodo }} {{ config.anio }}</h1>
+        <h1>PREINSCRIPCIONES {{ config.periodo }} {{ config.anio }}</h1>
     </div>
 
     <div id="contador-container">
         <h5 id="cuenta-regresiva"></h5>
     </div>
-
 
     {% if messages %}
         <div id="messages">
@@ -39,137 +37,136 @@
             {% endfor %}
         </div>
     {% endif %}
-    <div>
-        <div class="container">
-            <table id="datos_estudiante" class="table">
-                <tr>
-                    <th>PROGRAMA </th>
-                    <td>{{ programa.cve_posgrad }} - {{ programa.nom_program }}</td>
-                </tr>
-                <tr>
-                    <th>ESTUDIANTE </th>
-                    <td>{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
-                </tr>
-                <tr>
-                    <th>MATRICULA </th>
-                    <td>{{ estudiante.cve_estud }}</td>
-                </tr>
-                <tr>
-                    <th>PERIODO ACADÉMICO </th>
-                    <td>{{ config.periodo }}</td>
-                </tr>
-                <tr>
-                    <th>CATEGORÍA </th>
-                    <td>{{ estudiante.niveestu }}</td>
-                </tr>
-                <tr>
-                    <th>CVU</th>
-                    <td>
-                        <form method="post">
-                            {% csrf_token %}
-                            <!-- Otros campos del formulario aquí -->
-                            <input type="number" name="cvu" id="cvu" value="{{ cvu }}" />
-                            <!-- Otros campos del formulario aquí -->
-                            <button type="submit" class="btn btn-link" id="actualiza_cvu">Actualizar</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </div>
+</header>
 
-        <div class="button-container">
-            <a class="btn btn-success" href="{% url 'sinsevi:selecciona_curso' %}" onclick="guardarSesion()">+ Curso Regular</a>
-            <a class="btn btn-dark" onclick="crearAsistira()">+ Investigación</a>
-            <a href="https://youtu.be/eQHUypV0I6g" class="btn btn-warning" role="button" target="_blank">Ver Tutorial</a>
-        </div>
-
-        <div class="container-1" content="center">
-            <div class="row border-custom-1">
-                <table id="registrodecursos" class="display" style="width:100%">
-                    <!-- Código de encabezado de la tabla, etc. -->
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">CLAVE</th>
-                        <th scope="col">NOMBRE DEL CURSO</th>
-                        <th scope="col">CLAVE</th>
-                        <th scope="col">PROFESOR TITULAR</th>
-                        <th scope="col">ELIMINAR</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    {% for curso in capcursos %}
-                        <tr>
-                            <th scope="row">{{ forloop.counter }}</th>
-                            <td>
-                                {% if curso.gpo_670 %}
-                                    {{ curso.cve_curso }}-{{ curso.gpo_670 }}
-                                {% else %}
-                                    {{ curso.cve_curso }}
-                                {% endif %}
-                            </td>
-                            <td>{{ curso.nombre }}</td>
-                            <td>{{ curso.cve_academic }}</td>
-                            <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
-                            <td>
-                                <button class="btn btn-danger" id="eliminar-curso-btn" onclick="elimina_curso('{{ curso.id_sinsevi }}')" style="background-color: #ffffff; color:#ff0000; border-color: transparent;">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        {% if forloop.counter == 6 %}
-                            <script>
-                                alert("El número máximo de cursos debe ser igual a 6.");
-                            </script>
-                        {% endif %}
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <table id="creditos">
+<main>
+    <div id="datos-container">
+        <table id="datos_estudiante" class="table">
             <tr>
-                <th>CRÉDITOS POR CURSOS REGULARES: </th>
-                <td> {{ suma_creditos.cred_regular }}</td>
+                <th>PROGRAMA </th>
+                <td>{{ programa.cve_posgrad }} - {{ programa.nom_program }}</td>
             </tr>
             <tr>
-                <th>CRÉDITOS POR SEMINARIOS:  </th>
-                <td> {{ suma_creditos.cred_seminarios }}</td>
+                <th>ESTUDIANTE </th>
+                <td>{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
             </tr>
             <tr>
-                <th>CRÉDITOS POR INVESTIGACIÓN: </th>
-                <td> {{ suma_creditos.cred_inv }}</td>
+                <th>MATRICULA </th>
+                <td>{{ estudiante.cve_estud }}</td>
             </tr>
             <tr>
-                <th>TOTAL DE CRÉDITOS: </th>
-                <td id="total-creditos"> {{ suma_creditos.total }}</td>
+                <th>PERIODO ACADÉMICO </th>
+                <td>{{ config.periodo }}</td>
+            </tr>
+            <tr>
+                <th>CATEGORÍA </th>
+                <td>{{ estudiante.niveestu }}</td>
+            </tr>
+            <tr>
+                <th>CVU</th>
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <!-- Otros campos del formulario aquí -->
+                        <input type="number" name="cvu" id="cvu" value="{{ cvu }}" />
+                        <!-- Otros campos del formulario aquí -->
+                        <button type="submit" class="btn btn-link" id="actualiza_cvu">Actualizar</button>
+                    </form>
+                </td>
             </tr>
         </table>
     </div>
 
-    <p id="mensaje-advertencia" style="color: red;"></p>
+        <div class="container-0">
+            <div class="row border-custom-0">
+                <div class="button-container">
+                    <a class="btn btn-success" href="{% url 'sinsevi:selecciona_curso' %}" onclick="guardarSesion()">+ Curso Regular</a>
+                    <a class="btn btn-dark" onclick="crearAsistira()">+ Investigación</a>
+                    <a href="https://youtu.be/eQHUypV0I6g" class="btn btn-warning" role="button" target="_blank">Ver Tutorial</a>
+                </div>
+            </div>
+            <div class="container-1">
+                <div class="row border-custom-1">
+                    <table id="registrodecursos" class="display" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">CLAVE</th>
+                            <th scope="col">NOMBRE DEL CURSO</th>
+                            <th scope="col">CLAVE</th>
+                            <th scope="col">PROFESOR TITULAR</th>
+                            <th scope="col">ELIMINAR</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for curso in capcursos %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>
+                                    {% if curso.gpo_670 %}
+                                        {{ curso.cve_curso }}-{{ curso.gpo_670 }}
+                                    {% else %}
+                                        {{ curso.cve_curso }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ curso.nombre }}</td>
+                                <td>{{ curso.cve_academic }}</td>
+                                <td>{{ curso.nom_academic }} {{ curso.apellidos }}</td>
+                                <td>
+                                    <button class="btn btn-danger" id="eliminar-curso-btn" onclick="elimina_curso('{{ curso.id_sinsevi }}')" style="background-color: #ffffff; color:#ff0000; border-color: transparent;">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% if forloop.counter == 6 %}
+                                <script>
+                                    alert("El número máximo de cursos debe ser igual a 6.");
+                                </script>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <div style="display: flex; justify-content: space-between;">
-        <div style="text-align: center; flex-grow: 1;">
-            <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar</a>
+            <div id="creditos-container">
+                <table id="creditos">
+                    <tr>
+                        <th>CRÉDITOS POR CURSOS REGULARES: </th>
+                        <td> {{ suma_creditos.cred_regular }}</td>
+                    </tr>
+                    <tr>
+                        <th>CRÉDITOS POR SEMINARIOS: </th>
+                        <td> {{ suma_creditos.cred_seminarios }}</td>
+                    </tr>
+                    <tr>
+                        <th>CRÉDITOS POR INVESTIGACIÓN: </th>
+                        <td> {{ suma_creditos.cred_inv }}</td>
+                    </tr>
+                    <tr>
+                        <th>TOTAL DE CRÉDITOS: </th>
+                        <td id="total-creditos"> {{ suma_creditos.total }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p id="mensaje-advertencia"></p>
+
+            <div style="display: flex; justify-content: space-between;">
+                <div style="text-align: center; flex-grow: 1;">
+                    <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar</a>
+                </div>
+                <div class="button-container">
+                    <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+                </div>
+            </div>
         </div>
-        <div class="button-container">
-            <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+
+        <hr>
+
+        <div>
+            <p class="text-center">NOTA: El Profesor consejero u orientador es el responsable directo de la planeación y seguimiento del plan de estudios del estudiante. <br> CRÉDITOS POR INVESTIGACIÓN: El profesor consejero es quien aprueba y define el número de créditos entre 3 y 9.</p>
         </div>
-    </div>
-
-    <hr>
-    <div>
-        <!-- Aquí puedes agregar el contenido de tu pie de página -->
-        <p class="text-center"> NOTA: El Profesor consejero u orientador es el responsable directo de la planeación y seguimiento del plan de estudios del
-            estudiante. <br> CRÉDITOS POR INVESTIGACIÓN: El profesor consejero es quien aprueba y define el número de creditos entre 3 y 9.</p>
-
-    </div>
-    </div>
 </main>
 
 <script>

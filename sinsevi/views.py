@@ -610,16 +610,18 @@ def guardar_boleta(request):
     fecha_nuevo_ingr = settings.FN_INGRESO
     try:
         consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud, orden=1)
-        # print('EL consejero', consejero_estudiante.cve_academic)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
-        # print('EL consejero', consejero.cve_academic, consejero.nombres)
         consejero_orientador = 'PROFESOR(A) CONSEJERO'
-    except Academic.DoesNotExist:
-        # buscamos en la tabla orientador
-        consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
-        consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
-        consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
-
+    except estudiante_consejero.DoesNotExist:
+        try:
+            # buscamos en la tabla orientador
+            consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
+            consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
+            consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
+        except Orientador.DoesNotExist:
+            # manejar el caso donde no hay ni consejero ni orientador
+            consejero = None
+            consejero_orientador = 'SIN CONSEJERO NI ORIENTADOR'
 
     # nacionalidad
     # Acceder a la tabla 'Estud_nacion' y filtrar por 'cve_estud'
@@ -791,8 +793,8 @@ def generarPDF(request):
             destino.write(pdf_stream_con_sello.read())
 
         # Envía el correo electrónico
-        #destinatario = ['rodriguez.rosales@colpos.mx']
-        destinatario = [estudiante.username, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
+        destinatario = ['rodriguez.rosales@colpos.mx']
+        #destinatario = [estudiante.username, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
 
         asunto = ('Boleta de preinscripción' + ' ' + str(estudiante.cve_estud) + ' ' + estudiante.nombres
                   + ' ' + estudiante.apellidos)
