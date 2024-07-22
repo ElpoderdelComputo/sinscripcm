@@ -6,9 +6,8 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
     margin: 0;
-    background-color: #eef0fa;
+    background-color: #ffffff;
     color: #333;
     line-height: 1.5;
     font-family: Arial, sans-serif;
@@ -18,27 +17,61 @@ main {
     width: 90%;
     justify-content: center;
     max-width: 80%;
-    background-color: #fff;
-    padding: 20px;
+    background-color: #f4f4f4;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
 }
 
-
-
 /* Estilo para la imagen institucional */
 img {
     display: flex;
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     justify-content: center;
+}
+
+/* Estilo para el encabezado */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: auto;
+    text-align: center; /* Alineación al centro horizontal */
+}
+
+h2 {
+    font-family: Arial sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center; /* Alineación al centro horizontal */
 }
 
 #datos-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.container-0 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+}
+
+.border-custom-0 {
+    border: 2px solid #ccc;
+    padding: 2px;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.container-0:hover .border-custom-0 {
+    transform: translate(0, -5px);
+    border-color: #4CAF50; /* Cambiar a tu color preferido */
 }
 
 .container-1 {
@@ -61,48 +94,87 @@ img {
     border-color: #4CAF50; /* Cambiar a tu color preferido */
 }
 
+/* ESTILO DEL RELOJ */
+#contador-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para el título del contador */
+#cuenta-regresiva {
+    font-size: 1rem; /* Tamaño de fuente grande */
+    font-weight: bold;
+    color: #ffffff; /* Color de texto blanco */
+    background: linear-gradient(to right, #ff0000, #f45353); /* Fondo degradado */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+
 .table {
     width: 50%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    align-items: center;
 }
 
 .table th, .table td {
     font-size: 12px; /* Tamaño de fuente del cuerpo de la tabla */
-    padding: 5px 10px;
+    padding: 1px 8px;
     border: 1px solid #ddd;
-    /*align-items: center;*/
 }
 
 .table th {
-    background-color: #f4f4f4;
+    background-color: #ddd;
     white-space: nowrap;
     text-align: right;
+    border: 2px solid #ddd;
+    word-wrap: break-word;
 }
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+.table td {
+    background-color: #fff;
 }
 
-.button-container .btn {
-    margin-left: 10px;
+#datos_estudiante {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    align-items: center;
 }
 
-.display {
+#datos_estudiante-1 td, #datos_estudiante-1 th {
+    border: 1px solid #ddd;
+    padding: 2px;
+    font-size: 12px; /* Tamaño de fuente del cuerpo de la tabla */
+    text-align: left;
+    vertical-align: middle;
+    height: fit-content;
+    word-wrap: break-word;
+}
+
+.registrodecursos {
     width: 100%;
     border-collapse: collapse;
 }
 
-.display th, .display td {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
+.registrodecursos th, .registrodecursos td {
+    padding: 5px 5px;
+    border: 2px solid #ddd;
     text-align: left;
 }
 
-.display th {
-    background-color: #f4f4f4;
+.registrodecursos th {
+    background-color: #ddd;
+    font-size: 16px;
+}
+.registrodecursos td {
+    font-size: 14px;
+    background-color: #fff;
 }
 
 #creditos-container {
@@ -117,30 +189,45 @@ img {
 }
 
 #creditos th, #creditos td {
-    padding: 5px 10px;
-    text-align: left;
+    padding: 2px 5px;
+    text-align: right;
     border: 1px solid #ddd;
 }
 
 #creditos th {
     background-color: #ddd;
+    font-size: 12px;
     white-space: nowrap;
 }
 
 #creditos td {
     background-color: #fff;
+    font-size: 12px;
 }
 
 #total-creditos {
     font-weight: bold;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones a los extremos */
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
 .btn {
     padding: 10px 20px;
+    font-size: 1rem; /* Tamaño de fuente */
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-}
+    margin-bottom: 10px;
+    }
 
 .btn-success {
     background-color: #28a745;
@@ -153,7 +240,7 @@ img {
 }
 
 .btn-warning {
-    background-color: #ffc107;
+    background-color: #ff0000;
     color: white;
 }
 
@@ -168,9 +255,13 @@ img {
 }
 
 .btn-link {
-    background: none;
-    color: #007bff;
+    padding: 5px 8px;
+    background-color: #28a745;
+    color: white;
     text-decoration: none;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
 }
 
 .logout-button {
@@ -196,8 +287,20 @@ img {
 
 .container-0, .container-1 {
     width: 100%;
+    margin-top: 10px;
 }
 
+/* Estilo para el input */
+input#cvu {
+    padding: 4px;
+    border: 0.8px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 30%; /* Ajusta el ancho según tus necesidades */
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    background: #cfe2ed;
+}
 
 
 

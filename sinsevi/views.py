@@ -145,7 +145,6 @@ def mis_cursos(request):
         cvu = 0
 
     fecha_nuevo_ingr = settings.FN_INGRESO
-    print('Hola')
 
     try:
         consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud, orden=1)
@@ -607,7 +606,6 @@ def guardar_boleta(request):
         cvu = 0
 
     # Filtra los registros de la tabla Consejo donde el campo cve_estud coincida con el valor de cve_estud.
-    fecha_nuevo_ingr = settings.FN_INGRESO
     try:
         consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud, orden=1)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
@@ -728,14 +726,19 @@ def cursos_asistire(request):
         cvu = 0
 
     try:
-        consejero_estudiante = estudiante_consejero.objects.filter(cve_estud=cve_estud, orden=1).first()
+        consejero_estudiante = estudiante_consejero.objects.get(cve_estud=cve_estud, orden=1)
         consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
         consejero_orientador = 'PROFESOR(A) CONSEJERO'
-    except Academic.DoesNotExist:
-        # buscamos en la tabla orientador
-        consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
-        consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
-        consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
+    except estudiante_consejero.DoesNotExist:
+        try:
+            # buscamos en la tabla orientador
+            consejero_estudiante = Orientador.objects.get(cve_estud=cve_estud)
+            consejero = Academic.objects.get(cve_academic=consejero_estudiante.cve_academic)
+            consejero_orientador = 'PROFESOR(A) ORIENTADOR(A)'
+        except Orientador.DoesNotExist:
+            # manejar el caso donde no hay ni consejero ni orientador
+            consejero = None
+            consejero_orientador = 'SIN CONSEJERO NI ORIENTADOR'
 
     # nacionalidad
     # Acceder a la tabla 'Estud_nacion' y filtrar por 'cve_estud'

@@ -19,7 +19,7 @@
 <header>
     <!-- La imagen institucional -->
     <div class="center-image">
-        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
+        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="550">
     </div>
 
     <div>
@@ -40,54 +40,48 @@
 </header>
 
 <main>
-    <div id="datos-container">
-        <table id="datos_estudiante" class="table">
-            <tr>
-                <th>PROGRAMA </th>
-                <td>{{ programa.cve_posgrad }} - {{ programa.nom_program }}</td>
-            </tr>
-            <tr>
-                <th>ESTUDIANTE </th>
-                <td>{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
-            </tr>
-            <tr>
-                <th>MATRICULA </th>
-                <td>{{ estudiante.cve_estud }}</td>
-            </tr>
-            <tr>
-                <th>PERIODO ACADÉMICO </th>
-                <td>{{ config.periodo }}</td>
-            </tr>
-            <tr>
-                <th>CATEGORÍA </th>
-                <td>{{ estudiante.niveestu }}</td>
-            </tr>
-            <tr>
-                <th>CVU</th>
-                <td>
-                    <form method="post">
-                        {% csrf_token %}
-                        <!-- Otros campos del formulario aquí -->
-                        <input type="number" name="cvu" id="cvu" value="{{ cvu }}" />
-                        <!-- Otros campos del formulario aquí -->
-                        <button type="submit" class="btn btn-link" id="actualiza_cvu">Actualizar</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <h2>DATOS DEL ESTUDIANTE</h2>
+    <table id="datos_estudiante" class="table">
+        <tr>
+            <th>PROGRAMA</th>
+            <td>{{ programa.cve_posgrad }} - {{ programa.nom_program }}</td>
+        </tr>
+        <tr>
+            <th>ESTUDIANTE</th>
+            <td>{{ estudiante.nombres }} {{ estudiante.apellidos }}</td>
+        </tr>
+        <tr>
+            <th>MATRICULA</th>
+            <td>{{ estudiante.cve_estud }}</td>
+        </tr>
+        <tr>
+            <th>PERIODO ACADÉMICO</th>
+            <td>{{ config.periodo }}</td>
+        </tr>
+        <tr>
+            <th>CATEGORÍA</th>
+            <td>{{ estudiante.niveestu }}</td>
+        </tr>
+        <tr>
+            <th>CVU</th>
+            <td>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Otros campos del formulario aquí -->
+                    <input type="number" name="cvu" id="cvu" value="{{ cvu }}" />
+                    <!-- Otros campos del formulario aquí -->
+                    <button type="submit" class="btn btn-link" id="actualiza_cvu">Actualizar</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <hr>
 
-        <div class="container-0">
-            <div class="row border-custom-0">
-                <div class="button-container">
-                    <a class="btn btn-success" href="{% url 'sinsevi:selecciona_curso' %}" onclick="guardarSesion()">+ Curso Regular</a>
-                    <a class="btn btn-dark" onclick="crearAsistira()">+ Investigación</a>
-                    <a href="https://youtu.be/eQHUypV0I6g" class="btn btn-warning" role="button" target="_blank">Ver Tutorial</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-10">
             <div class="container-1">
                 <div class="row border-custom-1">
-                    <table id="registrodecursos" class="display" style="width:100%">
+                    <table id="registrodecursos" class="registrodecursos" style="width:100%">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -129,44 +123,53 @@
                 </div>
             </div>
 
-            <div id="creditos-container">
-                <table id="creditos">
-                    <tr>
-                        <th>CRÉDITOS POR CURSOS REGULARES: </th>
-                        <td> {{ suma_creditos.cred_regular }}</td>
-                    </tr>
-                    <tr>
-                        <th>CRÉDITOS POR SEMINARIOS: </th>
-                        <td> {{ suma_creditos.cred_seminarios }}</td>
-                    </tr>
-                    <tr>
-                        <th>CRÉDITOS POR INVESTIGACIÓN: </th>
-                        <td> {{ suma_creditos.cred_inv }}</td>
-                    </tr>
-                    <tr>
-                        <th>TOTAL DE CRÉDITOS: </th>
-                        <td id="total-creditos"> {{ suma_creditos.total }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <p id="mensaje-advertencia"></p>
-
-            <div style="display: flex; justify-content: space-between;">
-                <div style="text-align: center; flex-grow: 1;">
-                    <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar</a>
-                </div>
-                <div class="button-container">
-                    <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
-                </div>
+        </div>
+        <div class="col-md-2">
+            <div class="container-0">
+            <div class="row border-custom-0">
+                <a class="btn btn-success" href="{% url 'sinsevi:selecciona_curso' %}" onclick="guardarSesion()">+ Curso Regular</a>
+                <a class="btn btn-dark" onclick="crearAsistira()">+ Investigación</a>
+                <a href="https://youtu.be/eQHUypV0I6g" class="btn btn-warning" role="button" target="_blank"> <i class="fab fa-youtube button-icon"></i> Ver Tutorial</a>
             </div>
         </div>
+    </div>
+    </div>
 
-        <hr>
+    <hr>
 
-        <div>
-            <p class="text-center">NOTA: El Profesor consejero u orientador es el responsable directo de la planeación y seguimiento del plan de estudios del estudiante. <br> CRÉDITOS POR INVESTIGACIÓN: El profesor consejero es quien aprueba y define el número de créditos entre 3 y 9.</p>
-        </div>
+    <div id="creditos-container">
+        <table id="creditos">
+            <tr>
+                <th>CRÉDITOS POR CURSOS REGULARES: </th>
+                <td> {{ suma_creditos.cred_regular }}</td>
+            </tr>
+            <tr>
+                <th>CRÉDITOS POR SEMINARIOS: </th>
+                <td> {{ suma_creditos.cred_seminarios }}</td>
+            </tr>
+            <tr>
+                <th>CRÉDITOS POR INVESTIGACIÓN: </th>
+                <td> {{ suma_creditos.cred_inv }}</td>
+            </tr>
+            <tr>
+                <th>TOTAL DE CRÉDITOS: </th>
+                <td id="total-creditos"> {{ suma_creditos.total }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <p id="mensaje-advertencia"></p>
+
+    <div class="button-container">
+        <a class="btn btn-secondary" href="{% url 'sinsevi:guardar_boleta' %}">Guardar y Enviar</a>
+        <button class="btn logout-button" type="submit" id="logout-button">Cerrar Sesión</button>
+    </div>
+
+    <hr>
+
+    <div>
+        <p class="text-center">NOTA: El Profesor consejero u orientador es el responsable directo de la planeación y seguimiento del plan de estudios del estudiante. <br> CRÉDITOS POR INVESTIGACIÓN: El profesor consejero es quien aprueba y define el número de créditos entre 3 y 9.</p>
+    </div>
 </main>
 
 <script>
