@@ -66,7 +66,7 @@ def verificar_credencialEst(request):
     # Verificar si el sistema esta en linea
     if settings.sinsevi_on == 0:
         messages.error(request, 'El sistema aún no está disponible.')
-        return render(request, 'fuera_de_linea.html')
+        return redirect('sinsevi:fuera_de_linea')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -801,8 +801,8 @@ def generarPDF(request):
             destino.write(pdf_stream_con_sello.read())
 
         # Envía el correo electrónico
-        destinatario = ['rodriguez.rosales@colpos.mx']
-        #destinatario = [estudiante.username, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
+        #destinatario = ['rodriguez.rosales@colpos.mx']
+        destinatario = [estudiante.username, 'servacadmontecillo@colpos.mx', consejero.email, coordinacion.username, 'posgradosybecascm@colpos.mx']
 
         asunto = ('Boleta de preinscripción' + ' ' + str(estudiante.cve_estud) + ' ' + estudiante.nombres
                   + ' ' + estudiante.apellidos)
