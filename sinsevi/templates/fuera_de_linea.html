@@ -4,23 +4,143 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuera de Línea - Sistema de Inscripciones en Línea</title>
+    <title>SINSEVI Offline</title>
     <link rel="stylesheet" href="{% static 'CSS_EST/fuera_de_linea.css' %}">
+        <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: #f9f9f9; /* Cambia el fondo a un gris claro */
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        .center-image {
+            display: flex;
+            justify-content: center;
+            margin: 1rem auto; /* Aumentar margen para mejor separación */
+        }
+        .center-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            margin: 0.5rem auto; /* Margen más consistente */
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff; /* Fondo blanco para mejor contraste */
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .container:hover {
+            transform: translate(5px, -5px);
+            border-color: #4CAF50;
+        }
+        .message {
+            flex: 1;
+            padding: 0 1rem; /* Añadir padding para separación interna */
+        }
+        .message:nth-child(2) {
+            text-align: right;
+        }
+        .container-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .social-button {
+            display: inline-block;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            margin: 0.5rem;
+        }
+        .social-button:hover {
+            background-color: #eee;
+        }
+        .youtube-button {
+            background-color: #c4302b;
+            color: #fff;
+        }
+        .button-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #666;
+        }
+        footer a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <!-- Inicio del contenedor para la imagen central -->
-    <div class="center-image">
-        <img src="{% static 'imagenes/SubDirImg.png' %}" alt="Imagen Institucional" width="700">
+<div class="center-image">
+    <img src="{% static 'imagenes/SubDirImg.png' %}" alt="Imagen Institucional" width="700">
+</div>
+<h1>Sistema Fuera de Línea</h1>
+<h2>{{ mensaje1 }}</h2>
+<div class="container">
+    <div class="message">
+        <h2>Estudiantes Vigentes</h2>
+        <h3>{{ mensaje2 }}</h3>
     </div>
-    <!-- Fin del contenedor para la imagen central -->
-
-    <h1>Fuera de línea</h1>
-    <p>Preinscripciones Periodo OTOÑO-2024: 08 - 09 de agosto 2024 </p>
-    <p> de 9:00 am a 17:00 horas</p>
-    <p>Guía Preinscripciones: <a href="https://www.youtube.com/watch?v=eQHUypV0I6g" target="_blank">Ver video</a></p>
-    <p>Guía para altas y bajas: <a href="https://youtu.be/cthOD8kJFGw" target="_blank">Ver video</a></p>
-    
-    <!-- Links adicionales o información de contacto podría ir aquí -->
-
+    <div class="message">
+        <h2>Nuevo Ingreso</h2>
+        <h3>{{ mensaje3 }}</h3>
+    </div>
+</div>
+<div class="container-bottom">
+    <a href="https://www.youtube.com/watch?v=eQHUypV0I6g" class="social-button youtube-button" target="_blank">
+        <i class="fab fa-youtube button-icon"></i> Preinscripciones
+    </a>
+    <a href="https://youtu.be/cthOD8kJFGw" class="social-button youtube-button" target="_blank">
+        <i class="fab fa-youtube button-icon"></i> Altas y Bajas
+    </a>
+</div>
+<footer>
+    <p class="copyright">&copy; <span id="currentYear"></span></p>
+    <a class="btn btn-info" href="{% url 'sinsevi:about' %}">Acerca de</a>
+</footer>
+<script>
+    const currentYearElement = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    currentYearElement.textContent = currentYear;
+</script>
 </body>
 </html>

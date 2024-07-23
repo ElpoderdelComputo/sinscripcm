@@ -114,7 +114,7 @@ FL_CAPCURS = '2024-8-9 17:00:00' # Fecha limite de captura de cursos
 
 sinsevi_on = 1  #Cambiar a 1 para activar
 coordins_on = 1  #Cambiar a 1 para activar
-FL_SINSEVI = '2024-8-9 17:00:00' # Fecha limite de inscripciones
+FL_SINSEVI = '2024-07-26 17:00:00' # Fecha limite de inscripciones año-mes-dia
 
 siayb_on = 1     #Cambiar a 1 para activar
 FL_SIAYB = '2024-8-9 17:00:00'  # Fecha limite de altas y bajas
@@ -125,6 +125,12 @@ FN_INGRESO = '2024-09-02'  # Fecha de registro de los estudiantes de nuevo ingre
 # Periodo de AETAS que se van a subir al sistema
 PERIODO_AETA = 'PIMAVERA' #P=PRIMAVERA, O= OTOÑO, V = VERANO
 ANIO_AETA = 2024  # SE CARGARAN AETAS
+
+# mensajes para : Fuera de linea 3 lineas
+mensaje1 = 'PREINSCRIPCIONES' + ' ' + PERIODO + ' ' + str(ANIO)
+mensaje2 = 'Preinscripciones 08 - 09 de agosto 2024 de 9:00 am a 17: 00:00 horas'
+mensaje3 = 'Preinscripciones OTOÑO-2024: 25 - 26 de julio 2024 de 9:00 am a 17: 00:00 horas'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

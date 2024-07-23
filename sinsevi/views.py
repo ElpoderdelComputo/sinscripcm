@@ -46,7 +46,8 @@ def compartir_tablas(request):
                                                          'periingr', 'fechingr', 'e_mail', 'niveestu'))
 
         # Obtener datos de la tabla Consejo
-        consejero_estudiante = list(estudiante_consejero.objects.all().values('cve_estud', 'cve_academic', 'registro', 'agno'))
+        consejero_estudiante = list(estudiante_consejero.objects.all().values('cve_estud', 'cve_academic', 'registro',
+                                                                              'agno'))
 
         # Organizar los datos en un diccionario
         datos_totales = {
@@ -97,9 +98,11 @@ def verificar_credencialEst(request):
 def fuera_de_linea(request):
     mensaje1 = settings.mensaje1
     mensaje2 = settings.mensaje2
+    mensaje3 = settings.mensaje3
     render_data = {
         'mensaje1': mensaje1,
-        'mensaje2': mensaje2
+        'mensaje2': mensaje2,
+        'mensaje3': mensaje3
     }
 
     return render(request, 'fuera_de_linea.html', render_data)
@@ -198,13 +201,12 @@ def mis_cursos(request):
     config = {
         'periodo': settings.PERIODO,
         'anio': settings.ANIO,
-        'flimite': settings.FECHA_LIMITE
+        'flimite': settings.FL_SINSEVI
     }
 
     render_data = {
         'estudiante': estudiante, 'programa': programa, 'capcursos': capcursos, 'config': config,
-        'consejero': consejero,
-        'entidad_beca': entidad_beca, 'pais': pais, 'suma_creditos': suma_creditos, 'cvu': cvu}
+        'consejero': consejero, 'entidad_beca': entidad_beca, 'pais': pais, 'suma_creditos': suma_creditos, 'cvu': cvu}
 
     return render(request, 'mis_cursos.html', render_data)
 
@@ -223,6 +225,9 @@ def est_sin_aeta(request):
                        "Asegúrate de completar este requisito.")
     elif estudiante.aeta is False:
         advertencia = ("No ha registrado su Acta de Evaluación de Trabajo Académico. "
+                       "Asegúrate de completar este requisito.")
+    elif estudiante.crsocial is False:
+        advertencia = ("No ha Entregado su Constancia de Retribución Social "
                        "Asegúrate de completar este requisito.")
     else:
         # Si ambos consejop y aeta están registrados, no hay necesidad de redirigir.

@@ -40,6 +40,15 @@
 
 <footer>
 </footer>
+<script>
+    // Obtener el elemento donde se mostrará el año actual
+    const currentYearElement = document.getElementById('currentYear');
 
+    // Obtener el año actual
+    const currentYear = new Date().getFullYear();
+
+    // Asignar el año actual al elemento
+    currentYearElement.textContent = currentYear;
+</script>
 </body>
 </html>
