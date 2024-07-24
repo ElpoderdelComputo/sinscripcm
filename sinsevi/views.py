@@ -158,7 +158,7 @@ def mis_cursos(request):
             print('Es de nuevo ingreso, sin consejero')
         else:
             consejero = 'No Registrado'  # O cualquier otro valor predeterminado que desees asignar si no hay consejero.
-            print('No ha registrado consejo Particular')
+            #print('No ha registrado consejo Particular')
     except Academic.DoesNotExist:
         # Aquí manejas la excepción si no se encuentra el objeto Academic
         consejero = 'Profesor no Registrado en Academic'
@@ -648,15 +648,10 @@ def guardar_boleta(request):
 
 
 def actualizar_cvu(request):
-    # print('YA VAMOS A ACTUALIZAR CVU')
     if request.method == 'POST' and 'cvu' in request.POST:
         nuevo_cvu = request.POST['cvu']
-        # print(nuevo_cvu)
-        # Asume que hay algún identificador único (como el ID) para identificar el registro específico
-        # Si no lo hay, deberás ajustar esta parte según tu lógica de negocio.
         usuario_id = request.session.get('usuario_id')
         estudiante = get_object_or_404(Estudian, id=usuario_id)
-        # print('el estudiante es: ', estudiante.cve_estud)
 
         # Obtiene el objeto Becario que se va a actualizar
         becario = Becarios.objects.get(cve_estud=estudiante.cve_estud)
@@ -668,7 +663,6 @@ def actualizar_cvu(request):
         return JsonResponse({'success': 'CVU actualizado correctamente'}, status=200)
 
     return JsonResponse({'error': 'Se esperaba una solicitud POST con el parámetro "cvu"'}, status=400)
-
 
 def recibir_archivo(request):
     if request.method == "POST" and request.FILES:

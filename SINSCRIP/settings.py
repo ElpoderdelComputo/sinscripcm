@@ -112,7 +112,7 @@ FECHA_LIMITE = '2024-8-9 17:00:00'
 capcurs_on = 1   #Cambiar a 1 para activar
 FL_CAPCURS = '2024-8-9 17:00:00' # Fecha limite de captura de cursos
 
-sinsevi_on = 0  #Cambiar a 1 para activar
+sinsevi_on = 1  #Cambiar a 1 para activar
 coordins_on = 1  #Cambiar a 1 para activar
 FL_SINSEVI = '2024-07-26 17:00:00' # Fecha limite de inscripciones año-mes-dia
 

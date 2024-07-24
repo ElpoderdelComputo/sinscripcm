@@ -289,7 +289,10 @@
 
 <script>
     $(document).ready(function() {
-        $("#actualiza_cvu").click(function() {
+        $("#actualiza_cvu").click(function(event) {
+            // Prevenir el envío del formulario
+            event.preventDefault();
+
             // Obtiene el nuevo valor del CVU del input
             var nuevoCVU = $("input[name='cvu']").val();
 
@@ -308,7 +311,6 @@
 
                     // Muestra un alert (puedes personalizarlo según tus necesidades)
                     alert("CVU actualizado correctamente");
-
                 },
                 error: function(error) {
                     // Maneja errores en la solicitud AJAX
@@ -318,6 +320,7 @@
         });
     });
 </script>
+
 
 </body>
 </html>
