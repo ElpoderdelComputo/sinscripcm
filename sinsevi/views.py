@@ -133,7 +133,7 @@ def mis_cursos(request):
     cve_estud = estudiante.cve_estud
 
     cve_program = estudiante.cve_program
-    print('cve_program: ', cve_program)
+    #print('cve_program: ', cve_program)
 
     programa = get_object_or_404(CapcursappCoordinaciones, cve_program=cve_program)
 

@@ -64,7 +64,7 @@
                         <th>CVU</th>
                         <td>{{ cvu }}</td>
                     </tr>
-                    
+
                 </table>
             </div>
 
@@ -127,8 +127,12 @@
                 </table>
             </div>
         </div>
-    <p>*La reinscripción será  valida únicamente cuando el alumno acredite todas las materias del cuatrimestre anterior.</p>
-
+    
+        <div class="manifiesto">
+            <h1>Manifiesto que he consultado los cursos registrados en esta boleta de inscripción con mi Profesor(a) Consejero(a)</h1>
+            <h1>y ambos acordamos estar de acuerdo con los mismos.</h1>
+        </div>
+        <p>*La reinscripción será válida únicamente cuando el alumno acredite todas las materias del cuatrimestre anterior.</p>
         <div class="botones-pdf">
             <div>
                 <a class="btn btn-info" href="{% url 'sinsevi:mis_cursos' %}">Regresar</a>
@@ -168,7 +172,6 @@
     function enviarEmail(archivoAdjunto) {
         // Obtener el token CSRF del sitio web
         var csrfToken = getCSRFToken();
-
         // Crear un objeto FormData y adjuntar el archivo PDF
         var formData = new FormData();
         var pdfBlob = dataURItoBlob(archivoAdjunto);
@@ -209,8 +212,7 @@
         }
         return null;
     }
-
-
+    
     // Convierte un URI de datos en un objeto Blob
     function dataURItoBlob(dataURI) {
         var byteString = atob(dataURI.split(',')[1]);
@@ -227,7 +229,12 @@
     document.getElementById('guardar-enviar').addEventListener('click', function (event) {
         event.stopPropagation(); // Evita la propagación del evento a elementos superiores
         event.preventDefault(); // Evita enviar el formulario de forma convencional
-        generarYPdfEnviarPorEmail();
+        // Confirmar con el usuario
+        var confirmado = confirm("Manifiesto que he consultado los cursos registrados en esta boleta de inscripción " +
+            "con mi Profesor(a) Consejero(a) y ambos acordamos estar de acuerdo con los mismos.");
+        if (confirmado) {
+            generarYPdfEnviarPorEmail();
+        }
     });
 </script>
 

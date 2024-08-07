@@ -284,4 +284,22 @@ tr:hover {
     animation: fadeInOut 3s ease-in-out;
 }
 
+div.manifiesto {
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-bottom: 5px;
+    padding: 10px; /* Añade un espacio alrededor del texto dentro del div */
+    border: 1px solid #000; /* Añade un borde sólido negro */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo ligero */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra para un efecto profesional */
+    /* max-width: 80%; Limita el ancho del div */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente para una apariencia profesional */
+}
+
+div.manifiesto h1 {
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    font-weight: bold; /* Hace que el texto sea negrita */
+    color: #333; /* Color del texto */
+    margin: 0 auto;
+}
 
