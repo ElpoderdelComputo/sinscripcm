@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- Agrega estilo tabla de datos Boostrap -->
     <link rel="stylesheet" href="{% static 'Boostrap5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Boostrap5/js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="{% static 'DataTables/jQuery-3.6.0/jquery-3.6.0.min.js' %}">
     <link rel="stylesheet" href="{% static 'CSS/editar_curso.css' %}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -20,10 +22,10 @@
     <div class="center-image">
         <img src="{% static 'imagenes/SubDirImg.png' %}" alt="" width="600">
     </div>
-    <hr>
+
     <h1> {{ usuario.cve_posgrad }} - {{ usuario.nom_program }}</h1>
     <legend id="error-cve-curso-profesor" style="display: none; color: red;">La combinación de clave de curso y clave académica ya existe en la base de datos.</legend>
-    <br>
+
     <form action="{% url 'capcursapp:actualizar_curso' curso.id %}?from=editar_curso" method="POST" class="row g-2" id="formulario">
         {% csrf_token %}
         {{ formulario.as_p }}
@@ -32,64 +34,83 @@
                 Curso actualizado exitosamente!
             </div>
         {% endif %}
-        <div class="row">
-            <div class="col-md-6">
-                <fieldset>
-                    <legend style="text-align: center;">Curso</legend>
-                    <hr>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div style="display:flex; align-items:center; justify-content: center;">
-                                <label for="cve_curso" style="width:150px;">Clave:</label>
-                                <input type="text" name="cve_curso" id="cve_curso" value="{{ datos_curso.cve_curso }}" class="form-control_1" style="width:calc(100% - 150px);" readonly>
+        <div class="container" content="center">
+            <div class="row border-custom-1">
+                <div class="row">
+                    <div class="col-md-5">
+                        <fieldset>
+                            <legend style="text-align: center;">Curso</legend>
+                            <hr>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div>
+                                        <label for="cve_curso"></label><input type="text" name="cve_curso" id="cve_curso" value="{{ datos_curso.cve_curso }}" readonly>
+                                        <input type="text" name="nombre_curso" id="cve_curso" value="{{ datos_curso.nombre }}" readonly>
+                                        <input type="hidden" style="align-items:center"; name="id_catacurs" id="id_catacurs" value="{{ datos_curso.id_catacurs }}">
+                                        <label for="creditos"></label><input type="text" name="creditos" id="creditos" value="Creditos: {{ datos_curso.creditos }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-7">
+                        <fieldset>
+                            <legend style="text-align: center;">Profesor titular</legend>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <div>
+                                            <label for="cve_program">Programa: </label>
+                                            <select name="cve_program" id="cve_program" class="form-select">
+                                                <option value="" selected disabled>-- Selecciona un Programa --</option>
+                                                {% for clave, valor in programas.items %}
+                                                    <option value="{{ clave }}">{{ valor }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div class="form-group">
+
+                                        <div>
+                                            <label for="cve_academic">Profesor:</label>
+                                            <select name="cve_academic" id="cve_academic" class="form-select">
+                                                <option value="">Selecciona un Profesor</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                             <br>
-                            <div style="display:flex; align-items:center;">
-                                <input type="hidden" name="id_catacurs" id="id_catacurs" value="{{ datos_curso.id_catacurs }}">
-                                <label for="creditos" style="display:inline-block;width:150px;">Créditos:</label>
-                                <input type="text" name="creditos" id="creditos" value="{{ datos_curso.creditos }}" class="form-control_1" style="width:calc(100% - 150px);" readonly>
+                            <!-- Boton para agregar colaboradores -->
+                            <div class="container_colab" content="center">
+                                <div class="row">
+                                    {% if formulario.cve_curso.value %}
+                                        <div>
+                                            <a class="btn btn-outline-secondary" onclick="abrirVentanaEmergente()" id="btnAgregarColaboradores">Agregar Colaboradores</a>
+                                        </div>
+                                    {% else %}
+                                        <div>
+                                            <a class="btn btn-secondary" id="btnAgregarColaboradores" disabled>+ Colaboradores</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
+                        </fieldset>
                     </div>
-                </fieldset>
-            </div>
-            <div class="col-md-6">
-                <fieldset>
-                    <legend style="text-align: center;">Profesor titular</legend>
-                    <hr>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div style="display:flex; align-items:center;">
-                                <label style="width:calc(100% - 50px);">Clave</label>
-                                <label for="cve_academic"></label>
-                                <select name="cve_academic" id="cve_academic" class="form-select" style="width:500px" onchange="verificarCursoProfesor()">
-                                    <option value="{{ datos_curso.cve_academic }}"> {{ datos_curso.cve_academic }} :  {{ datos_curso.nom_academic }}  {{ datos_curso.apellidos }} </option>
-                                    {% for academico in academicos %}
-                                        <option value="{{ academico.cve_academic }}"> {{ academico.cve_academic }}: {{ academico.nombres }} {{ academico.apellidos }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Boton para agregar colaboradores -->
-                    <div class="container" content="center">
-                        <div class="row-md-4">
-                            <a class="btn btn-outline-secondary" href="{% url 'capcursapp:agregar_colab_edit' datos_curso.cve_curso %}?from=editar_curso" id="btnAgregarColaboradores" >+ Colaboradores</a>
-                        </div>
-                    </div>
-                    <!-- Fin-->
-                </fieldset>
+                </div>
+                <div id="mensaje-eliminar" class="text-danger"></div>
             </div>
         </div>
-
-        <div id="mensaje-eliminar" class="text-danger"></div>
+    <br>
 
         <!-- Tabla desplegable si existen colabs-->
         <div class="tabla-colabs-container_edit">
-            <legend>Colaboradores</legend>
+            <legend>Colaboradores del curso</legend>
             <table class="table" id="tabla-colabs">
                 <thead class="table-header">
                 <tr>
@@ -101,12 +122,11 @@
                 </tbody>
             </table>
         </div>
-        <br>
         <!-- Fin de colaboradores-->
 
-        <legend>Ingrese horarios donde corresponda</legend>
         <!-- Limites -->
         <div class="container" content="center">
+            <legend>Ingrese horarios donde corresponda</legend>
             <div class="row border-custom">
                 <div class="row">
                     <div class="col-md-1">
@@ -303,6 +323,32 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="{% static 'JS/agregarcurso.js' %}"></script>
+
+<script>
+    const selectPrograma = document.getElementById('cve_program');
+    const selectAcademico = document.getElementById('cve_academic');
+    const academicosPorPrograma = {{ academicos_por_programa_json|safe }};
+
+    function actualizarSelectAcademico(programa) {
+        const academicos = academicosPorPrograma[programa] || [];
+
+        selectAcademico.innerHTML = '';
+
+        academicos.forEach(academico => {
+            const option = document.createElement('option');
+            option.value = academico.cve_academic;
+            option.textContent = academico.cve_academic + ' : ' +academico.nombres + ' ' + academico.apellidos;
+            selectAcademico.appendChild(option);
+        });
+
+        selectAcademico.disabled = academicos.length === 0;
+    }
+
+    selectPrograma.addEventListener('change', function () {
+        const programaSeleccionado = selectPrograma.value;
+        actualizarSelectAcademico(programaSeleccionado);
+    });
+</script>
 
 <!-- script para buscar curso selecionado y profesor-->
 <script>
@@ -532,7 +578,9 @@
         const formulario = document.querySelector('#formulario');
         const formData = new FormData(formulario);
         const id_catacursValue = id_catacursElement.value;
+        const cve_academic = curso.cve_academic.value;
         formData.append('id_catacurs', id_catacursValue);
+        formData.append('cve_academic', cve_academic);
 
         fetch({% url 'capcursapp:actualizar_curso' curso.id %}, {
             method: 'POST',

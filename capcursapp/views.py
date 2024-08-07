@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse, HttpResponseBadRequest
-from .forms import CapcursForm, ImpareguForm
+from .forms import CapcursForm, ImpareguForm, CapcursFormEditar
 from .models import Academic, Coordinaciones, Capcurs, Catacurs, Imparegu
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -100,7 +100,10 @@ def mostrar_cursos(request):
         messages.error(request, 'Usuario o contraseña incorrectos.')
         return redirect('capcursapp:iniciar_sesion')
 
-    return render(request, 'mostrarcursos.html', {'miscursospersonal': miscursospersonal, 'usuario': coordinacion, 'periodo': periodo, 'anio': anio})
+    return render(request, 'mostrarcursos.html', {'miscursospersonal': miscursospersonal,
+                                                  'usuario': coordinacion,
+                                                  'periodo': periodo,
+                                                  'anio': anio})
 
 
 def generar_capcurs(request, cve_curso, periodo, tiene_colab, tiene_practicas, cve_academic, lunes_ini, lunes_fin,
@@ -252,8 +255,8 @@ def agregar_curso(request):
     for programa in clave:
         # Obtener los profesores que pertenecen al programa actual
         # idiomas se quita el doctorado porque son licenciaturas
-        academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by('cve_academic')
-        #academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
+        #academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by('cve_academic')
+        academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
         academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
 
     academicos_por_programa_json = json.dumps(academicos_por_programa)
@@ -316,50 +319,160 @@ def editar_curso(request, id_curso):
     usuario_id = request.session.get('usuario_id')
     usuario = Coordinaciones.objects.get(id=usuario_id)
     curso = Capcurs.objects.get(id=id_curso)
+
     form = CapcursForm(instance=curso)
     datos_curso = model_to_dict(curso)
-    academicos1 = Academic.objects.all()
-    academicos = academicos1.order_by('cve_academic')
+    # Academicos activos
+    clave = ['AEC', 'BOT', 'COA', 'DES', 'ECO', 'EDA', 'ENT', 'ECD', 'FIV', 'FIT', 'FOR', 'FRU', 'GAN', 'GEN', 'HID',
+             'IDI', 'SEM']
+    valor = ['AGROECOLOGÍA Y SUSTENTABILIDAD', 'BOTANICA', 'CÓMPUTO APLICADO', 'DESARROLLO RURAL', 'ECONOMÍA',
+             'EDAFOLOGÍA', 'ENTOMOLOGÍA Y ACAROLOGIA', 'ESTADISTICA Y CIENCIA DE DATOS', 'FISIOLOGIA VEGETAL',
+             'FITOPATOLOGIA', 'CIENCIAS FORESTALES', 'FRUTICULTURA', 'GANADERIA', 'GENETICA', 'HIDROCIENCIAS', 'IDIOMAS',
+             'PRODUCCIÓN DE SEMILLAS']
+
+    programas = dict(zip(clave, valor))
+
+    academicos_por_programa = {}
+
+    for programa in clave:
+        # Obtener los profesores que pertenecen al programa actual
+        # idiomas se quita el doctorado porque son licenciaturas
+        academicos = Academic.objects.filter(cve_program=programa, activo='S', grado='DOCTORADO').order_by(
+            'cve_academic')
+        # academicos = Academic.objects.filter(cve_program=programa, activo='S').order_by('cve_academic')
+        academicos_por_programa[programa] = [academic_to_dict(academico) for academico in academicos]
+
+    academicos_por_programa_json = json.dumps(academicos_por_programa)
     return render(request, 'editarcurso.html', {'form': form,
                                                 'curso': curso,
                                                 'datos_curso': datos_curso,
-                                                'academicos': academicos,
+                                                'programas': programas,
+                                                'academicos_por_programa_json': academicos_por_programa_json,
                                                 'usuario':usuario})
 
 
-def actualizar_curso(request, id_curso):
-    curso = get_object_or_404(Capcurs, pk=id_curso)
+def actualizar_curso1(request, id_curso):
 
-    # Crear una instancia de CapcursForm relacionada con el curso
-    form = CapcursForm(request.POST, instance=curso)
+    curso = get_object_or_404(Capcurs, id=id_curso)
+    # Obtener el profesor actual del curso
+    profe_actul_cveacdemic=curso.cve_academic_id
+    profe_Actual = Academic.objects.get(cve_academic=profe_actul_cveacdemic)
 
-    # Obtener la instancia de Imparegu usando el ID
-    id_imparegu = Imparegu.objects.get(cve_curso=curso.cve_curso, cve_academic=curso.cve_academic_id)
+    form_capcurs = CapcursFormEditar(request.POST, instance=curso)
+
+    id_imparegu = Imparegu.objects.get(cve_curso=curso.cve_curso, participa='TITULAR')
+
     imparegu_instance = get_object_or_404(Imparegu, pk=id_imparegu.id_auto)
 
-    print(id_imparegu.cve_curso, id_imparegu.cve_academic)
-
-    # Crear una instancia de ImpareguForm relacionada con la instancia de Imparegu
     formIMpa = ImpareguForm(request.POST, instance=imparegu_instance)
 
-    # Obtener el valor de id_catacurs y agregarlo a ambos formularios
     id_catacurs = request.POST.get('id_catacurs')
+    elcatacurs = Catacurs.objects.get(id=id_catacurs)
 
-    # Crear una copia mutable del QueryDict
     mutable_request_post = request.POST.copy()
 
     mutable_request_post['id_catacurs'] = id_catacurs
-    form.data = mutable_request_post
+    form_capcurs.data = mutable_request_post
     formIMpa.data = mutable_request_post
 
-    if request.method == 'POST' and form.is_valid() and formIMpa.is_valid():
-        form.save()
+    if request.method == 'POST' and form_capcurs.is_valid() and formIMpa.is_valid():
+        # Obtener el cve_academic del frontend
+        cve_academic_nuevo = request.POST.get('cve_academic')
+
+        # Inicializar profe_nuevo como None
+        profe_nuevo = None
+
+        # Verificar si cve_academic_nuevo es None o una cadena vacía
+        if not cve_academic_nuevo:
+            profe_nuevo = profe_Actual
+            print('No se cambio el profe')
+        else:
+            try:
+                # Intentar obtener el nuevo profesor
+                profe_nuevo = Academic.objects.get(cve_academic=cve_academic_nuevo)
+                print('Se cambio el profe')
+            except Academic.DoesNotExist:
+                # Si el profesor no existe, mantener el actual
+                profe_nuevo = profe_Actual
+                print('No se cambio el profe')
+
+        # Asegurarse de que profe_nuevo sea siempre un objeto Academic
+        if isinstance(profe_nuevo, str):
+            print('Error: profe_nuevo es un string en lugar de un objeto Academic')
+        else:
+            print('Profe es: ', profe_nuevo.cve_academic)
+
+        #curso.cve_academic = profe_nuevo.cve_academic
+        curso.nom_academic = profe_nuevo.nombres
+        curso.apellidos = profe_nuevo.apellidos
+        form_capcurs.save()
+
+        imparegu_instance.cve_academic = profe_nuevo.cve_academic
         formIMpa.save()
+
         messages.success(request, 'El curso se ha actualizado correctamente.')
+
         return redirect('capcursapp:mostrar_cursos')
     else:
-        errors = form.errors.as_json()
-        return JsonResponse({'success': False, 'error': errors})
+        errors = form_capcurs.errors.as_json()
+        print(errors)
+        return redirect('capcursapp:mostrar_cursos')
+
+
+def actualizar_curso(request, id_curso):
+    curso = get_object_or_404(Capcurs, id=id_curso)
+
+    # Obtener el profesor actual del curso
+    profe_actual_cve_academic = curso.cve_academic_id
+    profe_actual = Academic.objects.get(cve_academic=profe_actual_cve_academic)
+
+    form_capcurs = CapcursFormEditar(request.POST or None, instance=curso)
+
+    id_imparegu = Imparegu.objects.get(cve_curso=curso.cve_curso, participa='TITULAR').id_auto
+    imparegu_instance = get_object_or_404(Imparegu, pk=id_imparegu)
+    form_impa = ImpareguForm(request.POST or None, instance=imparegu_instance)
+
+    if request.method == 'POST' and form_capcurs.is_valid() and form_impa.is_valid():
+        # Obtener el cve_academic del frontend
+        cve_academic_nuevo = request.POST.get('cve_academic')
+
+        # Determinar el nuevo profesor o mantener el actual
+        try:
+            if cve_academic_nuevo:
+                profe_nuevo = Academic.objects.get(cve_academic=cve_academic_nuevo)
+                print('Se cambió el profe')
+            else:
+                profe_nuevo = profe_actual
+                print('No se cambió el profe')
+        except Academic.DoesNotExist:
+            profe_nuevo = profe_actual
+            print('No se cambió el profe')
+
+        # Asegurarse de que profe_nuevo sea siempre un objeto Academic
+        if isinstance(profe_nuevo, str):
+            print('Error: profe_nuevo es un string en lugar de un objeto Academic')
+        else:
+            print('Profe es: ', profe_nuevo.cve_academic)
+
+        # Actualizar los campos del curso y guardar
+        curso.nom_academic = profe_nuevo.nombres
+        curso.apellidos = profe_nuevo.apellidos
+        form_capcurs.save()
+
+        # Actualizar los campos de Imparegu y guardar
+        imparegu_instance.cve_academic = profe_nuevo.cve_academic
+        form_impa.save()
+
+        messages.success(request, 'El curso se ha actualizado correctamente.')
+        return redirect('capcursapp:mostrar_cursos')
+
+    # Manejo de errores
+    if request.method == 'POST':
+        errors = form_capcurs.errors.as_json()
+        print(errors)
+
+    return redirect('capcursapp:mostrar_cursos')
+
 
 
 @ensure_csrf_cookie
